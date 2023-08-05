@@ -126,6 +126,18 @@ img {
   color: #626161;
 }
 
+.cont2 ul{
+
+  font-family: "Avenir Next ultra light", sans-serif;
+  font-weight: normal;
+  /*text-decoration: none;*/
+  font-size: 1.2rem;
+  line-height: .5;
+  text-align: start;
+  margin-top: 1rem;
+  margin-bottom: 1px;
+}
+
 .hr-1 {
    width: 90%;
    /*margin: auto;*/
