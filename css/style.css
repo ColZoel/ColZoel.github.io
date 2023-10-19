@@ -111,6 +111,18 @@ img {
   margin-bottom: 1px;
 }
 
+.cont2 i {
+  font-family: "Avenir Next", sans-serif;
+  font-weight: normal;
+  font-style: italic;
+  text-decoration: none;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  text-align: start;
+  margin-bottom: 1px;
+}
+
+
 .cont2 a{
   font-family: "Avenir Next", sans-serif;
   font-weight: bold;
@@ -138,6 +150,93 @@ img {
   margin-bottom: 1px;
 }
 
+.pipeline{
+  /*max-width: 40rem;*/
+  margin: 20px 20px 20px 0;
+}
+.cont2 .pipeline+p{
+  flex: 1;
+  position: relative;
+  /*top: -20px;*/
+  /*object-fit: contain;*/
+}
+
+.pipeline2{
+  max-height: 1000px;
+  margin: 20px 20px 20px 0;
+}
+.cont2 .pipeline2+p{
+  flex: 1;
+  position: relative;
+  /*top: -20px;*/
+  /*object-fit: contain;*/
+}
+
+
+.contribute {
+    /*border: black solid 1px;*/
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: start;
+  color: #000;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 6rem;
+  padding-right: 5rem;
+
+  flex-wrap: wrap;
+}
+
+.contribute h3 {
+  font-family: "Avenir Next", sans-serif;
+  font-weight: normal;
+  text-decoration: none;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  text-align: start;
+  margin-bottom: 10px;
+}
+
+
+.contribute a{
+  font-family: "Avenir Next ultra light", sans-serif;
+  font-weight: normal;
+  color: black;
+  text-decoration: none;
+  font-size: medium;
+  line-height: 1.2;
+  text-align: start;
+  margin-bottom: 1px;
+  /*color: black;*/
+}
+
+.contribute p{
+  font-family: "Avenir Next ultra light", sans-serif;
+  font-weight: normal;
+  color: black;
+  text-decoration: none;
+  font-size: medium;
+  line-height: 1.2;
+  text-align: start;
+  margin-bottom: 1px;
+  /*color: black;*/
+}
+
+
+.contribute i{
+  font-family: "Avenir Next ultra light", sans-serif;
+  font-weight: normal;
+  font-style: italic;
+  color: black;
+  text-decoration: none;
+  font-size: medium;
+  line-height: 1.2;
+  text-align: start;
+  margin-bottom: 1px;
+  /*color: black;*/
+}
 .hr-1 {
    width: 90%;
    /*margin: auto;*/
@@ -145,6 +244,15 @@ img {
    margin-bottom: 2%;
    border: 0.5px solid slategray;
 }
+.hr-2 {
+   width: 50%;
+   /*margin: auto;*/
+   margin-top: 0%;
+   margin-bottom: .5rem;
+   border-width: 0 0 1px 0;
+  border-color: slategray;
+}
+
 .abouthr{
    width: 40%;
    /*margin: auto;*/

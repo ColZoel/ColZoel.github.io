@@ -59,7 +59,11 @@
             <p>
               We have a collection of scanned city directories published by R.L. Polk from the late 1800s to the first decade of the 2000s. These records are important
               because they have individual-level
-              occupation/position and employer data in addition to the home address.
+              occupation/position and employer data in addition to the home address. Below shows the sort
+              of data one would find on these pages: </p>
+
+              <img src="./img/Alphabeticals.jpg" alt="Directory Data Description " class="pipeline">
+              <p>
               <br><br>The current study divides the data into two categories: <b>Business</b> and <b>Alphabetical</b> directories.
 
               <b>Alphabetical</b> directories are organized by last name and are not exclusively residential listings.
@@ -68,10 +72,42 @@
               NY area, with
             some testing on Greensborough NC. These directories are normally found in public libraries and are still
               being published.
+              <br><br> My program, <b>Zinco</b>, is built to read and compile information contained in these images
+              and save them to a centralized, queryable database. To date, I have compiled over 2 million records from
+              the Rochester, NY area for just the 1990s and am currently compiling more from outside that window.
+              While OCR'd city directories are not new, most are products of outdated OCR technology and
+              are of questionable accuracy or formatting (usually a plain text file of sparse text and no delineation of
+              field or order). <i> We are unaware of any other database in the academic or genealogical communities that contains the
+              precision and breadth of this database.</i> </p>
+               <h3>
+              <br> Pipeline
+            </h3>
+            <p> With the help of historians and FamilySearch volunteers, these records are scanned and saved into
+              digital directories. This is an example of page from the 1990 Rochester, NY suburban directory:
             </p>
-<!--            <h3>-->
-<!--              <br>Zinco OCR Pipeline-->
-<!--            </h3>-->
+
+            <img src="./img/1990_ROC_SUB_EX.jpg" alt="1990 Rochester City Directory" class="pipeline">
+            <p>
+              <b>Zinco</b> works in three ways: preprocessing, OCR, and postprocessing, which I otherwise call parsing.
+              The preprocessing step uses computer vision to make the image and readable as possible for the OCR, which
+              reads and saves the text in a tabular form (rather than plain text).
+              The postprocessing step then applies Natural Language Processing (NLP) to parse the data from the directory
+              into its respective fields, as shown below.
+            </p>
+
+            <img src="./img/Zinco_spread.png" alt="Rochester Output" class="pipeline2">
+            <p>
+              Pretty neat, huh?
+            </p>
+
+            <p><br>Now that we have a cross-section of people with addresses extracted from their directory entry,
+              we can take this process a step further and think about plotting the addresses of specific Kodak executives
+              or employees, and boom! We have a map of the social and professional networks of Kodak employees in Rochester, NY.
+              <br><br>Of course, this is an extremely simplified way to explain a rather complicated process. Below is a
+              a more detailed workflow diagram of this part of the pipeline.
+            </p>
+
+            <img src="./img/Zinco_year.jpg" alt="OCR Pipeline" class="pipeline">
           </div>
       </div>
     </section>
