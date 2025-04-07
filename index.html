@@ -4,75 +4,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <title>Collin Zoeller</title>
 </head>
-    <body>
-      <nav>
-        <div class="logo">Collin Zoeller</div>
-        <div class="nav-items">
-        <a href="./index.html">Home</a> <a href="./aboutme.html">About Me</a> <a href="./research.html"> Research</a> <a href="./CV/Zoeller_Collin_CV.pdf">CV</a>
-      </div>
-      </nav>
-    <section class="body-exterior">
-        <div class="body-interior">
-            <img src="./img/portrait.png" alt="Collin Zoeller" style="width:300px;height:300px;">
+<body>
+  <nav>
+    <div class="logo">Collin Zoeller</div>
+    <div class="nav-icons">
+      <a href="https://www.linkedin.com/in/collinzoeller/">
+        <img class="icon" src="img/linkedin_black_circle.png" alt="LinkedIn"></a>
+      <a href="https://github.com/ColZoel">
+        <img class="icon" src="img/github_black_circle.png" alt="GitHub"></a>
+      <a href="https://medium.com/@collin.zoeller/">
+        <img class="icon" src="img/medium_black_circle.png" alt="Medium"></a>
+      <a href="https://www.instagram.com/collin.zoeller/">
+        <img class="icon" src="./img/instagram_black_circle.png" alt="instagram" ></a>
+      <a href="mailto:zoellercollin@gmail.com">
+        <img class="icon" src="./img/email_circ_thin.png" alt="email"></a>
+    </div>
 
-          <h1>Collin Zoeller</h1>
-          <h3>
-            Pre-Doctoral Research Associate and ML Developer
-          </h3>
-             <div class="links">
-        <a href=https://www.linkedin.com/in/collinzoeller/>
-          <img src="./img/linkedin.png" alt="linkedin" style="width:40px;height:40px;">
-        </a>
-        <a href="https://github.com/ColZoel">
-          <img src="./img/github.png" alt="github" style="width:40px;height:40px;">
-        </a>
-          <a href="https://medium.com/@collin.zoeller/">
-          <img src="./img/medium.png" alt="medium" style="width:40px;height:40px;">
-          <a href="https://www.instagram.com/collin.zoeller/">
-          <img src="./img/instagram.png" alt="ig" style="width:45px;height:45px;">
-        </a>
-          <a href="mailto:zoellercollin@gmail.com">
-          <img src="./img/mail.png" alt="email" style="width:60px;height:60px;">
-          </a>
-             </div>
-            <hr class="headerline-thick">
-        <p>
-          <b>Howdy!</b>
-          <br><br>
-          As a pre-doctoral research associate at the <a href="https://www.cmu.edu/tepper/"> Tepper School of
-          Business at Carnegie Mellon University</a>,  I leverage extremely large datasets of
-          administrative tax data furnished by the Internal Revenue Service to address critical questions in finance
-          and financial economics. My contributions have been presented to top leadership
-          and informed IRS policy. You can learn about these projects on the <a href="./research.html">Research</a> tab.
-          <br><br>
-          Outside my primary role, I am passionate about integrating emerging technologies like machine learning and
-          quantum computing into economics. I have developed tools like a Python wrapper for parallelized Stata
-          processes, written extensively about topics ranging from basic Stata implementation to exotic quantum mathematics,
-          and conducted group trainings to empower researchers to adopt these tools.
-          Economic research has yet to fully embrace these transformative tools, and I am passionate about driving this progress.
-
-          <br><br>Previously, I built CV tools for genealogy as the lead computer vision developer at
-          the <a href="https://record-linking-lab.byu.edu/">Record Linking Lab</a> at Brigham Young University.
-          You can explore the work I have been involved in on the <a href="./research.html"> Research </a> tab,
-          including an OCR and NLP pipeline I built for a collaboration with Harvard Business School.
-
-          <br><br>
-          With advanced coursework in machine learning and computer science from Carnegie Mellon, I bring expertise in
-          Python, Stata, SQL, and Linux, and I am familiar with R, CSS, and HTML. I also work with quantum platforms
-          like IBM Qiskit, Google Cirq, and AWS Braket.
-          <br><br> I am always eager to take on new projects, so feel free to reach out if you are interested in
-          working together!
-        </p>
-
+    <div class="nav-links">
+      <a href="./index.html">Home</a>
+      <a href="sites/aboutme.html">About</a>
+      <div class="dropdown">
+        <button class="droplink">More</button>
+        <div class="dropdown-content">
+          <a href="sites/research.html"> Research</a>
+          <a href="sites/resources.html">Resources</a>
         </div>
-    </section>
+      </div>
+      <a href="./CV/Zoeller_Collin_CV.pdf">CV</a>
+    </div>
+  </nav>
+
+  <div class="body-interior">
+   <img src="./img/portrait.png" alt="Collin Zoeller" class="profile-img">
+    <h1>Collin Zoeller</h1>
+
+    <h2>Research Associate in Financial Economics and AI </h2>
+
+    <hr>
+      <p>
+        <b>Howdy!</b>
+        <br><br>
+    <p>
+<section>
+  <h2>Current Role</h2>
+  <p>
+    I am a pre-doctoral research associate at the
+    <a href="https://www.cmu.edu/tepper/">Tepper School of Business at Carnegie Mellon University</a>,
+    where I work with large-scale administrative tax data furnished by the Internal Revenue Service.
+    My research supports critical questions in finance and financial economics, with findings presented to top leadership
+    and used to inform IRS policy and published in top finance journals. Learn more on the
+    <a href="sites/research.html">Research</a> tab.
+  </p>
+  <p>
+    Previously, I served as the lead computer vision developer at the
+    <a href="https://record-linking-lab.byu.edu/">Record Linking Lab</a> at Brigham Young University,
+    building computer vision tools for genealogical research. Notably, I developed an OCR and NLP pipeline
+    for a collaboration with Harvard Business School.
+  </p>
+</section>
+<section>
+  <h2>Research Interests</h2>
+  <p>
+    I am especially passionate about integrating emerging technologies into economics—particularly machine learning
+    and quantum computing. My research explores how these tools can address persistent limitations in traditional
+    econometrics and financial analysis, as well as how these tools have impacted the wider economy.
+  </p>
+  <ul>
+    <li>Written extensively on topics from applied Stata methods to exotic quantum mathematics.</li>
+    <li>Led group trainings to help researchers adopt advanced computational tools.</li>
+    <li>Created resources like a Python wrapper for parallelized Stata workflows.</li>
+    <li>Developed an LLM package for Stata for debugging and code explanation.</li>
+  </ul>
+  <p>
+    I am convinced the economics profession is only beginning to embrace these transformative technologies,
+    both technologically and academically, and I’m driven to accelerate that shift.
+  </p>
+</section>
+<section>
+  <h2>Technical Skills</h2>
+  <p>
+    I bring a strong technical foundation supported by advanced coursework in machine learning and computer science
+    from Carnegie Mellon. My toolkit includes:
+  </p>
+  <ul>
+    <li><strong>Languages &amp; Tools:</strong> Python, Stata, SQL, Linux</li>
+    <li><strong>Familiar With:</strong> R, CSS, HTML</li>
+    <li><strong>Quantum Platforms:</strong> IBM Qiskit, Google Cirq, AWS Braket</li>
+  </ul>
+  <p>
+    I’m always open to collaboration—feel free to reach out if you’d like to work together!
+  </p>
+</section>
+      <div class="footer">
+<!--        <hr>-->
+        <p id = "last-updated"></p>
+      </div>
+    </div>
+  <script>
+      document.getElementById('last-updated').textContent = 'Last updated: ' + new Date().toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    </script>
+  <script src="js/toggle.js"></script>
   </body>
 </html>

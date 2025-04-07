@@ -1,70 +1,302 @@
-/*
-    colours:
-    primary branding    = #d8b24f
-    header 4            = #434344
-    for grey paragraphs = #878e94
-    font-family         = 'Montserrat', sans-serif
-    box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.07);
-*/
+:root {
+  --primary: #5faac3;      /* Blue accent */
+  --secondary: rgb(155, 178, 206);    /* Darker blue for hover */
+  --text: #333;
+  --background: #fff;
+  --link: rgb(0, 0, 0);
+  --link-hover: var(--primary);
+  --link-hover-transition: color 0.7s ease;
+  --shadow: 0 4px 44px rgba(0, 0, 0, 0.1);
+  --about-box-transition: opacity .5s ease-in-out , box-shadow .5s ease-in-out;
+}
 
-* {
+
+/************* Reset and Global Styles *************/
+*, *::before, *::after  {
   box-sizing: border-box;
   margin: 1px 1px 10px;
   padding: 0;
-  font-family: 'Avenir Next', 'Avenir Next ultra light', 'Avenir Next semibold',
-    'Lucida Sans', Arial, sans-serif;
+  font-family: 'inter', 'Lucida Sans', Arial, sans-serif;
 }
-.dark-mode {
-  background-color: rgba(0, 0, 0, 0.79);
-  color: #ffffff;
+
+body {
+  line-height: 1.2;
+  font-size: 1.2rem;
+  color: var(--text);
+  background-color: var(--background);
+  padding: 20px;
 }
+
+p {
+  font-weight: 400;
+  color: var(--text);
+  text-decoration: none;
+  line-height: 1.2;
+  text-align: start;
+  margin-top: 0.75rem;
+  margin-bottom: 1px;
+}
+
+
+/* Links */
+a {
+  font-family: 'inter', sans-serif;
+  font-weight: 200;
+  color: var(--link);
+  text-decoration: none;
+  transition: var(--link-hover-transition);
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+a i{
+  font-weight: 200;
+}
+
+
+h1 {
+  /*margin-bottom: 0.5rem;*/
+  font-size: 3.5rem;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.2rem;
+}
+
+h2 {
+  font-family: 'inter', sans-serif;
+  font-weight: 200;
+  margin-bottom: 0.2rem;
+  font-size: 2rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
+
+h3 {
+  font-weight: 100;
+  margin-bottom: 1px;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
+h4 {
+  font-weight: 500;
+  margin-top: 0.6rem;
+  margin-bottom: 1px;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  text-align: center;
+  align-self: flex-start;
+}
+
+hr{
+  width: 90%;
+  margin-top: 5px;
+  margin-bottom: 1rem;
+  border-width: 0 0 0 0;
+  /*border-color: var(--secondary);*/
+  outline: var(--secondary) solid 0.1px;
+
+}
+
+
+/**********************************************/
+
+
+/*************** Navigation Bar ***************/
 nav {
-  height: 60px;
-  display: flex;
+display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0rem 1rem;
+  padding: 0.5rem 1rem 0 1rem;
+  min-height: 60px; /* Let nav grow with content */
+  box-shadow: var(--shadow);
 }
 
 .logo {
-  font-family: "Avenir Next ultra light", sans-serif;
-  color: black;
-  font-size: 34px;
-  min-font-size: 13px;
-  max-font-size: 20px;
-  font-weight: normal;
-  margin: 1vh 0;
-  line-height: 1.2;
-  align-self: baseline;
+  font-family: "inter", sans-serif;
+  font-weight: 100;
+  color: var(--primary);
+  font-size: 38px;
+  /*margin: 0 2rem; !* space around logo *!*/
 }
 
-nav a {
-  text-decoration: none;
-  color: black;
-  padding: 0 .3rem;
+.nav-icons {
+  position: absolute;
+  margin-top: 0.5rem;
+  left: 50%;
+  transform: translate(-50%);
+  /*border: blue solid 2px;*/
 }
 
-nav a:hover {
-  color: lightslategrey;
+.nav-icons img {
+  width: 2rem;
+  height: 2rem;
+  margin: 0;
 }
 
-/********* outermost container. All containers lie within this *********/
-.body-exterior {
+/* Icons: scale and change color on hover */
+.icon {
+  width: 2rem;
+  height: 2rem;
+  transition: transform 0.5s ease, color 0.3s ease;
+  padding: 0;
+  margin: 0;
+  /*border: green solid 2px;*/
+}
+.icon:hover {
+  transform: scale(1.3);
+  color: var(--primary);
+}
+
+.nav-links {
   display: flex;
-  justify-content: center;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  /*outline: gold solid 1px;*/
+  gap: 0.5rem;
+  align-items: center;
+  /*border: 1px solid var(--text);*/
+  padding: 0;
+  margin: 0;
 }
 
-/******** inner container. All content (should) fit within this*******/
+.nav-links a {
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 1.1rem;
+  margin: 0 0.2rem;
+  color: var(--text);
+  /*border: 1px solid blue;*/
+}
+.nav-links a:hover {
+  color: var(--link-hover);
+  transition: color 0.7s ease;
+}
+
+
+.nav-links button {
+  background: none;
+  color: var(--text);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.5rem 0 0 0;
+  margin: 0 0.2rem;
+  /*align-self: flex-start;*/
+  border: none;
+}
+
+.nav-links button:hover {
+  color: var(--link-hover);
+  transition: color 0.7s ease;
+}
+
+
+/* Responsive Navigation for smaller screens */
+@media (max-width: 800px) {
+  nav {
+    flex-direction: column;
+    height: auto;
+    padding: 0.1rem;
+  }
+  .logo {
+    align-self: center;
+  }
+  .nav-icons {
+    position: static;
+    margin-top: 1rem;
+    bottom: 0;
+    left: 0;
+    transform: none;
+  }
+  .nav-links{
+    /*flex-direction: column;*/
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+  }
+}
+/***************************************************/
+
+
+/*************** Dropdown Menu *****************/
+
+.dropdown {
+  position: relative; /* Let it be part of the flex flow */
+}
+
+.dropdown-content {
+  position: absolute;
+  right: 0;
+  top: calc(100% + .25rem);
+  max-width: 300px;
+  opacity: 0;
+  padding: 1rem 2.5rem 1rem 2.5rem;
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: var(--shadow);
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.dropdown-content a{
+  font-size: 1.2rem;
+  display: block;
+  padding-top: 0.25rem;
+  /*margin-bottom: 1rem;*/
+}
+
+.droplink{
+  background: none;
+  color: var(--text);
+  font-size: inherit;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+}
+
+
+.dropdown.active .dropdown-content {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/***************** Footer *****************/
+.footer{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  /*background-color: var(--primary);*/
+  color: white;
+  font-size: .8rem;
+  font-family: 'inter', sans-serif;
+  text-align: center;
+}
+
+.footer p{
+  margin-top: 5rem;
+  padding: 10px;
+  color: rgba(197, 197, 197, 0.86);
+}
+
+.footer hr{
+  margin-top: 5rem;
+  margin-bottom: 1rem;
+  order: 0;
+}
+
+/***************** inner container.*****************/
 .body-interior {
   display: flex;
   height: auto;
   max-width: 60rem;
   justify-content: center;
-  /*!*outline: blue solid 1px;*!*/
-    margin-inline: auto;
+  margin-inline: auto;
   flex-direction: column;
   align-items: center;
   /*color: #000;*/
@@ -73,60 +305,12 @@ nav a:hover {
   /*outline: green solid 1px;*/
 }
 
-.body-interior h1 {
-  margin-bottom: 0.5rem;
-  font-size: 3rem;
-  font-family: "Avenir Next light", sans-serif;
-  font-weight: normal;
-  text-align: center;
-}
-
-.body-interior h3 {
-  font-family: "Avenir Next ultra light", sans-serif;
-  font-weight: normal;
-  /*font-size: 3vh;*/
-  margin-bottom: 1px;
-  font-size: 1.5rem;
-  line-height: 1.2;
-  text-align: center;
-}
 
 .body-interior p {
-  font-family: "Avenir Next", sans-serif;
-  font-weight: normal;
-  text-decoration: none;
-  font-size: 1.2rem;
-  line-height: 1.2;
-  text-align: start;
-  margin-bottom: 1px;
-}
-
-.body-interior i {
-  font-family: "Avenir Next", sans-serif;
-  font-weight: normal;
-  font-style: italic;
-  text-decoration: none;
-  font-size: 1.2rem;
-  line-height: 1.2;
-  text-align: start;
   margin-bottom: 1px;
 }
 
 
-.body-interior a{
-  font-family: "Avenir Next", sans-serif;
-  font-weight: normal;
-  color: #959696;
-  text-decoration: none;
-  font-size: 1.2rem;
-  line-height: 1.2;
-  text-align: start;
-  margin-bottom: 1px;
-  /*color: black;*/
-}
-.body-interior a:hover{
-  color: lightslategrey;
-}
 
 .body-interior ul{
 
@@ -140,24 +324,6 @@ nav a:hover {
   margin-bottom: 1px;
 }
 
-
-/* change width depending on window size-- this is specifically for medium windows*/
-@media (max-width: 1200px) {
-  .interior-desc{
-    padding: 0.1rem 0.1rem;
-  }
-  .resources-flex-grid {
-      display: block;
-      flex-grow: inherit;
-      /*flex-wrap: wrap;*/
-      .col {
-        width: 100%;
-        margin: 0 0 0 0;
-        padding: 0;
-
-      }
-    }
-  }
 
 /* smaller windows*/
 @media (max-width: 768px) {
@@ -181,81 +347,36 @@ nav a:hover {
   }
 
 
-/******************* lines and images *******************/
-.headerline-thick {
-   width: 90%;
-   /*margin: auto;*/
-   margin-top: 0%;
-   margin-bottom: 2%;
-   border: 0.5px solid slategray;
-  /*outline: orange solid 1px;*/
-}
-.headerline-thin {
-   width: 100%;
-   /*margin: auto;*/
-   margin-top: 0;
-   margin-bottom: .5rem;
-   border-width: 0 0 1px 0;
-  border-color: slategray;
-  /*outline: orangered solid 1px;*/
+.profile-img {
+  max-width: 300px;
+  margin: 0 20px 20px 0;
+  border-radius: 50%;
+  outline: var(--primary) solid 2px;
 }
 
-.abouthr{
-   width: 40%;
-   /*margin: auto;*/
-   margin-top: 0;
-   margin-bottom: 2%;
-   border: 0.2px solid slategray;
-  /*outline: firebrick solid 1px;*/
-}
 
-.aboutme-separator{
-     width: 80%;
-   /*margin: auto;*/
-   margin-top: 2%;
-   margin-bottom: 2%;
-   border: 0.2px solid rgba(112, 128, 144, 0.49);
-  /*outline: lawngreen solid 1px;*/
-}
+/* ********************* about me **************************/
 
 .collin-about-img {
   max-width: 200px;
   margin: 0 20px 20px 0;
   border-radius: 50%;
-  /*outline: #b3d4fc solid 1px;*/
-}
-.body-interior .collin-about-img+p{
-  flex: 1;
-  position: relative;
-  /*top: -20px;*/
-  /*object-fit: contain;*/
+  outline: var(--primary) solid 2px;
 }
 
-/* ********************* home page  icon links **************************/
-.links {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 0;
-  /*outline: aqua solid 1px;*/
-}
-
-
-/* ********************* about me **************************/
 .about-me-boxes-container {
   height: max-content;
-  /*width: calc(33%- 45px);*/
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /*align-items: center;*/
   color: black;
-  /*background-color: blueviolet;*/
   padding: 0 0 0;
   margin: 0 0 0;
   /*outline: royalblue solid 2px;*/
+
 }
+
 
 .about-me-boxes-container .box {
   justify-content: center;
@@ -269,12 +390,22 @@ nav a:hover {
   border: .5px solid rgba(63, 63, 63, 0.24);
 }
 
+
+.about-me-boxes-container p {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+
+
 .about-me-boxes-container .box:hover{
   opacity: 0.8;
-  box-shadow: 0 2px .5em rgb(128, 128, 128);
-  transform: translate(0%, -5%);
-  transition: 0.8s;
+  box-shadow: var(--shadow);
+  outline: var(--primary) solid 2px;
+  transition: opacity 0.5s ease-in-out,
+  box-shadow 0.5s ease-in-out,
+  outline 0.5s ease-in-out;
 }
+
 
 .about-me-boxes-container .box2 {
   justify-content: center;
@@ -290,9 +421,11 @@ nav a:hover {
 
 .about-me-boxes-container .box2:hover{
   opacity: 0.8;
-  box-shadow: 0 2px .5em gray;
-  transform: translate(0%, -5%);
-  transition: 0.8s;
+  box-shadow: var(--shadow);
+  outline: var(--primary) solid 2px;
+  transition: opacity 0.5s ease-in-out,
+  box-shadow 0.5s ease-in-out,
+  outline 0.5s ease-in-out;
 }
 
 .about-me-boxes-container .box3 {
@@ -305,13 +438,16 @@ nav a:hover {
   overflow: clip;
   border-radius: 5px;
   border: .5px solid rgba(63, 63, 63, 0.24);
+  /*outline: royalblue solid 2px;*/
 }
 
 .about-me-boxes-container .box3:hover{
   opacity: 0.8;
-  box-shadow: 0 2px .5em gray;
-  transform: translate(0%, -5%);
-  transition: 0.8s;
+  box-shadow: var(--shadow);
+  outline: var(--primary) solid 2px;
+  transition: opacity 0.5s ease-in-out,
+  box-shadow 0.5s ease-in-out,
+  outline 0.5s ease-in-out;
 }
 
 .image-inside{
@@ -335,7 +471,7 @@ nav a:hover {
   justify-content: center;
   position: absolute;
   width: calc(100% - 20px);
-  height: 85%;
+  height: 75%;
   background: white;
   padding-inline: 0 0;
   margin: 10px;
@@ -404,8 +540,6 @@ nav a:hover {
 }
 
 .box p{
-  font-family: "Avenir Next light", sans-serif;
-  /*font-weight: bold;*/
   font-size: 10pt;
   display: flex;
   justify-content: center;
@@ -421,26 +555,9 @@ nav a:hover {
   /*border-radius: 5px;*/
   border: 1px solid rgb(255, 255, 255);
 }
-
-
-.box h3{
-  /*margin: 0 1rem;*/
-  /*background-color: inherit;*/
-  margin-bottom: 0;
-  padding: 0 20px;
-  font-size: 1.5rem;
-  font-family: "Avenir Next ultra light", sans-serif;
-  font-weight: normal;
-  line-height: 1.2;
-  text-align: center;
-  width: 50%;
-}
-
 
 
 .box2 p{
-  font-family: "Avenir Next light", sans-serif;
-  /*font-weight: bold;*/
   font-size: 10pt;
   display: flex;
   justify-content: center;
@@ -452,30 +569,12 @@ nav a:hover {
   padding-inline: 0 1pt;
   bottom: 0px;
   top: 190px;
-  /*overflow: clip;*/
-  /*border-radius: 5px;*/
   border: 1px solid rgb(255, 255, 255);
-}
-
-
-.box2 h3{
-  /*margin: 0 1rem;*/
-  /*background-color: inherit;*/
-  margin-bottom: 0;
-  padding: 0 20px;
-  font-size: 1.5rem;
-  font-family: "Avenir Next ultra light", sans-serif;
-  font-weight: normal;
-  line-height: 1.2;
-  text-align: center;
-  width: 50%;
 }
 
 
 
 .box3 p{
-  font-family: "Avenir Next light", sans-serif;
-  /*font-weight: bold;*/
   font-size: 10pt;
   display: flex;
   justify-content: center;
@@ -487,33 +586,8 @@ nav a:hover {
   padding-inline: 0 1pt;
   bottom: 0px;
   top: 220px;
-  /*overflow: clip;*/
-  /*border-radius: 5px;*/
   border: 1px solid rgb(255, 255, 255);
 }
-
-
-.box3 h3{
-  /*margin: 0 1rem;*/
-  /*background-color: inherit;*/
-  margin-bottom: 0;
-  padding: 0 20px;
-  font-size: 1.5rem;
-  font-family: "Avenir Next ultra light", sans-serif;
-  font-weight: normal;
-  line-height: 1.2;
-  text-align: center;
-  width: 50%;
-}
-
-
-
-@media screen and (max-width: 768px) {
-  .body-interior {
-    grid-template-columns: 1fr;
-  }
-}
-
 
 
 /* ********************* resources page **************************/
@@ -710,68 +784,4 @@ img {
 }
 
 /* ********************* Research page **************************/
-.contribute {
-  margin-inline: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: start;
-  color: #000;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  padding-left: 4rem;
-  padding-right: 4rem;
-  flex-wrap: wrap;
-  /*outline: hotpink solid 2px;*/
-}
-
-.contribute h3 {
-  font-family: "Avenir Next", sans-serif;
-  font-weight: normal;
-  text-decoration: none;
-  font-size: 1.2rem;
-  line-height: 1.2;
-  text-align: start;
-  margin-bottom: 10px;
-}
-
-
-.contribute a{
-  font-family: "Avenir Next ultra light", sans-serif;
-  font-weight: normal;
-  color: black;
-  text-decoration: none;
-  font-size: medium;
-  line-height: 1.2;
-  text-align: start;
-  margin-bottom: 1px;
-  /*color: black;*/
-}
-
-.contribute p{
-  font-family: "Avenir Next ultra light", sans-serif;
-  font-weight: normal;
-  color: black;
-  text-decoration: none;
-  font-size: medium;
-  line-height: 1.2;
-  text-align: start;
-  margin-bottom: 1px;
-  /*color: black;*/
-}
-
-
-.contribute i{
-  font-family: "Avenir Next ultra light", sans-serif;
-  font-weight: normal;
-  font-style: italic;
-  color: black;
-  text-decoration: none;
-  font-size: medium;
-  line-height: 1.2;
-  text-align: start;
-  margin-bottom: 1px;
-  /*color: black;*/
-}
-
 
