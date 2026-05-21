@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+  <link rel="manifest" href="../site.webmanifest">
+  <title>Projects — Collin Zoeller</title>
+</head>
+<body>
+
+  <nav>
+    <a class="logo" href="../index.html">Collin Zoeller</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../sites/aboutme.html">About</a></li>
+      <li><a href="../sites/research.html">Research</a></li>
+      <li><a href="../sites/projects.html" class="active">Projects</a></li>
+      <li><a href="../sites/resources.html">Tools &amp; Guides</a></li>
+      <li><a href="../CV/Zoeller_Collin_CV.pdf">CV</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-body">
+    <h1>Projects</h1>
+    <hr class="page-divider">
+    <p>Open-source tools and packages built at the intersection of economics, machine learning, and software engineering.</p>
+
+    <div class="project-card">
+      <div>
+        <p class="project-card-title">Explain — LLM Package for Stata</p>
+        <p class="project-card-desc">
+          A Stata package that integrates directly with large language models to assist with code debugging,
+          explanation, and improvements. Supports both hosted APIs and locally-run models, letting researchers
+          get inline AI assistance without leaving their Stata workflow.
+        </p>
+        <div class="project-links">
+          <a class="project-link" href="https://github.com/ColZoel/explain" target="_blank" rel="noopener">
+            <i class="ti ti-brand-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+      <div class="project-status"><span class="pulse-dot"></span> Active</div>
+    </div>
+
+    <div class="project-card">
+      <div>
+        <p class="project-card-title">StataHelper — Parallelized Stata Workflows</p>
+        <p class="project-card-desc">
+          A Python package that simplifies the PyStata interface and enables parallelized Stata execution.
+          Especially useful for large-scale data tasks where vanilla Stata's single-threaded model becomes
+          a bottleneck.
+        </p>
+        <div class="project-links">
+          <a class="project-link" href="https://github.com/ColZoel/StataHelper" target="_blank" rel="noopener">
+            <i class="ti ti-brand-github"></i> GitHub
+          </a>
+          <a class="project-link" href="https://pypi.org/project/StataHelper/" target="_blank" rel="noopener">
+            <i class="ti ti-package"></i> PyPI
+          </a>
+        </div>
+      </div>
+      <div></div>
+    </div>
+
+    <div class="project-card">
+      <div>
+        <p class="project-card-title">StataAgent</p>
+        <p class="project-card-desc">
+          A specialized agent model that integrates with Stata for natural-language data analysis.
+          Ask questions like "What is the average income of individuals in 2022?" and the agent
+          queries Stata and returns a structured answer.
+        </p>
+        <div class="project-links">
+          <a class="project-link" href="https://github.com/ColZoel/StataAgent" target="_blank" rel="noopener">
+            <i class="ti ti-brand-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+      <div></div>
+    </div>
+
+    <div class="project-card">
+      <div>
+        <p class="project-card-title">Large-scale Text Classification with ANNOY + SLM</p>
+        <p class="project-card-desc">
+          Demonstrates how to combine lightweight SLM embeddings with the ANNOY (Approximate Nearest Neighbors)
+          library for efficient multi-class text classification at scale — a practical alternative to
+          fine-tuning large models for classification tasks.
+        </p>
+        <div class="project-links">
+          <a class="project-link" href="https://github.com/ColZoel/Annoy_text_classifier" target="_blank" rel="noopener">
+            <i class="ti ti-brand-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+      <div></div>
+    </div>
+
+  </div>
+
+  <footer class="page-footer">
+    © 2025 Collin Zoeller · collinzoeller.com
+  </footer>
+
+</body>
+</html>

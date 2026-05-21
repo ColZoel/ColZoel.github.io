@@ -1,121 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
-    <link rel="manifest" href="../site.webmanifest">
-    <title>Collin Zoeller</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+  <link rel="manifest" href="../site.webmanifest">
+  <title>Tools &amp; Guides — Collin Zoeller</title>
 </head>
 <body>
-<nav>
-    <div class="logo">Collin Zoeller</div>
-    <div class="nav-icons">
-      <a href="https://www.linkedin.com/in/collinzoeller/">
-        <img class="icon" src="../img/linkedin_black_circle.png" alt="LinkedIn"></a>
-      <a href="https://github.com/ColZoel">
-        <img class="icon" src="../img/github_black_circle.png" alt="GitHub"></a>
-      <a href="https://medium.com/@collin.zoeller/">
-        <img class="icon" src="../img/medium_black_circle.png" alt="Medium"></a>
-      <a href="https://www.instagram.com/collin.zoeller/">
-        <img class="icon" src="../img/instagram_black_circle.png" alt="instagram" ></a>
-      <a href="mailto:contact@collinzoeller.com">
-        <img class="icon" src="../img/email_circ_thin.png" alt="email"></a>
-    </div>
 
-    <div class="nav-links">
-      <a href="../index.html">Home</a>
-      <a href="../sites/aboutme.html">About</a>
-      <div class="dropdown">
-        <button class="droplink">More</button>
-        <div class="dropdown-content">
-          <a href="../sites/research.html"> Research</a>
-          <a href="../sites/resources.html">Resources</a>
-        </div>
-      </div>
-      <a href="../CV/Zoeller_Collin_CV.pdf">CV</a>
-    </div>
+  <nav>
+    <a class="logo" href="../index.html">Collin Zoeller</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../sites/aboutme.html">About</a></li>
+      <li><a href="../sites/research.html">Research</a></li>
+      <li><a href="../sites/projects.html">Projects</a></li>
+      <li><a href="../sites/resources.html" class="active">Tools &amp; Guides</a></li>
+      <li><a href="../CV/Zoeller_Collin_CV.pdf">CV</a></li>
+    </ul>
   </nav>
-    <div class="body-interior">
-        <div class="resources">
-          <h1>
-          Resources
-          </h1>
-          <hr class="headerline-thick">
 
-          <div class="resources-desc">
-
-          </div >
-        </div>
-  <div class="resources-flex-grid">
-    <div class="col">
-      <div class="flex-item-title">LinkedIn Communities </div>
-        <ul>
-          <li><a href = "https://www.linkedin.com/groups/961087/">Moderated Machine Learning Community</a></li>
-          <li><a href = "https://www.linkedin.com/in/learn-statistics-through-practice-5a31a7b1/">Learn Statistics Through Practice</a></li>
-
-      </ul>
-
+  <!-- Page header -->
+  <div class="res-header">
+    <div class="res-header-left">
+      <p class="res-page-eyebrow">Original work · Freely available</p>
+      <h1 class="res-page-title">Tools &amp;<em>Guides</em></h1>
+      <p class="res-page-desc">Methodological guides, tutorials, and articles I've written for researchers working at the intersection of economics and computation. Everything here is something I wished existed when I needed it.</p>
     </div>
-<!--    <div class="col">-->
-<!--      <div class="flex-item-title">Machine Learning</div>-->
-<!--    </div>-->
+    <div class="col-divider"></div>
+    <div class="res-header-right">
+      <div class="res-stat">
+        <span class="res-stat-num">7</span>
+        <span class="res-stat-label">Original resources</span>
+      </div>
+      <div class="res-stat-divider"></div>
+      <div class="res-stat">
+        <span class="res-stat-num">4</span>
+        <span class="res-stat-label">Topic areas</span>
+      </div>
+      <div class="res-stat-divider"></div>
+      <div class="res-stat">
+        <span class="res-stat-num">Free</span>
+        <span class="res-stat-label">Always</span>
+      </div>
+    </div>
+  </div>
 
-    <div class="col">
-      <div class="flex-item-title">
-        Machine Learning
+  <div class="res-body">
+
+    <!-- STATA TOOLKIT -->
+    <div class="res-section-head">
+      <h2 class="res-section-title">The Stata Methodology Toolkit</h2>
+      <span class="res-section-sub">3 guides · PDF</span>
+      <span class="res-authored-badge">Written by Collin</span>
+    </div>
+    <div class="res-collection">
+      <div class="res-collection-header">
+        <div>
+          <p class="res-collection-label">Collection · 3 PDFs</p>
+          <p class="res-collection-name">Practical guides for rigorous econometric work</p>
+          <p class="res-collection-desc">Three complementary references covering the full workflow — from wrangling large datasets to presenting clean, credible results.</p>
         </div>
-      <ul>
-        <li><a href = "https://www.linkedin.com/pulse/ocr-pipeline-collin-zoeller/">OpenCV tutorial</a></li>
-      </ul>
-      </div>
-<!--    <div class="col">-->
-<!--      <div class="flex-item-title">-->
-<!--        SQL-->
-<!--        </div>This little piggy went to market.</div>-->
-    <div class="col">
-      <div class="flex-item-title">
-        Stata
+        <div class="res-collection-audience">
+          <i class="ti ti-users" aria-hidden="true"></i> For researchers working with large-scale panel data
         </div>
-      <ul>
-        <li><a href = ../resources/efficient_stata_big_data.pdf> Stata for Big Data </a></li>
-        <li><a href = ../resources/Panel_Data_Checklist.pdf>Quality Checklist for Panel Data </a></li>
-        <li><a href = ../resources/Regression_Results_Checklist.pdf> Checklist for Regression Results </a></li>
-      </ul>
-     </div>
-<!--    <div class="col">-->
-<!--      <div class="flex-item-title">-->
-<!--        Python-->
-<!--        </div>-->
-<!--      This little piggy had roast beef.</div>-->
-<!--  <div class="col">-->
-<!--      <div class="flex-item-title"> Data Science</div>-->
-<!--    </div>-->
-<!--  <div class="col">-->
-<!--      <div class="flex-item-title"> Econometrics</div>-->
-<!--    </div>-->
-<!--  <div class="col">-->
-<!--      <div class="flex-item-title">Cheatsheets</div>-->
-<!--    </div>-->
-</div>
-</div>
-      <div class="footer">
-        <p id = "last-updated"></p>
       </div>
-  <script>
-      document.getElementById('last-updated').textContent = 'Last updated: ' + new Date().toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      });
-    </script>
-  <script src="../js/toggle.js"></script>
+      <div class="res-collection-items-3">
+        <div class="res-collection-item">
+          <div>
+            <p class="res-item-title">Stata for Big Data</p>
+            <p class="res-item-desc">Memory management, loops, and parallelization strategies for large administrative and survey datasets.</p>
+          </div>
+          <div class="res-item-footer">
+            <span class="res-badge">PDF</span>
+            <a class="res-dl-link" href="../resources/efficient_stata_big_data.pdf" target="_blank" rel="noopener">
+              Download <i class="ti ti-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+        <div class="res-collection-item">
+          <div>
+            <p class="res-item-title">Quality Checklist for Panel Data</p>
+            <p class="res-item-desc">Step-by-step validation of panel datasets — balance, attrition, merges, and integrity checks.</p>
+          </div>
+          <div class="res-item-footer">
+            <span class="res-badge">PDF</span>
+            <a class="res-dl-link" href="../resources/Panel_Data_Checklist.pdf" target="_blank" rel="noopener">
+              Download <i class="ti ti-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+        <div class="res-collection-item">
+          <div>
+            <p class="res-item-title">Checklist for Regression Results</p>
+            <p class="res-item-desc">Pre-publication checklist covering specification robustness, standard errors, fixed effects, and presentation.</p>
+          </div>
+          <div class="res-item-footer">
+            <span class="res-badge">PDF</span>
+            <a class="res-dl-link" href="../resources/Regression_Results_Checklist.pdf" target="_blank" rel="noopener">
+              Download <i class="ti ti-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PYTHON × STATA SERIES -->
+    <div class="res-section-head">
+      <h2 class="res-section-title">Python × Stata</h2>
+      <span class="res-section-sub">2-part series · Medium</span>
+      <span class="res-authored-badge">Written by Collin</span>
+    </div>
+    <div class="res-collection">
+      <div class="res-collection-header">
+        <div>
+          <p class="res-collection-label">Series · 2 articles</p>
+          <p class="res-collection-name">Leveraging Python with Stata</p>
+          <p class="res-collection-desc">A practical two-part walkthrough of the Stata–Python integration — from embedding Python inside a Stata session to driving Stata entirely from Python via the PyStata API.</p>
+        </div>
+        <div class="res-collection-audience">
+          <i class="ti ti-users" aria-hidden="true"></i> For Stata users ready to extend their workflow with Python
+        </div>
+      </div>
+      <div class="res-collection-items-2">
+        <div class="res-collection-item">
+          <div>
+            <p class="res-part-label">Part 1</p>
+            <p class="res-item-title">Using Python inside Stata</p>
+            <p class="res-item-desc">How to access Python from within a running Stata session to extend capabilities with custom functions, file I/O, and data manipulation.</p>
+          </div>
+          <div class="res-item-footer">
+            <span class="res-badge res-badge-teal">Medium · 7 min</span>
+            <a class="res-dl-link" href="https://medium.com/@collin.zoeller/leveraging-python-with-stata-part-1-0c5c0c6fca2c" target="_blank" rel="noopener">
+              Read <i class="ti ti-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+        <div class="res-collection-item">
+          <div>
+            <p class="res-part-label">Part 2</p>
+            <p class="res-item-title">Using Stata from within Python</p>
+            <p class="res-item-desc">Introduces the PyStata API — a Python wrapper that lets you call Stata commands, pass data, and run parallelized workflows from a Python script or Jupyter notebook.</p>
+          </div>
+          <div class="res-item-footer">
+            <span class="res-badge res-badge-teal">Medium · 7 min</span>
+            <a class="res-dl-link" href="https://medium.com/@collin.zoeller/leveraging-python-with-stata-part-2-68c599d8055f" target="_blank" rel="noopener">
+              Read <i class="ti ti-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUANTUM COMPUTING -->
+    <div class="res-section-head">
+      <h2 class="res-section-title">Quantum Computing</h2>
+      <span class="res-section-sub">Article · Medium</span>
+      <span class="res-authored-badge">Written by Collin</span>
+    </div>
+    <div class="res-card">
+      <div class="res-card-top">
+        <div class="res-card-icon"><i class="ti ti-atom" aria-hidden="true"></i></div>
+        <div>
+          <h3 class="res-card-title">A Gentle Introduction to Quantum Computing</h3>
+          <p class="res-card-subtitle">How it Works, Who's Doing it, and How You Can Too</p>
+        </div>
+      </div>
+      <p class="res-card-desc">An accessible entry point into quantum computing — covering qubits, superposition, and entanglement without requiring a physics background, then surveying the real-world platforms (Qiskit, Cirq, Braket) you can start using today. Published in <em>Level Up Coding</em>, December 2024.</p>
+      <div class="res-card-footer">
+        <span class="res-card-audience"><i class="ti ti-users" aria-hidden="true"></i> Economists, data scientists, and curious practitioners</span>
+        <a class="res-dl-link" href="https://medium.com/gitconnected/a-gentle-introduction-to-quantum-computing-e97eb93da563" target="_blank" rel="noopener">
+          <span class="res-badge res-badge-teal" style="margin-right:8px">Medium · 7 min</span>Read <i class="ti ti-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- MACHINE LEARNING -->
+    <div class="res-section-head">
+      <h2 class="res-section-title">Machine Learning</h2>
+      <span class="res-section-sub">Tutorial · LinkedIn Pulse</span>
+      <span class="res-authored-badge">Written by Collin</span>
+    </div>
+    <div class="res-card">
+      <div class="res-card-top">
+        <div class="res-card-icon"><i class="ti ti-eye" aria-hidden="true"></i></div>
+        <div>
+          <h3 class="res-card-title">Building an OCR Pipeline with OpenCV</h3>
+        </div>
+      </div>
+      <p class="res-card-desc">A practical walkthrough of constructing an OCR and NLP pipeline for digitizing handwritten historical records — drawn from real work building census transcription tools at the BYU Record Linking Lab in collaboration with FamilySearch and Harvard Business School.</p>
+      <div class="res-card-footer">
+        <span class="res-card-audience"><i class="ti ti-users" aria-hidden="true"></i> ML practitioners &amp; digital humanities researchers</span>
+        <a class="res-dl-link" href="https://www.linkedin.com/pulse/ocr-pipeline-collin-zoeller/" target="_blank" rel="noopener">
+          Read <i class="ti ti-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- EXTERNAL COMMUNITIES -->
+    <div class="res-section-head">
+      <h2 class="res-section-title">External communities</h2>
+      <span class="res-section-sub">Not affiliated — just useful</span>
+    </div>
+    <div class="res-external-list">
+      <div class="res-external-item">
+        <div class="res-external-icon"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></div>
+        <span class="res-external-name">Moderated Machine Learning Community</span>
+        <span class="res-external-note">LinkedIn group · Curated ML discussions</span>
+        <a class="res-external-link" href="https://www.linkedin.com/groups/961087/" target="_blank" rel="noopener">
+          Join <i class="ti ti-external-link" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="res-external-item">
+        <div class="res-external-icon"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></div>
+        <span class="res-external-name">Learn Statistics Through Practice</span>
+        <span class="res-external-note">LinkedIn group · Applied statistics community</span>
+        <a class="res-external-link" href="https://www.linkedin.com/in/learn-statistics-through-practice-5a31a7b1/" target="_blank" rel="noopener">
+          Join <i class="ti ti-external-link" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    <span>© 2025 Collin Zoeller</span>
+    <span>collinzoeller.com</span>
+  </footer>
+
 </body>
 </html>
