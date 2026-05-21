@@ -82,6 +82,7 @@
           </div>
           <div class="res-item-footer">
             <span class="res-badge">PDF</span>
+            <button class="like-btn" data-resource="stata-bigdata"><i class="ti ti-heart"></i> <span class="like-count">0</span></button>
             <a class="res-dl-link" href="../resources/efficient_stata_big_data.pdf" target="_blank" rel="noopener">
               Download <i class="ti ti-arrow-right" aria-hidden="true"></i>
             </a>
@@ -94,6 +95,7 @@
           </div>
           <div class="res-item-footer">
             <span class="res-badge">PDF</span>
+            <button class="like-btn" data-resource="stata-paneldata"><i class="ti ti-heart"></i> <span class="like-count">0</span></button>
             <a class="res-dl-link" href="../resources/Panel_Data_Checklist.pdf" target="_blank" rel="noopener">
               Download <i class="ti ti-arrow-right" aria-hidden="true"></i>
             </a>
@@ -106,6 +108,7 @@
           </div>
           <div class="res-item-footer">
             <span class="res-badge">PDF</span>
+            <button class="like-btn" data-resource="stata-regression"><i class="ti ti-heart"></i> <span class="like-count">0</span></button>
             <a class="res-dl-link" href="../resources/Regression_Results_Checklist.pdf" target="_blank" rel="noopener">
               Download <i class="ti ti-arrow-right" aria-hidden="true"></i>
             </a>
@@ -140,6 +143,7 @@
           </div>
           <div class="res-item-footer">
             <span class="res-badge res-badge-teal">Medium · 7 min</span>
+            <button class="like-btn" data-resource="pystata-part1"><i class="ti ti-heart"></i> <span class="like-count">0</span></button>
             <a class="res-dl-link" href="https://medium.com/@collin.zoeller/leveraging-python-with-stata-part-1-0c5c0c6fca2c" target="_blank" rel="noopener">
               Read <i class="ti ti-arrow-right" aria-hidden="true"></i>
             </a>
@@ -153,6 +157,7 @@
           </div>
           <div class="res-item-footer">
             <span class="res-badge res-badge-teal">Medium · 7 min</span>
+            <button class="like-btn" data-resource="pystata-part2"><i class="ti ti-heart"></i> <span class="like-count">0</span></button>
             <a class="res-dl-link" href="https://medium.com/@collin.zoeller/leveraging-python-with-stata-part-2-68c599d8055f" target="_blank" rel="noopener">
               Read <i class="ti ti-arrow-right" aria-hidden="true"></i>
             </a>
@@ -178,9 +183,12 @@
       <p class="res-card-desc">An accessible entry point into quantum computing — covering qubits, superposition, and entanglement without requiring a physics background, then surveying the real-world platforms (Qiskit, Cirq, Braket) you can start using today. Published in <em>Level Up Coding</em>, December 2024.</p>
       <div class="res-card-footer">
         <span class="res-card-audience"><i class="ti ti-users" aria-hidden="true"></i> Economists, data scientists, and curious practitioners</span>
-        <a class="res-dl-link" href="https://medium.com/gitconnected/a-gentle-introduction-to-quantum-computing-e97eb93da563" target="_blank" rel="noopener">
-          <span class="res-badge res-badge-teal" style="margin-right:8px">Medium · 7 min</span>Read <i class="ti ti-arrow-right" aria-hidden="true"></i>
-        </a>
+        <div style="display:flex;align-items:center;gap:12px">
+          <button class="like-btn" data-resource="quantum-intro"><i class="ti ti-heart"></i> <span class="like-count">0</span></button>
+          <a class="res-dl-link" href="https://medium.com/gitconnected/a-gentle-introduction-to-quantum-computing-e97eb93da563" target="_blank" rel="noopener">
+            <span class="res-badge res-badge-teal" style="margin-right:8px">Medium · 7 min</span>Read <i class="ti ti-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
       </div>
     </div>
 
@@ -200,9 +208,12 @@
       <p class="res-card-desc">A practical walkthrough of constructing an OCR and NLP pipeline for digitizing handwritten historical records — drawn from real work building census transcription tools at the BYU Record Linking Lab in collaboration with FamilySearch and Harvard Business School.</p>
       <div class="res-card-footer">
         <span class="res-card-audience"><i class="ti ti-users" aria-hidden="true"></i> ML practitioners &amp; digital humanities researchers</span>
-        <a class="res-dl-link" href="https://www.linkedin.com/pulse/ocr-pipeline-collin-zoeller/" target="_blank" rel="noopener">
-          Read <i class="ti ti-arrow-right" aria-hidden="true"></i>
-        </a>
+        <div style="display:flex;align-items:center;gap:12px">
+          <button class="like-btn" data-resource="ocr-pipeline"><i class="ti ti-heart"></i> <span class="like-count">0</span></button>
+          <a class="res-dl-link" href="https://www.linkedin.com/pulse/ocr-pipeline-collin-zoeller/" target="_blank" rel="noopener">
+            Read <i class="ti ti-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
       </div>
     </div>
 
@@ -231,6 +242,36 @@
     </div>
 
   </div>
+
+  <script>
+    // Initialise counts and liked state from localStorage
+    document.querySelectorAll('.like-btn').forEach(btn => {
+      const key = btn.dataset.resource;
+      const count = parseInt(localStorage.getItem('like_' + key) || '0');
+      const liked = localStorage.getItem('liked_' + key) === '1';
+      btn.querySelector('.like-count').textContent = count;
+      if (liked) {
+        btn.classList.add('liked');
+        btn.querySelector('i').classList.replace('ti-heart', 'ti-heart-filled');
+      }
+      btn.addEventListener('click', () => {
+        const wasLiked = btn.classList.contains('liked');
+        const current = parseInt(btn.querySelector('.like-count').textContent);
+        const next = wasLiked ? Math.max(0, current - 1) : current + 1;
+        btn.querySelector('.like-count').textContent = next;
+        localStorage.setItem('like_' + key, next);
+        if (wasLiked) {
+          btn.classList.remove('liked');
+          btn.querySelector('i').classList.replace('ti-heart-filled', 'ti-heart');
+          localStorage.setItem('liked_' + key, '0');
+        } else {
+          btn.classList.add('liked');
+          btn.querySelector('i').classList.replace('ti-heart', 'ti-heart-filled');
+          localStorage.setItem('liked_' + key, '1');
+        }
+      });
+    });
+  </script>
 
   <footer class="site-footer">
     <span>© 2025 Collin Zoeller</span>
