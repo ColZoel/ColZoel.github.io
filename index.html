@@ -25,36 +25,34 @@
       <li><a href="./sites/research.html">Research</a></li>
       <li><a href="./sites/projects.html">Projects</a></li>
       <li><a href="./sites/resources.html">Tools &amp; Guides</a></li>
-      <li><a href="./CV/Zoeller_Collin_CV.pdf">CV</a></li>
+      <li><a href="./sites/cv.html">CV</a></li>
     </ul>
   </nav>
 
   <!-- ===== HERO ===== -->
   <div class="hero">
 
-    <!-- Col 1: Name + tagline + social -->
+    <!-- Col 1: Name + tagline + recent papers -->
     <div class="hero-main">
       <div>
-        <p class="eyebrow">Pre-doctoral Researcher · Carnegie Mellon University</p>
+        <p class="eyebrow">Pre-doctoral RA, CMU · Incoming MSEC, Duke · Fall 2026</p>
         <div class="name-block">
           <span class="name-first">Collin</span>
           <span class="name-last">Zoeller</span>
         </div>
         <p class="tagline">Financial economist and builder at the intersection of machine learning, quantum computing, and empirical research. Using administrative tax data to rethink how we study firms and markets.</p>
       </div>
-      <div class="social-links">
-        <a class="social-btn" href="https://www.linkedin.com/in/collinzoeller/" target="_blank" rel="noopener">
-          <i class="ti ti-brand-linkedin" aria-hidden="true"></i> LinkedIn
-        </a>
-        <a class="social-btn" href="https://github.com/ColZoel" target="_blank" rel="noopener">
-          <i class="ti ti-brand-github" aria-hidden="true"></i> GitHub
-        </a>
-        <a class="social-btn" href="https://medium.com/@collin.zoeller" target="_blank" rel="noopener">
-          <i class="ti ti-brand-medium" aria-hidden="true"></i> Medium
-        </a>
-        <a class="social-btn" href="https://www.instagram.com/collin.zoeller/" target="_blank" rel="noopener">
-          <i class="ti ti-brand-instagram" aria-hidden="true"></i> Instagram
-        </a>
+      <div>
+        <div class="papers-label">
+          <span>Recent papers</span>
+        </div>
+        <div id="papers-feed">
+          <div class="paper"><div class="skel sl" style="width:100%"></div><div class="skel sl" style="width:80%"></div><div class="skel sl" style="width:45%"></div></div>
+          <div class="paper"><div class="skel sl" style="width:90%"></div><div class="skel sl" style="width:60%"></div><div class="skel sl" style="width:40%"></div></div>
+        </div>
+        <div style="text-align:right;margin-top:10px">
+          <a class="activity-more" href="./sites/research.html">All research →</a>
+        </div>
       </div>
     </div>
 
@@ -64,8 +62,8 @@
     <div class="hero-info">
       <div class="info-block">
         <p class="info-label">Current role</p>
-        <h2 class="info-heading">Research Associate,<br>Tepper School of Business</h2>
-        <p class="info-body">Working with IRS administrative tax data on critical questions in finance and entrepreneurship — from government support timing to gig economy effects on new ventures.</p>
+        <h2 class="info-heading">Pre-doctoral Research Associate,<br>Tepper School of Business</h2>
+        <p class="info-body">Working with IRS administrative tax data on questions in finance and entrepreneurship. Headed to Duke this fall for the MSEC.</p>
       </div>
       <div class="info-block">
         <p class="info-label">Research interests</p>
@@ -78,7 +76,7 @@
           <span class="tag">Entrepreneurship</span>
         </div>
       </div>
-      <div class="info-block">
+      <div class="info-block info-block--static">
         <p class="info-label">Technical toolkit</p>
         <h2 class="info-heading">Skills &amp; platforms</h2>
         <div class="tags">
@@ -94,28 +92,37 @@
 
     <div class="col-divider"></div>
 
-    <!-- Col 3: Portrait + contact + papers -->
+    <!-- Col 3: Portrait + contact rows + social rows -->
     <div class="hero-profile">
       <div class="portrait">
         <img src="img/portrait1.jpeg" alt="Collin Zoeller">
       </div>
-      <div class="contact-block">
-        <div class="location"><i class="ti ti-map-pin" aria-hidden="true"></i> Pittsburgh, PA</div>
-        <a class="email-link" href="mailto:contact@collinzoeller.com">
-          <i class="ti ti-mail" aria-hidden="true"></i> contact@collinzoeller.com
-        </a>
+      <div class="contact-rows">
+        <div class="contact-row"><i class="ti ti-map-pin" aria-hidden="true"></i> Pittsburgh, PA</div>
+        <div class="contact-row"><i class="ti ti-mail" aria-hidden="true"></i><a href="mailto:contact@collinzoeller.com">contact@collinzoeller.com</a></div>
       </div>
-      <div>
-        <div class="papers-label">
-          <i class="ti ti-file-text" aria-hidden="true"></i> Recent papers
-        </div>
-        <div id="papers-feed">
-          <div class="paper"><div class="skel sl" style="width:100%"></div><div class="skel sl" style="width:80%"></div><div class="skel sl" style="width:45%"></div></div>
-          <div class="paper"><div class="skel sl" style="width:90%"></div><div class="skel sl" style="width:60%"></div><div class="skel sl" style="width:40%"></div></div>
-        </div>
-        <div style="text-align:right;margin-top:10px">
-          <a class="activity-more" href="https://scholar.google.com/citations?user=collinzoeller" target="_blank" rel="noopener">All papers →</a>
-        </div>
+      <p class="social-label">Find me on</p>
+      <div class="social-rows">
+        <a class="social-row" href="https://www.linkedin.com/in/collinzoeller/" target="_blank" rel="noopener">
+          <i class="ti ti-brand-linkedin sr-icon" aria-hidden="true"></i>
+          <span class="sr-label">LinkedIn</span>
+          <span class="sr-handle">collinzoeller</span>
+        </a>
+        <a class="social-row" href="https://github.com/ColZoel" target="_blank" rel="noopener">
+          <i class="ti ti-brand-github sr-icon" aria-hidden="true"></i>
+          <span class="sr-label">GitHub</span>
+          <span class="sr-handle">ColZoel</span>
+        </a>
+        <a class="social-row" href="https://medium.com/@collin.zoeller" target="_blank" rel="noopener">
+          <i class="ti ti-brand-medium sr-icon" aria-hidden="true"></i>
+          <span class="sr-label">Medium</span>
+          <span class="sr-handle">@collin.zoeller</span>
+        </a>
+        <a class="social-row" href="https://www.instagram.com/collin.zoeller/" target="_blank" rel="noopener">
+          <i class="ti ti-brand-instagram sr-icon" aria-hidden="true"></i>
+          <span class="sr-label">Instagram</span>
+          <span class="sr-handle">@collin.zoeller</span>
+        </a>
       </div>
     </div>
 
@@ -124,12 +131,12 @@
 
   <!-- ===== CURRENT PROJECT STRIP ===== -->
   <div class="project-strip">
-    <div class="project-badge"><span class="pulse-dot"></span> Current project</div>
+    <div class="project-badge"><span class="pulse-dot"></span> Current project · Duke MSEC Thesis</div>
     <div>
-      <p class="project-title">StataAgent</p>
-      <p class="project-desc">A specialized agent model that integrates with Stata for natural-language data analysis — ask questions in plain English and get answers directly from your data.</p>
+      <p class="project-title">GAMA-IV: Quantum Annealing for Globally Optimal Instrument Selection</p>
+      <p class="project-desc">Applying the GAMA framework to instrument selection in disaggregated Bartik IV estimation — the first globally optimal procedure for the GPS (2020) framework, implemented on D-Wave quantum hardware.</p>
     </div>
-    <a class="teal-link" href="https://github.com/ColZoel/StataAgent" target="_blank" rel="noopener">
+    <a class="teal-link" href="./sites/research.html" rel="noopener">
       View project <i class="ti ti-arrow-right" aria-hidden="true"></i>
     </a>
   </div>
@@ -168,8 +175,8 @@
 
   <!-- ===== FOOTER ===== -->
   <footer class="site-footer">
-    <span>© 2025 Collin Zoeller</span>
-    <span>collinzoeller.com</span>
+    <span>© 2026 Collin Zoeller</span>
+    <span>collinzoeller.com · Last updated 22 May 2026</span>
   </footer>
 
   <script>
@@ -246,34 +253,52 @@
       }
     }
 
-    async function loadPapers() {
-      const el = document.getElementById('papers-feed');
-      try {
-        const s = await fetch('https://api.semanticscholar.org/graph/v1/author/search?query=Collin+Zoeller&fields=name,paperCount');
-        const sd = await s.json();
-        const author = sd.data?.find(a => a.name === 'Collin Zoeller' || a.paperCount > 0);
-        if (!author) throw 0;
-        const p = await fetch(`https://api.semanticscholar.org/graph/v1/author/${author.authorId}/papers?fields=title,year,venue,citationCount,externalIds&limit=10`);
-        const pd = await p.json();
-        if (!pd.data?.length) throw 0;
-        const sorted = pd.data.slice().sort((a, b) => (b.year || 0) - (a.year || 0));
-        el.innerHTML = sorted.slice(0, 2).map(p => {
-          const url = p.externalIds?.DOI ? `https://doi.org/${p.externalIds.DOI}` : '#';
-          return `<div class="paper">
-            <a class="paper-title" href="${url}" target="_blank" rel="noopener">${p.title}</a>
-            <div class="paper-meta">
-              ${p.venue ? `<span class="paper-venue">${p.venue}</span>` : ''}
-              ${p.year ? `<span>${p.year}</span>` : ''}
-              ${p.citationCount ? `<span><i class="ti ti-quote" style="font-size:10px"></i>${p.citationCount}</span>` : ''}
-            </div>
-          </div>`;
-        }).join('');
-      } catch (_) {
-        el.innerHTML = `
-          <div class="paper"><a class="paper-title" href="https://www.nber.org/papers/w33347" target="_blank" rel="noopener">Entrepreneurship and the Gig Economy: Evidence from U.S. Tax Returns</a><div class="paper-meta"><span class="paper-venue">Journal of Financial Economics</span><span>2025</span></div></div>
-          <div class="paper"><a class="paper-title" href="https://dx.doi.org/10.2139/ssrn.3845046" target="_blank" rel="noopener">First Come, First Served: The Timing of Government Support and Its Impact on Firms</a><div class="paper-meta"><span class="paper-venue">Working paper</span><span>2023</span></div></div>`;
-      }
+    function truncateAbstract(text, limit = 210) {
+      if (text.length <= limit) return text;
+      return text.slice(0, limit).replace(/\s+\S*$/, '') + '…';
     }
+
+    function loadPapers() {
+      const el = document.getElementById('papers-feed');
+      const papers = [
+        {
+          title: 'GAMA-IV: Quantum Annealing for Globally Optimal Instrument Selection',
+          venue: 'Duke MSEC Thesis', year: '2026', status: 'progress',
+          url: './sites/research.html',
+          abstract: 'Introduces GAMA-IV, a quantum-classical hybrid methodology for instrument selection in instrumental variables (IV) estimation. We apply the Graver Augmentation via Quantum Annealing (GAMA) framework to the disaggregated Bartik instrument setting of Goldsmith-Pinkham et al. (2020), casting the GPS information criterion as an integer program solved to global optimality via D-Wave quantum annealing.'
+        },
+        {
+          title: 'Entrepreneurship and the Gig Economy: Evidence from U.S. Tax Returns',
+          venue: 'Journal of Financial Economics', year: '2025', status: 'pub',
+          url: 'https://www.nber.org/papers/w33347',
+          abstract: 'Platform intermediation of goods and services has considerably transformed the U.S. economy. We use administrative data on U.S. tax returns to study the role of the gig economy on entrepreneurship. We find that gig workers are more likely to become entrepreneurs, particularly those who are lower income, younger, and benefit from flexibility.'
+        },
+      ];
+      el.innerHTML = papers.map(p => `
+        <div class="paper">
+          <a class="paper-title" href="${p.url}" target="_blank" rel="noopener">${p.title}</a>
+          <div class="paper-meta">
+            <span class="paper-badge ${p.status === 'pub' ? 'pb-pub' : p.status === 'progress' ? 'pb-prog' : 'pb-wp'}">${p.status === 'pub' ? 'Published' : p.status === 'progress' ? 'In Progress' : 'Working Paper'}</span>
+            <span>${p.venue}</span>
+            <span>${p.year}</span>
+          </div>
+          <div class="paper-abstract-wrap">
+            <p class="paper-abstract-text">${truncateAbstract(p.abstract)}</p>
+            <a class="paper-read-more" href="${p.url}" target="_blank" rel="noopener">Read more →</a>
+          </div>
+        </div>`).join('');
+    }
+
+    // Staggered tag wave on hover
+    document.querySelectorAll('.tags').forEach(group => {
+      const tags = group.querySelectorAll('.tag');
+      group.addEventListener('mouseenter', () => {
+        tags.forEach((t, i) => t.style.transitionDelay = `${i * 40}ms`);
+      });
+      group.addEventListener('mouseleave', () => {
+        tags.forEach(t => t.style.transitionDelay = '0ms');
+      });
+    });
 
     loadMedium();
     loadGitHub();
