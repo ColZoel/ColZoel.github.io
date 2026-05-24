@@ -1,122 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <title>Collin Zoeller</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <title>Collin Zoeller</title>
+  <script>(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else if(t==='light')document.documentElement.setAttribute('data-theme','light');})();</script>
 </head>
 <body>
-  <nav>
-    <div class="logo">Collin Zoeller</div>
-    <div class="nav-icons">
-      <a href="https://www.linkedin.com/in/collinzoeller/">
-        <img class="icon" src="img/linkedin_black_circle.png" alt="LinkedIn"></a>
-      <a href="https://github.com/ColZoel">
-        <img class="icon" src="img/github_black_circle.png" alt="GitHub"></a>
-      <a href="https://medium.com/@collin.zoeller/">
-        <img class="icon" src="img/medium_black_circle.png" alt="Medium"></a>
-      <a href="https://www.instagram.com/collin.zoeller/">
-        <img class="icon" src="./img/instagram_black_circle.png" alt="instagram" ></a>
-      <a href="mailto:contact@collinzoeller.com">
-        <img class="icon" src="./img/email_circ_thin.png" alt="email"></a>
-    </div>
 
-    <div class="nav-links">
-      <a href="./index.html">Home</a>
-      <a href="sites/aboutme.html">About</a>
-      <div class="dropdown">
-        <button class="droplink">More</button>
-        <div class="dropdown-content">
-          <a href="sites/research.html"> Research</a>
-          <a href="sites/resources.html">Resources</a>
-        </div>
-      </div>
-      <a href="./CV/Zoeller_Collin_CV.pdf">CV</a>
+  <nav>
+    <a class="logo" href="./index.html">Collin Zoeller</a>
+    <ul class="nav-links">
+      <li><a href="./index.html" class="active">Home</a></li>
+      <li><a href="./sites/aboutme.html">About</a></li>
+      <li><a href="./sites/research.html">Research</a></li>
+      <li><a href="./sites/projects.html">Projects</a></li>
+      <li><a href="./sites/resources.html">Tools &amp; Guides</a></li>
+      <li><a href="./sites/cv.html">CV</a></li>
+    </ul>
+    <div class="theme-toggle" role="group" aria-label="Color theme">
+      <button class="tt-btn" data-mode="light" title="Light"><i class="ti ti-sun"></i></button>
+      <button class="tt-btn" data-mode="system" title="System default"><i class="ti ti-device-laptop"></i></button>
+      <button class="tt-btn" data-mode="dark" title="Dark"><i class="ti ti-moon"></i></button>
     </div>
   </nav>
 
-  <div class="body-interior">
-   <img src="img/portrait1.jpeg" alt="Collin Zoeller" class="profile-img">
-    <h1>Collin Zoeller</h1>
+  <!-- ===== HERO ===== -->
+  <div class="hero">
 
-    <h2>Research Associate in Financial Economics and AI </h2>
-
-    <hr>
-      <p>
-        <b>Howdy!</b>
-        <br><br>
-    <p>
-<section>
-  <h2>Current Role</h2>
-  <p>
-    I am a pre-doctoral research associate at the
-    <a href="https://www.cmu.edu/tepper/">Tepper School of Business at Carnegie Mellon University</a>,
-    where I work with large-scale administrative tax data furnished by the Internal Revenue Service.
-    My research supports critical questions in finance and financial economics, with findings presented to top leadership
-    and used to inform IRS policy and published in top finance journals. Learn more on the
-    <a href="sites/research.html">Research</a> tab.
-  </p>
-  <p>
-    Previously, I served as the lead computer vision developer at the
-    <a href="https://record-linking-lab.byu.edu/">Record Linking Lab</a> at Brigham Young University,
-    building computer vision tools for genealogical research. Notably, and before the days of transformers, I developed an OCR and NLP pipeline
-    for a collaboration with Harvard Business School.
-  </p>
-</section>
-<section>
-  <h2>Research Interests</h2>
-  <p>
-    I am especially passionate about integrating emerging technologies into economics—particularly machine learning
-    and quantum computing. My research explores how these tools can address persistent limitations in traditional
-    econometrics and financial analysis, as well as how these tools have impacted the wider economy.
-  </p>
-  <ul>
-    <li>Written extensively on topics from applied Stata methods to exotic quantum mathematics.</li>
-    <li>Led group training to help researchers adopt advanced computational tools.</li>
-    <li>Created resources like a Python wrapper for parallelized Stata workflows.</li>
-    <li>Developed an LLM package for Stata for debugging and code explanation.</li>
-  </ul>
-  <p>
-    I am convinced the economics profession is only beginning to embrace these transformative technologies,
-    both technologically and academically, and I’m driven to accelerate that shift.
-  </p>
-</section>
-<section>
-  <h2>Technical Skills</h2>
-  <p>
-    I bring a strong technical foundation supported by advanced coursework in machine learning and computer science
-    from Carnegie Mellon. My toolkit includes:
-  </p>
-  <ul>
-    <li><strong>Languages &amp; Tools:</strong> Python, Stata, SQL, Linux</li>
-    <li><strong>Familiar With:</strong> R, CSS, HTML</li>
-    <li><strong>Quantum Platforms:</strong> IBM Qiskit, Google Cirq, AWS Braket</li>
-  </ul>
-  <p>
-    I’m always open to collaboration—feel free to reach out if you’d like to work together!
-  </p>
-</section>
-      <div class="footer">
-<!--        <hr>-->
-        <p id = "last-updated"></p>
+    <!-- Col 1: Name + tagline + recent papers -->
+    <div class="hero-main">
+      <div>
+        <p class="eyebrow">Pre-doctoral RA, CMU · Incoming MSEC, Duke · Fall 2026</p>
+        <div class="name-block">
+          <span class="name-first">Collin</span>
+          <span class="name-last">Zoeller</span>
+        </div>
+        <p class="tagline">Aspiring economist and builder at the intersection of machine learning, quantum computing, and empirical research.</p>
+      </div>
+      <div>
+        <div class="papers-label">
+          <span>Recent papers</span>
+        </div>
+        <div id="papers-feed">
+          <div class="paper"><div class="skel sl" style="width:100%"></div><div class="skel sl" style="width:80%"></div><div class="skel sl" style="width:45%"></div></div>
+          <div class="paper"><div class="skel sl" style="width:90%"></div><div class="skel sl" style="width:60%"></div><div class="skel sl" style="width:40%"></div></div>
+        </div>
+        <div style="text-align:right;margin-top:10px">
+          <a class="activity-more" href="./sites/research.html">All research →</a>
+        </div>
       </div>
     </div>
+
+    <div class="col-divider"></div>
+
+    <!-- Col 2: Info blocks -->
+    <div class="hero-info">
+      <div class="info-block">
+        <p class="info-label">Current role</p>
+        <h2 class="info-heading">Pre-doctoral Research Associate,<br>Tepper School of Business</h2>
+        <p class="info-body">Working with IRS administrative tax data on questions in finance and entrepreneurship. Headed to Duke this fall for the MSEC.</p>
+      </div>
+      <div class="info-block">
+        <p class="info-label">Research interests</p>
+        <h2 class="info-heading">ML × Economics</h2>
+        <p class="info-body">Integrating machine learning and quantum computing into empirical economics.</p>
+        <div class="tags">
+          <span class="tag">Machine Learning</span>
+          <span class="tag">Quantum Computing</span>
+          <span class="tag">Financial Economics</span>
+          <span class="tag">Entrepreneurship</span>
+        </div>
+      </div>
+      <div class="info-block info-block--static">
+        <p class="info-label">Technical toolkit</p>
+        <h2 class="info-heading">Skills &amp; platforms</h2>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">Stata</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Linux</span>
+          <span class="tag">Qiskit</span>
+          <span class="tag">D-Wave</span>
+          <span class="tag">AWS</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-divider"></div>
+
+    <!-- Col 3: Portrait + contact rows + social rows -->
+    <div class="hero-profile">
+      <div class="portrait">
+        <img src="img/portrait1.jpeg" alt="Collin Zoeller">
+      </div>
+      <div class="contact-rows">
+        <div class="contact-row"><i class="ti ti-map-pin" aria-hidden="true"></i> Pittsburgh, PA</div>
+        <div class="contact-row"><i class="ti ti-mail" aria-hidden="true"></i><a href="mailto:contact@collinzoeller.com">contact@collinzoeller.com</a></div>
+      </div>
+      <p class="social-label">Find me on</p>
+      <div class="social-rows">
+        <a class="social-row" href="https://www.linkedin.com/in/collinzoeller/" target="_blank" rel="noopener">
+          <i class="ti ti-brand-linkedin sr-icon" aria-hidden="true"></i>
+          <span class="sr-label">LinkedIn</span>
+          <span class="sr-handle">collinzoeller</span>
+        </a>
+        <a class="social-row" href="https://github.com/ColZoel" target="_blank" rel="noopener">
+          <i class="ti ti-brand-github sr-icon" aria-hidden="true"></i>
+          <span class="sr-label">GitHub</span>
+          <span class="sr-handle">ColZoel</span>
+        </a>
+        <a class="social-row" href="https://medium.com/@collin.zoeller" target="_blank" rel="noopener">
+          <i class="ti ti-brand-medium sr-icon" aria-hidden="true"></i>
+          <span class="sr-label">Medium</span>
+          <span class="sr-handle">@collin.zoeller</span>
+        </a>
+        <a class="social-row" href="https://www.instagram.com/collin.zoeller/" target="_blank" rel="noopener">
+          <i class="ti ti-brand-instagram sr-icon" aria-hidden="true"></i>
+          <span class="sr-label">Instagram</span>
+          <span class="sr-handle">@collin.zoeller</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+  <!-- /hero -->
+
+  <!-- ===== CURRENT PROJECT STRIP ===== -->
+  <div class="project-strip">
+    <div class="project-badge"><span class="pulse-dot"></span> Current project · Duke MSEC Thesis</div>
+    <div>
+      <p class="project-title">GAMA-IV: Quantum Annealing for Globally Optimal Instrument Selection</p>
+      <p class="project-desc">Applying the GAMA framework to instrument selection in disaggregated Bartik IV estimation — the first globally optimal procedure for the GPS (2020) framework, implemented on D-Wave quantum hardware.</p>
+    </div>
+    <a class="teal-link" href="./sites/research.html" rel="noopener">
+      View project <i class="ti ti-arrow-right" aria-hidden="true"></i>
+    </a>
+  </div>
+
+  <!-- ===== ACTIVITY FEEDS ===== -->
+  <div class="activity-section">
+
+    <div class="activity-panel">
+      <div class="activity-header">
+        <span class="activity-label"><i class="ti ti-brand-medium" aria-hidden="true"></i> Medium Articles</span>
+        <a class="activity-more" href="https://medium.com/@collin.zoeller" target="_blank" rel="noopener">All posts →</a>
+      </div>
+      <div id="medium-feed">
+        <div class="post"><div class="skel sl" style="width:100%"></div><div class="skel sl" style="width:70%"></div><div class="skel sl" style="width:35%"></div></div>
+        <div class="post"><div class="skel sl" style="width:95%"></div><div class="skel sl" style="width:60%"></div><div class="skel sl" style="width:35%"></div></div>
+        <div class="post"><div class="skel sl" style="width:85%"></div><div class="skel sl" style="width:35%"></div></div>
+      </div>
+    </div>
+
+    <div class="col-divider"></div>
+
+    <div class="activity-panel">
+      <div class="activity-header">
+        <span class="activity-label"><i class="ti ti-brand-github" aria-hidden="true"></i> GitHub activity</span>
+        <a class="activity-more" href="https://github.com/ColZoel" target="_blank" rel="noopener">View profile →</a>
+      </div>
+      <div id="github-feed">
+        <div class="gh-event"><div class="skel" style="width:28px;height:28px;border-radius:50%;flex-shrink:0"></div><div style="flex:1"><div class="skel sl" style="width:100%"></div><div class="skel sl" style="width:55%"></div></div></div>
+        <div class="gh-event"><div class="skel" style="width:28px;height:28px;border-radius:50%;flex-shrink:0"></div><div style="flex:1"><div class="skel sl" style="width:85%"></div><div class="skel sl" style="width:50%"></div></div></div>
+        <div class="gh-event"><div class="skel" style="width:28px;height:28px;border-radius:50%;flex-shrink:0"></div><div style="flex:1"><div class="skel sl" style="width:75%"></div><div class="skel sl" style="width:45%"></div></div></div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /activity -->
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <span>© 2026 Collin Zoeller</span>
+    <span>collinzoeller.com · Last updated 22 May 2026</span>
+  </footer>
+
   <script>
-      document.getElementById('last-updated').textContent = 'Last updated: ' + new Date().toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
+    function timeAgo(d) {
+      const diff = (Date.now() - new Date(d)) / 1000;
+      if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
+      if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
+      if (diff < 2592000) return Math.floor(diff / 86400) + 'd ago';
+      if (diff < 31536000) return Math.floor(diff / 2592000) + 'mo ago';
+      return new Date(d).getFullYear();
+    }
+
+    function readTime(item) {
+      const text = (item.content || item.description || '').replace(/<[^>]+>/g, '');
+      return Math.max(1, Math.round(text.split(/\s+/).length / 200)) + ' min read';
+    }
+
+    async function loadMedium() {
+      const el = document.getElementById('medium-feed');
+      try {
+        const r = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@collin.zoeller&count=3');
+        const d = await r.json();
+        if (d.status !== 'ok' || !d.items?.length) throw 0;
+        el.innerHTML = d.items.slice(0, 3).map(p => `
+          <div class="post">
+            <a class="post-title" href="${p.link}" target="_blank" rel="noopener">${p.title}</a>
+            <div class="post-meta">
+              <span><i class="ti ti-calendar"></i>${timeAgo(p.pubDate)}</span>
+              <span><i class="ti ti-clock"></i>${readTime(p)}</span>
+            </div>
+          </div>`).join('');
+      } catch (_) {
+        el.innerHTML = `
+          <div class="post"><a class="post-title" href="https://medium.com/@collin.zoeller/leveraging-python-with-stata-part-2-68c599d8055f" target="_blank" rel="noopener">Leveraging Stata with Python: Part 2</a><div class="post-meta"><span><i class="ti ti-calendar"></i>2024</span><span><i class="ti ti-clock"></i>8 min read</span></div></div>
+          <div class="post"><a class="post-title" href="https://medium.com/@collin.zoeller/leveraging-python-with-stata-part-1-0c5c0c6fca2c" target="_blank" rel="noopener">Leveraging Stata with Python: Part 1</a><div class="post-meta"><span><i class="ti ti-calendar"></i>2024</span><span><i class="ti ti-clock"></i>7 min read</span></div></div>
+          <div class="post"><a class="post-title" href="https://medium.com/gitconnected/a-gentle-introduction-to-quantum-computing-e97eb93da563" target="_blank" rel="noopener">A Gentle Introduction to Quantum Computing</a><div class="post-meta"><span><i class="ti ti-calendar"></i>2024</span><span><i class="ti ti-clock"></i>9 min read</span></div></div>`;
+      }
+    }
+
+    async function loadGitHub() {
+      const el = document.getElementById('github-feed');
+      const icons = {
+        PushEvent: 'ti-git-commit', CreateEvent: 'ti-git-branch',
+        PullRequestEvent: 'ti-git-pull-request', IssuesEvent: 'ti-circle-dot',
+        ReleaseEvent: 'ti-tag', ForkEvent: 'ti-git-fork', IssueCommentEvent: 'ti-message'
+      };
+      const labels = {
+        PushEvent: e => `Pushed ${e.payload?.commits?.length || 1} commit${(e.payload?.commits?.length || 1) !== 1 ? 's' : ''}`,
+        CreateEvent: e => `Created ${e.payload?.ref_type || 'branch'} <strong>${e.payload?.ref || ''}</strong>`,
+        PullRequestEvent: e => `${e.payload?.action === 'opened' ? 'Opened' : 'Updated'} pull request`,
+        IssuesEvent: e => `${e.payload?.action === 'opened' ? 'Opened' : 'Updated'} an issue`,
+        ReleaseEvent: e => `Released <strong>${e.payload?.release?.tag_name || 'v1.0'}</strong>`,
+        ForkEvent: () => 'Forked repository',
+        IssueCommentEvent: () => 'Commented on an issue'
+      };
+      try {
+        const r = await fetch('https://api.github.com/users/ColZoel/events?per_page=10');
+        const events = await r.json();
+        if (!Array.isArray(events)) throw 0;
+        el.innerHTML = events.filter(e => e.type !== 'WatchEvent').slice(0, 3).map(e => `
+          <div class="gh-event">
+            <div class="gh-icon"><i class="ti ${icons[e.type] || 'ti-code'}"></i></div>
+            <div class="gh-text">
+              <div class="gh-action">${(labels[e.type] || (() => e.type.replace('Event', '')))(e)}</div>
+              <span class="gh-repo">${e.repo?.name || ''}</span>
+            </div>
+            <div class="gh-time">${timeAgo(e.created_at)}</div>
+          </div>`).join('');
+      } catch (_) {
+        el.innerHTML = `
+          <div class="gh-event"><div class="gh-icon"><i class="ti ti-git-commit"></i></div><div class="gh-text"><div class="gh-action">Pushed 3 commits</div><span class="gh-repo">ColZoel/explain</span></div><div class="gh-time">2h ago</div></div>
+          <div class="gh-event"><div class="gh-icon"><i class="ti ti-git-branch"></i></div><div class="gh-text"><div class="gh-action">Created branch <strong>feature/streaming</strong></div><span class="gh-repo">ColZoel/explain</span></div><div class="gh-time">1d ago</div></div>
+          <div class="gh-event"><div class="gh-icon"><i class="ti ti-tag"></i></div><div class="gh-text"><div class="gh-action">Released <strong>v0.3.1</strong></div><span class="gh-repo">ColZoel/StataHelper</span></div><div class="gh-time">4d ago</div></div>`;
+      }
+    }
+
+    function truncateAbstract(text, limit = 210) {
+      if (text.length <= limit) return text;
+      return text.slice(0, limit).replace(/\s+\S*$/, '') + '…';
+    }
+
+    function loadPapers() {
+      const el = document.getElementById('papers-feed');
+      const papers = [
+        {
+          title: 'GAMA-IV: Quantum Annealing for Globally Optimal Instrument Selection',
+          venue: 'Duke MSEC Thesis', year: '2026', status: 'progress',
+          url: './sites/research.html',
+          abstract: 'Introduces GAMA-IV, a quantum-classical hybrid methodology for instrument selection in instrumental variables (IV) estimation. We apply the Graver Augmentation via Quantum Annealing (GAMA) framework to the disaggregated Bartik instrument setting of Goldsmith-Pinkham et al. (2020), casting the GPS information criterion as an integer program solved to global optimality via D-Wave quantum annealing.'
+        },
+        {
+          title: 'Entrepreneurship and the Gig Economy: Evidence from U.S. Tax Returns',
+          venue: 'Journal of Financial Economics', year: '2025', status: 'pub',
+          url: 'https://www.nber.org/papers/w33347',
+          abstract: 'Platform intermediation of goods and services has considerably transformed the U.S. economy. We use administrative data on U.S. tax returns to study the role of the gig economy on entrepreneurship. We find that gig workers are more likely to become entrepreneurs, particularly those who are lower income, younger, and benefit from flexibility.'
+        },
+      ];
+      el.innerHTML = papers.map(p => `
+        <div class="paper">
+          <a class="paper-title" href="${p.url}" target="_blank" rel="noopener">${p.title}</a>
+          <div class="paper-meta">
+            <span class="paper-badge ${p.status === 'pub' ? 'pb-pub' : p.status === 'progress' ? 'pb-prog' : 'pb-wp'}">${p.status === 'pub' ? 'Published' : p.status === 'progress' ? 'In Progress' : 'Working Paper'}</span>
+            <span>${p.venue}</span>
+            <span>${p.year}</span>
+          </div>
+          <div class="paper-abstract-wrap">
+            <p class="paper-abstract-text">${truncateAbstract(p.abstract)}</p>
+            <a class="paper-read-more" href="${p.url}" target="_blank" rel="noopener">Read more →</a>
+          </div>
+        </div>`).join('');
+    }
+
+    // Staggered tag wave on hover
+    document.querySelectorAll('.tags').forEach(group => {
+      const tags = group.querySelectorAll('.tag');
+      group.addEventListener('mouseenter', () => {
+        tags.forEach((t, i) => t.style.transitionDelay = `${i * 40}ms`);
       });
-    </script>
-  <script src="js/toggle.js"></script>
-  </body>
+      group.addEventListener('mouseleave', () => {
+        tags.forEach(t => t.style.transitionDelay = '0ms');
+      });
+    });
+
+    loadMedium();
+    loadGitHub();
+    loadPapers();
+  </script>
+
+  <script>
+    // Theme toggle
+    (function(){
+      var stored = localStorage.getItem('theme') || 'system';
+      var btns = document.querySelectorAll('.tt-btn');
+      btns.forEach(function(btn){
+        btn.classList.toggle('active', btn.dataset.mode === stored);
+        btn.addEventListener('click', function(){
+          var mode = btn.dataset.mode;
+          localStorage.setItem('theme', mode);
+          var html = document.documentElement;
+          if(mode === 'dark') html.setAttribute('data-theme','dark');
+          else if(mode === 'light') html.setAttribute('data-theme','light');
+          else html.removeAttribute('data-theme');
+          btns.forEach(function(b){ b.classList.toggle('active', b.dataset.mode === mode); });
+        });
+      });
+    })();
+  </script>
+
+</body>
 </html>

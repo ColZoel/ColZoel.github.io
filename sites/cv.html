@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+  <link rel="manifest" href="../site.webmanifest">
+  <title>CV — Collin Zoeller</title>
+  <script>(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else if(t==='light')document.documentElement.setAttribute('data-theme','light');})();</script>
+</head>
+<body>
+
+  <nav>
+    <a class="logo" href="../index.html">Collin Zoeller</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../sites/aboutme.html">About</a></li>
+      <li><a href="../sites/research.html">Research</a></li>
+      <li><a href="../sites/projects.html">Projects</a></li>
+      <li><a href="../sites/resources.html">Tools &amp; Guides</a></li>
+      <li><a href="../sites/cv.html" class="active">CV</a></li>
+    </ul>
+    <div class="theme-toggle" role="group" aria-label="Color theme">
+      <button class="tt-btn" data-mode="light" title="Light"><i class="ti ti-sun"></i></button>
+      <button class="tt-btn" data-mode="system" title="System default"><i class="ti ti-device-laptop"></i></button>
+      <button class="tt-btn" data-mode="dark" title="Dark"><i class="ti ti-moon"></i></button>
+    </div>
+  </nav>
+
+  <!-- ===== LAYOUT ===== -->
+  <div class="cv-layout">
+
+    <!-- Main column: header intro + body -->
+    <div class="cv-main">
+      <div class="cv-header-left">
+        <p class="cv-eyebrow">Curriculum Vitae</p>
+        <h1 class="cv-title">Collin <em>Zoeller</em></h1>
+        <p class="cv-subtitle">Pre-doctoral RA, CMU Tepper · Incoming MSEC, Duke University · Fall 2026</p>
+        <p class="cv-desc">Financial economist working at the intersection of machine learning, quantum computing, and empirical research. Using IRS administrative tax data to study firms, labor markets, and entrepreneurship.</p>
+      </div>
+
+      <!-- ===== BODY ===== -->
+      <div class="cv-body">
+
+    <!-- EDUCATION -->
+    <div class="cv-section-head">
+      <h2 class="cv-section-title">Education</h2>
+    </div>
+    <div class="cv-entries">
+
+      <div class="cv-entry">
+        <div class="cv-entry-meta">
+          <span class="cv-entry-dates">Jul 2023 – Present</span>
+          <span class="cv-entry-loc"><i class="ti ti-map-pin" aria-hidden="true"></i> Pittsburgh, PA</span>
+        </div>
+        <div class="cv-entry-body">
+          <p class="cv-entry-org">Carnegie Mellon University <span class="cv-entry-note">(non-degree)</span></p>
+          <p class="cv-entry-role">Graduate Coursework</p>
+          <ul class="cv-entry-list">
+            <li>Intro to Machine Learning (10-601, Graduate)</li>
+            <li>Quantum Integer Programming and Machine Learning (Graduate)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-entry-meta">
+          <span class="cv-entry-dates">Apr 2023</span>
+          <span class="cv-entry-loc"><i class="ti ti-map-pin" aria-hidden="true"></i> Provo, UT</span>
+        </div>
+        <div class="cv-entry-body">
+          <p class="cv-entry-org">Brigham Young University</p>
+          <p class="cv-entry-role">Bachelor of Science — Economics (Emphasis in Econometrics)</p>
+          <p class="cv-entry-detail">Minors: Mathematics, Spanish &nbsp;·&nbsp; GPA: 3.71 &nbsp;·&nbsp; Honors Program</p>
+          <p class="cv-entry-sublabel">Relevant Coursework</p>
+          <ul class="cv-entry-list">
+            <li>Advanced Econometrics, Advanced Macroeconomics, Advanced Linear Algebra</li>
+            <li>Machine Learning for Economists</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RESEARCH EXPERIENCE -->
+    <div class="cv-section-head">
+      <h2 class="cv-section-title">Research Experience</h2>
+    </div>
+    <div class="cv-entries">
+
+      <div class="cv-entry">
+        <div class="cv-entry-meta">
+          <span class="cv-entry-dates">Jul 2023 – Present</span>
+          <span class="cv-entry-loc"><i class="ti ti-map-pin" aria-hidden="true"></i> Pittsburgh, PA</span>
+        </div>
+        <div class="cv-entry-body">
+          <p class="cv-entry-org">Tepper School of Business, Carnegie Mellon University</p>
+          <p class="cv-entry-role">Pre-doctoral Research Associate</p>
+          <ul class="cv-entry-list">
+            <li>Lead IRS administrative data project (~1.5B observations) involving high-dimensional econometrics</li>
+            <li>Build pipelines for data engineering: SQL data lake, file storage, project workflow (SQL, Linux, Stata)</li>
+            <li>Develop ANN/NLP methods for extracting structure from 1B+ open-text fields (Python)</li>
+            <li>Technical training and assistance to 3 other RAs in Linux, Python, Stata, and computational optimization</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-entry-meta">
+          <span class="cv-entry-dates">May 2022 – Jul 2023</span>
+          <span class="cv-entry-loc"><i class="ti ti-map-pin" aria-hidden="true"></i> Cambridge, MA / Provo, UT</span>
+        </div>
+        <div class="cv-entry-body">
+          <p class="cv-entry-org">Harvard Business School</p>
+          <p class="cv-entry-role">Computer Vision Programmer &amp; Research Assistant for HBS Ph.D. Candidate</p>
+          <ul class="cv-entry-list">
+            <li>Constructed custom image segmentation + OCR + text-recognition for dissertation using 25k+ images</li>
+            <li>Extracted and structured data from 1M+ data points for downstream economic and ML analysis</li>
+            <li>Provided econometric design support and generalized OCR tools for new research applications</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-entry-meta">
+          <span class="cv-entry-dates">Jun 2022 – Jul 2023</span>
+          <span class="cv-entry-loc"><i class="ti ti-map-pin" aria-hidden="true"></i> Provo, UT</span>
+        </div>
+        <div class="cv-entry-body">
+          <p class="cv-entry-org">Brigham Young University Record Linking Lab</p>
+          <p class="cv-entry-role">Research Assistant · Computer Vision Team Lead</p>
+          <ul class="cv-entry-list">
+            <li>Managed 6+ CV projects for FamilySearch and historical data partners (Python, AWS, CV/DL)</li>
+            <li>Delivered key insights and research to support genealogical data transcription using CV techniques</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- WORKING PAPERS & RESEARCH PROJECTS -->
+    <div class="cv-section-head">
+      <h2 class="cv-section-title">Working Papers &amp; Research Projects</h2>
+    </div>
+    <div class="cv-entries">
+
+      <div class="cv-entry cv-entry--paper">
+        <div class="cv-entry-meta">
+          <span class="cv-paper-badge cv-badge-prog">In Progress</span>
+          <span class="cv-paper-badge cv-badge-sole">Sole Author</span>
+        </div>
+        <div class="cv-entry-body">
+          <p class="cv-entry-org">GAMA-IV: Quantum Annealing for Globally Optimal Instrument Selection</p>
+          <p class="cv-entry-detail">Duke MSEC Thesis · Working Paper</p>
+          <ul class="cv-entry-list">
+            <li>Introduces a quantum-classical hybrid methodology for instrument selection in IV estimation</li>
+            <li>Applies GAMA framework to the disaggregated Bartik setting of Goldsmith-Pinkham et al. (2020)</li>
+            <li>Casts GPS information criterion as an integer program solved to global optimality on D-Wave hardware</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-entry cv-entry--paper">
+        <div class="cv-entry-meta">
+          <span class="cv-paper-badge cv-badge-wp">Working Paper</span>
+          <span class="cv-paper-badge cv-badge-sole">Sole Author</span>
+        </div>
+        <div class="cv-entry-body">
+          <p class="cv-entry-org">GAMA Quantum Optimizations for High-Dimensional Least Squares</p>
+          <ul class="cv-entry-list">
+            <li>Studies conditions under which the GAMA hybrid-quantum optimization solves the OLS problem</li>
+            <li>Examines theory and implements it in D-Wave simulated annealers</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-entry cv-entry--paper">
+        <div class="cv-entry-meta">
+          <span class="cv-paper-badge cv-badge-prog">In Progress</span>
+          <span class="cv-paper-badge cv-badge-sole">Sole Author</span>
+        </div>
+        <div class="cv-entry-body">
+          <p class="cv-entry-org">Artificial Intelligence in Economic Research: Applications, Promises, Pitfalls</p>
+          <ul class="cv-entry-list">
+            <li>Meta-analysis examining how applications of AI can harm and help researchers</li>
+            <li>Produced slides and paper for future presentation</li>
+            <li>Intended for general use and non-specialized researchers in the social sciences</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-entry cv-entry--paper">
+        <div class="cv-entry-meta">
+          <span class="cv-paper-badge cv-badge-wp">White Paper</span>
+          <span class="cv-paper-badge cv-badge-sole">Sole Author</span>
+        </div>
+        <div class="cv-entry-body">
+          <p class="cv-entry-org">Efficient Large-Scale Text Classification with ANN</p>
+          <ul class="cv-entry-list">
+            <li>Develop a scalable pipeline for clustering large text corpora using ANNOY + SLM</li>
+            <li>Demonstrates improved computational efficiency for feature engineering over standard clustering</li>
+            <li>Authored technical paper and an open-source implementation publicly available on GitHub</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-entry cv-entry--paper">
+        <div class="cv-entry-meta">
+          <span class="cv-paper-badge cv-badge-wp">Working Paper</span>
+          <span class="cv-paper-badge cv-badge-sole">Sole Author</span>
+        </div>
+        <div class="cv-entry-body">
+          <p class="cv-entry-org">The Big Book of Estimators</p>
+          <ul class="cv-entry-list">
+            <li>Conspectus of estimators, assumptions, and use cases</li>
+            <li>Intended for non-specialized researchers as a non-textbook reference for model selection</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CONTRIBUTIONS (RA WORK) -->
+    <div class="cv-section-head">
+      <h2 class="cv-section-title">Contributions <span class="cv-section-sub">RA Work</span></h2>
+    </div>
+    <div class="cv-entries">
+
+      <div class="cv-entry cv-entry--paper">
+        <div class="cv-entry-meta">
+          <span class="cv-paper-badge cv-badge-pub">Published</span>
+          <span class="cv-entry-dates">2024</span>
+        </div>
+        <div class="cv-entry-body">
+          <p class="cv-entry-org">Evolution of the Relationship between the Gig Economy and Entrepreneurship: The Heterogeneous Effects of Labor Market Disruptions</p>
+          <p class="cv-entry-detail">Research Associate · Denes, Lagaras, and Tsoutsoura</p>
+          <ul class="cv-entry-list">
+            <li>Estimate DiD using IRS taxpayer microdata to study entrepreneurial responses to labor disruptions</li>
+            <li>Built ANN text clustering pipeline for 1+ billion deduction fields</li>
+            <li>Constructed a framework to parallelize Stata (Python/Stata; precursor to <code>StataHelper</code>)</li>
+            <li>Provided data engineering, replication, and publication support</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-entry cv-entry--paper">
+        <div class="cv-entry-meta">
+          <span class="cv-paper-badge cv-badge-pub">Published</span>
+          <span class="cv-entry-dates">2023</span>
+        </div>
+        <div class="cv-entry-body">
+          <p class="cv-entry-org">Entrepreneurship and the Gig Economy: Evidence from U.S. Tax Returns</p>
+          <p class="cv-entry-detail"><em>Journal of Financial Economics</em> · Research Associate · Denes, Lagaras, and Tsoutsoura</p>
+          <ul class="cv-entry-list">
+            <li>Estimate DiD using IRS microdata to identify entrepreneurial transitions among platform workers</li>
+            <li>Cleaned and structured datasets, maintained empirical codebase for journal submission</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-entry cv-entry--paper">
+        <div class="cv-entry-meta">
+          <span class="cv-paper-badge cv-badge-wp">Working Paper</span>
+          <span class="cv-entry-dates">2023</span>
+        </div>
+        <div class="cv-entry-body">
+          <p class="cv-entry-org">First Come, First Served: The Timing of Government Support and Its Impact on Firms</p>
+          <p class="cv-entry-detail">Research Associate · Denes, Lagaras, and Tsoutsoura</p>
+          <ul class="cv-entry-list">
+            <li>Studies small businesses receiving paycheck protection loans during the COVID-19 pandemic</li>
+            <li>Estimate DiD effects of PPP timing on firm financial health using credit bureau data</li>
+            <li>Data cleaning, workflows, and publication preparation</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-entry cv-entry--paper">
+        <div class="cv-entry-meta">
+          <span class="cv-paper-badge cv-badge-prog">In Progress</span>
+        </div>
+        <div class="cv-entry-body">
+          <p class="cv-entry-org">Take-up of Flexible Labor</p>
+          <p class="cv-entry-detail">Research Associate · Denes, Lagaras, and Tsoutsoura</p>
+          <ul class="cv-entry-list">
+            <li>Studies employment of flexible labor through tax deduction claims</li>
+            <li>Trained text classifier RNN on 1 billion+ taxpayer-inputted deductions</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- COMPUTATIONAL TOOLS & SOFTWARE -->
+    <div class="cv-section-head">
+      <h2 class="cv-section-title">Computational Tools &amp; Research Software</h2>
+    </div>
+    <div class="cv-entries">
+
+      <div class="cv-entry">
+        <div class="cv-entry-meta">
+          <span class="cv-entry-dates">Present</span>
+          <span class="cv-entry-loc"><i class="ti ti-map-pin" aria-hidden="true"></i> Pittsburgh, PA</span>
+        </div>
+        <div class="cv-entry-body">
+          <p class="cv-entry-org">'StataAgent' — Agentic AI for Natural Language Stata Interfacing <span class="cv-entry-note">(in progress)</span></p>
+          <p class="cv-entry-role">Author</p>
+          <ul class="cv-entry-list">
+            <li>Manipulates and analyzes data within Stata from user-inputted questions</li>
+            <li>Useful for simple tasks (summary statistics, regressions) when correct syntax is unclear</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-entry-meta">
+          <span class="cv-entry-dates">Feb 2025</span>
+          <span class="cv-entry-loc"><i class="ti ti-map-pin" aria-hidden="true"></i> Pittsburgh, PA</span>
+        </div>
+        <div class="cv-entry-body">
+          <p class="cv-entry-org">'Explain' — Stata Package for LLM Interfacing</p>
+          <p class="cv-entry-role">Author &nbsp;·&nbsp; <a href="https://github.com/ColZoel" target="_blank" rel="noopener">Open-source on GitHub</a></p>
+          <ul class="cv-entry-list">
+            <li>Interfaces Stata with LLMs for code debugging, explanation, and error analysis</li>
+            <li>Useful for learning Stata and for commenting and digesting code</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-entry-meta">
+          <span class="cv-entry-dates">Aug 2024</span>
+          <span class="cv-entry-loc"><i class="ti ti-map-pin" aria-hidden="true"></i> Pittsburgh, PA</span>
+        </div>
+        <div class="cv-entry-body">
+          <p class="cv-entry-org">'StataHelper' — Python Package for PyStata Parallelization</p>
+          <p class="cv-entry-role">Author &nbsp;·&nbsp; <a href="https://github.com/ColZoel" target="_blank" rel="noopener">Open-source on PyPI &amp; GitHub</a></p>
+          <ul class="cv-entry-list">
+            <li>Systematically parallelizes variable Stata processes (simulations, tests, etc.)</li>
+            <li>Wraps PyStata API and bridges syntax for simpler implementation</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PRESENTATIONS & CONFERENCES -->
+    <div class="cv-section-head">
+      <h2 class="cv-section-title">Presentations &amp; Conferences</h2>
+    </div>
+    <div class="cv-entries">
+
+      <div class="cv-entry">
+        <div class="cv-entry-meta">
+          <span class="cv-entry-dates">Feb 2023</span>
+          <span class="cv-entry-loc"><i class="ti ti-map-pin" aria-hidden="true"></i> Provo, UT</span>
+        </div>
+        <div class="cv-entry-body">
+          <p class="cv-entry-org">Family History Technology Workshop</p>
+          <p class="cv-entry-role">City Directories Automated Indexing</p>
+          <ul class="cv-entry-list">
+            <li>Presented custom OCR/NLP pipeline extracting data from city directories for economic research</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-entry-meta">
+          <span class="cv-entry-dates">Sept 2022</span>
+          <span class="cv-entry-loc"><i class="ti ti-map-pin" aria-hidden="true"></i> Provo, UT</span>
+        </div>
+        <div class="cv-entry-body">
+          <p class="cv-entry-org">BYU President's Leadership Council</p>
+          <p class="cv-entry-role">Growing Together: Growing the Tree</p>
+          <ul class="cv-entry-list">
+            <li>Presented research and methodological implementations of computer vision in genealogical research</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TEACHING -->
+    <div class="cv-section-head">
+      <h2 class="cv-section-title">Teaching Experience</h2>
+    </div>
+    <div class="cv-entries">
+
+      <div class="cv-entry">
+        <div class="cv-entry-meta">
+          <span class="cv-entry-dates">Sep 2021 – Apr 2022</span>
+          <span class="cv-entry-loc"><i class="ti ti-map-pin" aria-hidden="true"></i> Provo, UT</span>
+        </div>
+        <div class="cv-entry-body">
+          <p class="cv-entry-org">Brigham Young University Economics Department</p>
+          <p class="cv-entry-role">Econ 110 Teaching Assistant</p>
+          <ul class="cv-entry-list">
+            <li>Taught 500+ students in introductory macro and microeconomics</li>
+            <li>Hosted 15 lab hours each week and 1-hour lecture review for exam preparation</li>
+            <li>Crafted test questions and graded all assignments for the instructor</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TECHNICAL SKILLS -->
+    <div class="cv-section-head">
+      <h2 class="cv-section-title">Technical Skills</h2>
+    </div>
+    <div class="cv-skills-block">
+      <div class="cv-skill-group">
+        <span class="cv-skill-label">Languages &amp; Platforms</span>
+        <div class="cv-skill-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Stata</span>
+          <span class="tag">R</span>
+          <span class="tag">MATLAB</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Linux</span>
+          <span class="tag">LaTeX</span>
+          <span class="tag">Git / GitHub</span>
+        </div>
+      </div>
+      <div class="cv-skill-group">
+        <span class="cv-skill-label">Cloud &amp; Infrastructure</span>
+        <div class="cv-skill-tags">
+          <span class="tag">AWS</span>
+          <span class="tag">Google SDK</span>
+          <span class="tag">ArcGIS</span>
+        </div>
+      </div>
+      <div class="cv-skill-group">
+        <span class="cv-skill-label">Quantum Computing</span>
+        <div class="cv-skill-tags">
+          <span class="tag">Quantum ML</span>
+          <span class="tag">Quantum DL</span>
+          <span class="tag">Quantum Annealing</span>
+          <span class="tag">Qiskit</span>
+          <span class="tag">D-Wave</span>
+        </div>
+      </div>
+    </div>
+
+      </div>
+      <!-- /cv-body -->
+    </div>
+    <!-- /cv-main -->
+
+    <div class="col-divider cv-divider"></div>
+
+    <!-- Sticky sidebar card -->
+    <div class="cv-sidebar">
+      <div class="cv-header-right">
+        <a class="cv-download-btn" href="../CV/Zoeller_Collin_CV.pdf" download="Zoeller_Collin_CV.pdf">
+          <i class="ti ti-download" aria-hidden="true"></i>
+          Download PDF
+        </a>
+        <div class="contact-rows">
+          <div class="contact-row"><i class="ti ti-map-pin" aria-hidden="true"></i> Pittsburgh, PA</div>
+          <div class="contact-row"><i class="ti ti-mail" aria-hidden="true"></i><a href="mailto:contact@collinzoeller.com">contact@collinzoeller.com</a></div>
+          <div class="contact-row"><i class="ti ti-world" aria-hidden="true"></i><a href="https://collinzoeller.com" target="_blank" rel="noopener">collinzoeller.com</a></div>
+        </div>
+        <p class="social-label">Find me on</p>
+        <div class="social-rows">
+          <a class="social-row" href="https://www.linkedin.com/in/collinzoeller/" target="_blank" rel="noopener">
+            <i class="ti ti-brand-linkedin sr-icon" aria-hidden="true"></i>
+            <span class="sr-label">LinkedIn</span>
+            <span class="sr-handle">collinzoeller</span>
+          </a>
+          <a class="social-row" href="https://github.com/ColZoel" target="_blank" rel="noopener">
+            <i class="ti ti-brand-github sr-icon" aria-hidden="true"></i>
+            <span class="sr-label">GitHub</span>
+            <span class="sr-handle">ColZoel</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- /cv-sidebar -->
+
+  </div>
+  <!-- /cv-layout -->
+
+  <footer class="site-footer">
+    <span>© 2026 Collin Zoeller</span>
+    <span>collinzoeller.com</span>
+  </footer>
+
+  <script>
+    (function(){
+      var stored = localStorage.getItem('theme') || 'system';
+      var btns = document.querySelectorAll('.tt-btn');
+      btns.forEach(function(btn){
+        btn.classList.toggle('active', btn.dataset.mode === stored);
+        btn.addEventListener('click', function(){
+          var mode = btn.dataset.mode;
+          localStorage.setItem('theme', mode);
+          var html = document.documentElement;
+          if(mode === 'dark') html.setAttribute('data-theme','dark');
+          else if(mode === 'light') html.setAttribute('data-theme','light');
+          else html.removeAttribute('data-theme');
+          btns.forEach(function(b){ b.classList.toggle('active', b.dataset.mode === mode); });
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
