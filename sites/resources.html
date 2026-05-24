@@ -14,6 +14,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
   <link rel="manifest" href="../site.webmanifest">
   <title>Tools &amp; Guides — Collin Zoeller</title>
+  <script>(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else if(t==='light')document.documentElement.setAttribute('data-theme','light');})();</script>
 </head>
 <body>
 
@@ -27,6 +28,11 @@
       <li><a href="../sites/resources.html" class="active">Tools &amp; Guides</a></li>
       <li><a href="./cv.html">CV</a></li>
     </ul>
+    <div class="theme-toggle" role="group" aria-label="Color theme">
+      <button class="tt-btn" data-mode="light" title="Light"><i class="ti ti-sun"></i></button>
+      <button class="tt-btn" data-mode="system" title="System default"><i class="ti ti-device-laptop"></i></button>
+      <button class="tt-btn" data-mode="dark" title="Dark"><i class="ti ti-moon"></i></button>
+    </div>
   </nav>
 
   <!-- Page header -->
@@ -277,6 +283,25 @@
     <span>© 2026 Collin Zoeller</span>
     <span>collinzoeller.com · Last updated 22 May 2026</span>
   </footer>
+
+  <script>
+    (function(){
+      var stored = localStorage.getItem('theme') || 'system';
+      var btns = document.querySelectorAll('.tt-btn');
+      btns.forEach(function(btn){
+        btn.classList.toggle('active', btn.dataset.mode === stored);
+        btn.addEventListener('click', function(){
+          var mode = btn.dataset.mode;
+          localStorage.setItem('theme', mode);
+          var html = document.documentElement;
+          if(mode === 'dark') html.setAttribute('data-theme','dark');
+          else if(mode === 'light') html.setAttribute('data-theme','light');
+          else html.removeAttribute('data-theme');
+          btns.forEach(function(b){ b.classList.toggle('active', b.dataset.mode === mode); });
+        });
+      });
+    })();
+  </script>
 
 </body>
 </html>
