@@ -14,7 +14,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
   <link rel="manifest" href="../site.webmanifest">
   <title>Projects — Collin Zoeller</title>
-  <script>(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else if(t==='light')document.documentElement.setAttribute('data-theme','light');})();</script>
+  <script>(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else if(t==='light')document.documentElement.setAttribute('data-theme','light');var l=localStorage.getItem('lang')||((navigator.language||'en').startsWith('es')?'es':'en');document.documentElement.setAttribute('data-lang',l);})();</script>
 </head>
 <body>
 
@@ -28,10 +28,16 @@
       <li><a href="../sites/resources.html">Tools &amp; Guides</a></li>
       <li><a href="./cv.html">CV</a></li>
     </ul>
-    <div class="theme-toggle" role="group" aria-label="Color theme">
-      <button class="tt-btn" data-mode="light" title="Light"><i class="ti ti-sun"></i></button>
-      <button class="tt-btn" data-mode="system" title="System default"><i class="ti ti-device-laptop"></i></button>
-      <button class="tt-btn" data-mode="dark" title="Dark"><i class="ti ti-moon"></i></button>
+    <div class="nav-controls">
+      <div class="theme-toggle" role="group" aria-label="Color theme">
+        <button class="tt-btn" data-mode="light" title="Light"><i class="ti ti-sun"></i></button>
+        <button class="tt-btn" data-mode="system" title="System default"><i class="ti ti-device-laptop"></i></button>
+        <button class="tt-btn" data-mode="dark" title="Dark"><i class="ti ti-moon"></i></button>
+      </div>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lt-btn" data-lang="en">EN</button>
+        <button class="lt-btn" data-lang="es">ES</button>
+      </div>
     </div>
   </nav>
 
@@ -131,6 +137,55 @@
           else if(mode === 'light') html.setAttribute('data-theme','light');
           else html.removeAttribute('data-theme');
           btns.forEach(function(b){ b.classList.toggle('active', b.dataset.mode === mode); });
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    // Language toggle
+    (function(){
+      var RULES = [
+        // Navigation
+        {sel:'.nav-links li:nth-child(1) a', en:'Home', es:'Inicio'},
+        {sel:'.nav-links li:nth-child(2) a', en:'About', es:'Sobre mí'},
+        {sel:'.nav-links li:nth-child(3) a', en:'Research', es:'Investigación'},
+        {sel:'.nav-links li:nth-child(4) a', en:'Projects', es:'Proyectos'},
+        {sel:'.nav-links li:nth-child(5) a', en:'Tools & Guides', es:'Herramientas y Guías'},
+        {sel:'.nav-links li:nth-child(6) a', en:'CV', es:'CV'},
+        // Page
+        {sel:'.page-body > h1', en:'Projects', es:'Proyectos'},
+        {sel:'.page-body > p', en:'Open-source tools and packages built at the intersection of economics, machine learning, and software engineering.', es:'Herramientas y paquetes de código abierto construidos en la intersección de la economía, el aprendizaje automático y la ingeniería de software.'},
+        // Project cards
+        {sel:'.project-card:nth-child(3) .project-card-desc', en:'A specialized agent model that integrates with Stata for natural-language data analysis. Ask questions like "What is the average income of individuals in 2022?" and the agent queries Stata and returns a structured answer.', es:'Un modelo de agente especializado que se integra con Stata para el análisis de datos en lenguaje natural. Haz preguntas como "¿Cuál es el ingreso promedio de los individuos en 2022?" y el agente consulta Stata y devuelve una respuesta estructurada.'},
+        {sel:'.project-card:nth-child(4) .project-card-desc', en:'A Stata package that integrates directly with large language models to assist with code debugging, explanation, and improvements. Supports both hosted APIs and locally-run models, letting researchers get inline AI assistance without leaving their Stata workflow.', es:'Un paquete de Stata que se integra directamente con modelos de lenguaje grandes para ayudar con la depuración, explicación y mejora del código. Admite tanto APIs alojadas como modelos ejecutados localmente, permitiendo a los investigadores obtener asistencia de IA sin salir de su flujo de trabajo en Stata.'},
+        {sel:'.project-card:nth-child(5) .project-card-desc', en:'A Python package that simplifies the PyStata interface and enables parallelized Stata execution. Especially useful for large-scale data tasks where vanilla Stata\'s single-threaded model becomes a bottleneck.', es:'Un paquete de Python que simplifica la interfaz PyStata y habilita la ejecución paralela de Stata. Especialmente útil para tareas de datos a gran escala donde el modelo de un solo hilo de Stata se convierte en un cuello de botella.'},
+        {sel:'.project-card:nth-child(6) .project-card-desc', en:'Demonstrates how to combine lightweight SLM embeddings with the ANNOY (Approximate Nearest Neighbors) library for efficient multi-class text classification at scale — a practical alternative to fine-tuning large models for classification tasks.', es:'Demuestra cómo combinar embeddings de SLM ligeros con la biblioteca ANNOY (Vecinos Aproximados más Cercanos) para clasificación de texto multiclase eficiente a escala — una alternativa práctica al ajuste fino de modelos grandes para tareas de clasificación.'},
+        // Status badge
+        {sel:'.project-status', html:true, en:'<span class="pulse-dot"></span> Active', es:'<span class="pulse-dot"></span> Activo'},
+      ];
+
+      function applyLang(lang) {
+        RULES.forEach(function(r) {
+          document.querySelectorAll(r.sel).forEach(function(el) {
+            if (r.html) el.innerHTML = r[lang] !== undefined ? r[lang] : r.en;
+            else el.textContent = r[lang] !== undefined ? r[lang] : r.en;
+          });
+        });
+        document.documentElement.setAttribute('data-lang', lang);
+        document.querySelectorAll('.lt-btn').forEach(function(b) {
+          b.classList.toggle('active', b.dataset.lang === lang);
+        });
+      }
+
+      var stored = localStorage.getItem('lang') || ((navigator.language || 'en').startsWith('es') ? 'es' : 'en');
+      applyLang(stored);
+
+      document.querySelectorAll('.lt-btn').forEach(function(b) {
+        b.addEventListener('click', function() {
+          var lang = b.dataset.lang;
+          localStorage.setItem('lang', lang);
+          applyLang(lang);
         });
       });
     })();

@@ -14,7 +14,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
   <link rel="manifest" href="../site.webmanifest">
   <title>Research — Collin Zoeller</title>
-  <script>(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else if(t==='light')document.documentElement.setAttribute('data-theme','light');})();</script>
+  <script>(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else if(t==='light')document.documentElement.setAttribute('data-theme','light');var l=localStorage.getItem('lang')||((navigator.language||'en').startsWith('es')?'es':'en');document.documentElement.setAttribute('data-lang',l);})();</script>
 </head>
 <body>
 
@@ -28,10 +28,16 @@
       <li><a href="../sites/resources.html">Tools &amp; Guides</a></li>
       <li><a href="./cv.html">CV</a></li>
     </ul>
-    <div class="theme-toggle" role="group" aria-label="Color theme">
-      <button class="tt-btn" data-mode="light" title="Light"><i class="ti ti-sun"></i></button>
-      <button class="tt-btn" data-mode="system" title="System default"><i class="ti ti-device-laptop"></i></button>
-      <button class="tt-btn" data-mode="dark" title="Dark"><i class="ti ti-moon"></i></button>
+    <div class="nav-controls">
+      <div class="theme-toggle" role="group" aria-label="Color theme">
+        <button class="tt-btn" data-mode="light" title="Light"><i class="ti ti-sun"></i></button>
+        <button class="tt-btn" data-mode="system" title="System default"><i class="ti ti-device-laptop"></i></button>
+        <button class="tt-btn" data-mode="dark" title="Dark"><i class="ti ti-moon"></i></button>
+      </div>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lt-btn" data-lang="en">EN</button>
+        <button class="lt-btn" data-lang="es">ES</button>
+      </div>
     </div>
   </nav>
 
@@ -451,16 +457,120 @@
 
   <script>
     function tog(btn) {
-      const content = btn.nextElementSibling;
-      const isOpen = content.classList.contains('open');
+      var content = btn.nextElementSibling;
+      var isOpen = content.classList.contains('open');
       content.classList.toggle('open', !isOpen);
       btn.querySelector('i').style.transform = isOpen ? '' : 'rotate(180deg)';
-      const txt = btn.childNodes[2].textContent.trim();
-      if (txt === 'Abstract')             btn.childNodes[2].textContent = ' Hide abstract';
-      else if (txt === 'Hide abstract')   btn.childNodes[2].textContent = ' Abstract';
-      else if (txt === 'My contributions') btn.childNodes[2].textContent = ' Hide contributions';
-      else                                btn.childNodes[2].textContent = ' My contributions';
+      var lang = document.documentElement.getAttribute('data-lang') || 'en';
+      // Find the text node
+      var textNode = null;
+      for (var i = 0; i < btn.childNodes.length; i++) {
+        if (btn.childNodes[i].nodeType === 3) { textNode = btn.childNodes[i]; break; }
+      }
+      if (!textNode) return;
+      var t = textNode.textContent.trim();
+      var abstractKeys = ['Abstract', 'Resumen', 'Hide abstract', 'Ocultar resumen'];
+      var isAbstractType = abstractKeys.indexOf(t) >= 0;
+      var L = {
+        en: { a: ' Abstract', ha: ' Hide abstract', c: ' My contributions', hc: ' Hide contributions' },
+        es: { a: ' Resumen',  ha: ' Ocultar resumen', c: ' Mi contribución', hc: ' Ocultar contribución' }
+      };
+      var lbl = L[lang] || L.en;
+      if (isAbstractType) textNode.textContent = isOpen ? lbl.a : lbl.ha;
+      else textNode.textContent = isOpen ? lbl.c : lbl.hc;
     }
+  </script>
+
+  <script>
+    // Language toggle
+    (function(){
+      var RULES = [
+        // Navigation
+        {sel:'.nav-links li:nth-child(1) a', en:'Home', es:'Inicio'},
+        {sel:'.nav-links li:nth-child(2) a', en:'About', es:'Sobre mí'},
+        {sel:'.nav-links li:nth-child(3) a', en:'Research', es:'Investigación'},
+        {sel:'.nav-links li:nth-child(4) a', en:'Projects', es:'Proyectos'},
+        {sel:'.nav-links li:nth-child(5) a', en:'Tools & Guides', es:'Herramientas y Guías'},
+        {sel:'.nav-links li:nth-child(6) a', en:'CV', es:'CV'},
+        // Page header
+        {sel:'.rp-page-eyebrow', en:'Financial Economics · Labor · Computation', es:'Economía Financiera · Trabajo · Computación'},
+        {sel:'.rp-statement', html:true,
+          en:'I study how <strong>policy, labor market disruptions, and institutional frictions</strong> shape entrepreneurial activity and firm behavior — using IRS administrative tax data covering the full U.S. firm population. Alongside this empirical agenda, I develop <strong>independent research at the frontier of quantum computing, ML, and economic methodology</strong>.',
+          es:'Estudio cómo <strong>la política, las disrupciones del mercado laboral y las fricciones institucionales</strong> moldean la actividad empresarial y el comportamiento de las empresas — usando datos administrativos del IRS que cubren la población completa de empresas de EE. UU. Junto con esta agenda empírica, desarrollo <strong>investigación independiente en la frontera de la computación cuántica, el aprendizaje automático y la metodología económica</strong>.'},
+        {sel:'.rp-role-pill-title', en:'Pre-doctoral Research Associate', es:'Asistente de Investigación Predoctoral'},
+        {sel:'.rp-role-pill-sub', en:'Tepper School of Business · IRS Joint Statistical Research Program · Incoming MSEC, Duke 2026', es:'Tepper School of Business · Programa de Investigación Estadística Conjunta del IRS · Futuro MSEC, Duke 2026'},
+        // Stats labels
+        {sel:'.rp-header-right .rp-stat:nth-child(1) .rp-stat-label', en:'Total papers', es:'Artículos totales'},
+        {sel:'.rp-header-right .rp-stat:nth-child(3) .rp-stat-label', en:'Published · JFE', es:'Publicado · JFE'},
+        {sel:'.rp-header-right .rp-stat:nth-child(5) .rp-stat-label', en:'Sole-authored', es:'Autor único'},
+        // Data note
+        {sel:'.rp-data-note-text', html:true,
+          en:'<strong>Data:</strong> All CMU projects are conducted through the IRS Joint Statistical Research Program — a restricted federal research program granting access to the near-universe of U.S. tax returns (~1.5B observations).',
+          es:'<strong>Datos:</strong> Todos los proyectos de CMU se realizan a través del Programa de Investigación Estadística Conjunta del IRS — un programa federal restringido que otorga acceso a casi la totalidad de las declaraciones de impuestos de EE. UU. (~1.5B observaciones).'},
+        // Section headers
+        {sel:'.rp-body .rp-section-head:nth-child(1) .rp-section-title', en:'RA Contributions', es:'Contribuciones como Asistente de Investigación'},
+        {sel:'.rp-body .rp-section-head:nth-child(1) .rp-section-count', html:true, en:'5 papers · CMU Tepper &amp; Harvard Business School', es:'5 artículos · CMU Tepper &amp; Harvard Business School'},
+        {sel:'.rp-body .rp-section-head:nth-child(7) .rp-section-title', en:'Independent Research', es:'Investigación Independiente'},
+        {sel:'.rp-body .rp-section-head:nth-child(7) .rp-section-count', en:'4 papers · Sole-authored', es:'4 artículos · Autor único'},
+        {sel:'.rp-body .rp-section-head:nth-child(12) .rp-section-title', en:'Presentations', es:'Presentaciones'},
+        {sel:'.rp-body .rp-section-head:nth-child(12) .rp-section-count', en:'2 conferences', es:'2 conferencias'},
+        {sel:'.rp-body .rp-section-head:nth-child(14) .rp-section-title', en:'More work', es:'Más trabajo'},
+        {sel:'.rp-body .rp-section-head:nth-child(14) .rp-section-count', en:'Code, tools, and writing', es:'Código, herramientas y escritura'},
+        // Acknowledgement
+        {sel:'.rp-ack-text', html:true,
+          en:'"<strong>Collin Zoeller</strong> provided excellent research assistance." — Acknowledgements, NBER Working Paper 33347',
+          es:'"<strong>Collin Zoeller</strong> brindó excelente asistencia de investigación." — Agradecimientos, NBER Working Paper 33347'},
+        // Presentation descriptions
+        {sel:'.rp-conf-list .rp-conf-item:nth-child(1) .rp-conf-desc', en:'Custom OCR/NLP pipeline extracting structured data from city directories for economic research.', es:'Canalización personalizada de OCR/PLN para extraer datos estructurados de directorios de ciudades para investigación económica.'},
+        {sel:'.rp-conf-list .rp-conf-item:nth-child(2) .rp-conf-desc', en:'Invited presentation to top Utah investors on AI-powered genealogical indexing — CNN-based handwriting recognition for FamilySearch and Ancestry.', es:'Presentación invitada a principales inversores de Utah sobre indexación genealógica impulsada por IA — reconocimiento de escritura a mano basado en CNN para FamilySearch y Ancestry.'},
+        // Crosslinks
+        {sel:'.rp-crosslinks .rp-crosslink:nth-child(1) .rp-crosslink-label', en:'Projects page', es:'Página de proyectos'},
+        {sel:'.rp-crosslinks .rp-crosslink:nth-child(1) .rp-crosslink-title', html:true, en:'StataAgent, StataHelper, Explain &amp; more', es:'StataAgent, StataHelper, Explain &amp; más'},
+        {sel:'.rp-crosslinks .rp-crosslink:nth-child(2) .rp-crosslink-label', html:true, en:'Tools &amp; Guides', es:'Herramientas &amp; Guías'},
+        {sel:'.rp-crosslinks .rp-crosslink:nth-child(2) .rp-crosslink-title', en:'Stata toolkit, PyStata series, quantum intro', es:'Kit de herramientas Stata, serie PyStata, introducción cuántica'},
+      ];
+
+      function applyLang(lang) {
+        RULES.forEach(function(r) {
+          document.querySelectorAll(r.sel).forEach(function(el) {
+            if (r.html) el.innerHTML = r[lang] !== undefined ? r[lang] : r.en;
+            else el.textContent = r[lang] !== undefined ? r[lang] : r.en;
+          });
+        });
+        document.documentElement.setAttribute('data-lang', lang);
+        document.querySelectorAll('.lt-btn').forEach(function(b) {
+          b.classList.toggle('active', b.dataset.lang === lang);
+        });
+        // Reset all toggle buttons to closed state in new language
+        document.querySelectorAll('.rp-toggle-group').forEach(function(group) {
+          var btn = group.querySelector('.rp-abstract-toggle');
+          var content = group.querySelector('.rp-abstract-content');
+          if (!btn || !content) return;
+          content.classList.remove('open');
+          btn.querySelector('i').style.transform = '';
+          var textNode = null;
+          for (var i = 0; i < btn.childNodes.length; i++) {
+            if (btn.childNodes[i].nodeType === 3) { textNode = btn.childNodes[i]; break; }
+          }
+          if (!textNode) return;
+          var t = textNode.textContent.trim();
+          var isAbstractType = ['Abstract','Resumen','Hide abstract','Ocultar resumen'].indexOf(t) >= 0;
+          if (isAbstractType) textNode.textContent = lang === 'es' ? ' Resumen' : ' Abstract';
+          else textNode.textContent = lang === 'es' ? ' Mi contribución' : ' My contributions';
+        });
+      }
+
+      var stored = localStorage.getItem('lang') || ((navigator.language || 'en').startsWith('es') ? 'es' : 'en');
+      applyLang(stored);
+
+      document.querySelectorAll('.lt-btn').forEach(function(b) {
+        b.addEventListener('click', function() {
+          var lang = b.dataset.lang;
+          localStorage.setItem('lang', lang);
+          applyLang(lang);
+        });
+      });
+    })();
   </script>
 
 </body>

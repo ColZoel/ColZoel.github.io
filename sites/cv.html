@@ -14,7 +14,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
   <link rel="manifest" href="../site.webmanifest">
   <title>CV — Collin Zoeller</title>
-  <script>(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else if(t==='light')document.documentElement.setAttribute('data-theme','light');})();</script>
+  <script>(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else if(t==='light')document.documentElement.setAttribute('data-theme','light');var l=localStorage.getItem('lang')||((navigator.language||'en').startsWith('es')?'es':'en');document.documentElement.setAttribute('data-lang',l);})();</script>
 </head>
 <body>
 
@@ -28,10 +28,16 @@
       <li><a href="../sites/resources.html">Tools &amp; Guides</a></li>
       <li><a href="../sites/cv.html" class="active">CV</a></li>
     </ul>
-    <div class="theme-toggle" role="group" aria-label="Color theme">
-      <button class="tt-btn" data-mode="light" title="Light"><i class="ti ti-sun"></i></button>
-      <button class="tt-btn" data-mode="system" title="System default"><i class="ti ti-device-laptop"></i></button>
-      <button class="tt-btn" data-mode="dark" title="Dark"><i class="ti ti-moon"></i></button>
+    <div class="nav-controls">
+      <div class="theme-toggle" role="group" aria-label="Color theme">
+        <button class="tt-btn" data-mode="light" title="Light"><i class="ti ti-sun"></i></button>
+        <button class="tt-btn" data-mode="system" title="System default"><i class="ti ti-device-laptop"></i></button>
+        <button class="tt-btn" data-mode="dark" title="Dark"><i class="ti ti-moon"></i></button>
+      </div>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lt-btn" data-lang="en">EN</button>
+        <button class="lt-btn" data-lang="es">ES</button>
+      </div>
     </div>
   </nav>
 
@@ -458,15 +464,13 @@
 
     <!-- Sticky sidebar card -->
     <div class="cv-sidebar">
-      <div class="cv-header-right">
-        <a class="cv-download-btn" href="../CV/Zoeller_Collin_CV.pdf" download="Zoeller_Collin_CV.pdf">
-          <i class="ti ti-download" aria-hidden="true"></i>
-          Download PDF
-        </a>
+      <div class="hero-profile">
+        <div class="portrait">
+          <img src="../img/portrait1.jpeg" alt="Collin Zoeller">
+        </div>
         <div class="contact-rows">
           <div class="contact-row"><i class="ti ti-map-pin" aria-hidden="true"></i> Pittsburgh, PA</div>
           <div class="contact-row"><i class="ti ti-mail" aria-hidden="true"></i><a href="mailto:contact@collinzoeller.com">contact@collinzoeller.com</a></div>
-          <div class="contact-row"><i class="ti ti-world" aria-hidden="true"></i><a href="https://collinzoeller.com" target="_blank" rel="noopener">collinzoeller.com</a></div>
         </div>
         <p class="social-label">Find me on</p>
         <div class="social-rows">
@@ -479,6 +483,16 @@
             <i class="ti ti-brand-github sr-icon" aria-hidden="true"></i>
             <span class="sr-label">GitHub</span>
             <span class="sr-handle">ColZoel</span>
+          </a>
+          <a class="social-row" href="https://medium.com/@collin.zoeller" target="_blank" rel="noopener">
+            <i class="ti ti-brand-medium sr-icon" aria-hidden="true"></i>
+            <span class="sr-label">Medium</span>
+            <span class="sr-handle">@collin.zoeller</span>
+          </a>
+          <a class="social-row" href="https://www.instagram.com/collin.zoeller/" target="_blank" rel="noopener">
+            <i class="ti ti-brand-instagram sr-icon" aria-hidden="true"></i>
+            <span class="sr-label">Instagram</span>
+            <span class="sr-handle">@collin.zoeller</span>
           </a>
         </div>
       </div>
@@ -507,6 +521,86 @@
           else if(mode === 'light') html.setAttribute('data-theme','light');
           else html.removeAttribute('data-theme');
           btns.forEach(function(b){ b.classList.toggle('active', b.dataset.mode === mode); });
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    // Language toggle
+    (function(){
+      var RULES = [
+        // Navigation
+        {sel:'.nav-links li:nth-child(1) a', en:'Home', es:'Inicio'},
+        {sel:'.nav-links li:nth-child(2) a', en:'About', es:'Sobre mí'},
+        {sel:'.nav-links li:nth-child(3) a', en:'Research', es:'Investigación'},
+        {sel:'.nav-links li:nth-child(4) a', en:'Projects', es:'Proyectos'},
+        {sel:'.nav-links li:nth-child(5) a', en:'Tools & Guides', es:'Herramientas y Guías'},
+        {sel:'.nav-links li:nth-child(6) a', en:'CV', es:'CV'},
+        // Header
+        {sel:'.cv-eyebrow', en:'Curriculum Vitae', es:'Currículum Vitae'},
+        {sel:'.cv-subtitle', en:'Pre-doctoral RA, CMU Tepper · Incoming MSEC, Duke University · Fall 2026', es:'Asistente de investigación predoctoral, CMU Tepper · Futuro MSEC, Universidad Duke · Otoño 2026'},
+        {sel:'.cv-desc', en:'Financial economist working at the intersection of machine learning, quantum computing, and empirical research. Using IRS administrative tax data to study firms, labor markets, and entrepreneurship.', es:'Economista financiero que trabaja en la intersección del aprendizaje automático, la computación cuántica y la investigación empírica. Usando datos administrativos del IRS para estudiar empresas, mercados laborales y emprendimiento.'},
+        // Section titles
+        {sel:'.cv-body .cv-section-head:nth-child(1) .cv-section-title', en:'Education', es:'Educación'},
+        {sel:'.cv-body .cv-section-head:nth-child(3) .cv-section-title', en:'Research Experience', es:'Experiencia de Investigación'},
+        {sel:'.cv-body .cv-section-head:nth-child(5) .cv-section-title', html:true, en:'Working Papers &amp; Research Projects', es:'Borradores de Investigación &amp; Proyectos'},
+        {sel:'.cv-body .cv-section-head:nth-child(7) .cv-section-title', html:true, en:'Contributions <span class="cv-section-sub">RA Work</span>', es:'Contribuciones <span class="cv-section-sub">Como Asistente</span>'},
+        {sel:'.cv-body .cv-section-head:nth-child(9) .cv-section-title', html:true, en:'Computational Tools &amp; Research Software', es:'Herramientas Computacionales &amp; Software de Investigación'},
+        {sel:'.cv-body .cv-section-head:nth-child(11) .cv-section-title', html:true, en:'Presentations &amp; Conferences', es:'Presentaciones &amp; Conferencias'},
+        {sel:'.cv-body .cv-section-head:nth-child(13) .cv-section-title', en:'Teaching Experience', es:'Experiencia Docente'},
+        {sel:'.cv-body .cv-section-head:nth-child(15) .cv-section-title', en:'Technical Skills', es:'Habilidades Técnicas'},
+        // Education entries
+        {sel:'.cv-body .cv-entries:nth-child(2) .cv-entry:nth-child(1) .cv-entry-role', en:'Graduate Coursework', es:'Cursos de Posgrado'},
+        {sel:'.cv-body .cv-entries:nth-child(2) .cv-entry:nth-child(2) .cv-entry-role', en:'Bachelor of Science — Economics (Emphasis in Econometrics)', es:'Licenciatura en Ciencias — Economía (Énfasis en Econometría)'},
+        {sel:'.cv-body .cv-entries:nth-child(2) .cv-entry:nth-child(2) .cv-entry-sublabel', en:'Relevant Coursework', es:'Cursos Relevantes'},
+        // Research Experience entries
+        {sel:'.cv-body .cv-entries:nth-child(4) .cv-entry:nth-child(1) .cv-entry-role', en:'Pre-doctoral Research Associate', es:'Asistente de Investigación Predoctoral'},
+        {sel:'.cv-body .cv-entries:nth-child(4) .cv-entry:nth-child(2) .cv-entry-role', html:true, en:'Computer Vision Programmer &amp; Research Assistant for HBS Ph.D. Candidate', es:'Programador de Visión por Computadora &amp; Asistente de Investigación para Candidato doctoral de HBS'},
+        {sel:'.cv-body .cv-entries:nth-child(4) .cv-entry:nth-child(3) .cv-entry-role', en:'Research Assistant · Computer Vision Team Lead', es:'Asistente de Investigación · Líder del Equipo de Visión por Computadora'},
+        // Paper badges
+        {sel:'.cv-paper-badge.cv-badge-prog', en:'In Progress', es:'En progreso'},
+        {sel:'.cv-paper-badge.cv-badge-wp', en:'Working Paper', es:'Borrador'},
+        {sel:'.cv-paper-badge.cv-badge-pub', en:'Published', es:'Publicado'},
+        {sel:'.cv-paper-badge.cv-badge-sole', en:'Sole Author', es:'Autor único'},
+        // Tools entries
+        {sel:'.cv-body .cv-entries:nth-child(10) .cv-entry:nth-child(1) .cv-entry-role', en:'Author', es:'Autor'},
+        {sel:'.cv-body .cv-entries:nth-child(10) .cv-entry:nth-child(2) .cv-entry-role', html:true, en:'Author &nbsp;·&nbsp; <a href="https://github.com/ColZoel" target="_blank" rel="noopener">Open-source on GitHub</a>', es:'Autor &nbsp;·&nbsp; <a href="https://github.com/ColZoel" target="_blank" rel="noopener">Código abierto en GitHub</a>'},
+        {sel:'.cv-body .cv-entries:nth-child(10) .cv-entry:nth-child(3) .cv-entry-role', html:true, en:'Author &nbsp;·&nbsp; <a href="https://github.com/ColZoel" target="_blank" rel="noopener">Open-source on PyPI &amp; GitHub</a>', es:'Autor &nbsp;·&nbsp; <a href="https://github.com/ColZoel" target="_blank" rel="noopener">Código abierto en PyPI &amp; GitHub</a>'},
+        // Presentations
+        {sel:'.cv-body .cv-entries:nth-child(12) .cv-entry:nth-child(1) .cv-entry-role', en:'City Directories Automated Indexing', es:'Indexación Automatizada de Directorios de Ciudades'},
+        {sel:'.cv-body .cv-entries:nth-child(12) .cv-entry:nth-child(2) .cv-entry-role', en:'Growing Together: Growing the Tree', es:'Crecer Juntos: Haciendo Crecer el Árbol'},
+        // Teaching
+        {sel:'.cv-body .cv-entries:nth-child(14) .cv-entry:nth-child(1) .cv-entry-role', en:'Econ 110 Teaching Assistant', es:'Asistente de Enseñanza — Economía 110'},
+        // Skills
+        {sel:'.cv-skill-group:nth-child(1) .cv-skill-label', html:true, en:'Languages &amp; Platforms', es:'Lenguajes &amp; Plataformas'},
+        {sel:'.cv-skill-group:nth-child(2) .cv-skill-label', html:true, en:'Cloud &amp; Infrastructure', es:'Nube &amp; Infraestructura'},
+        {sel:'.cv-skill-group:nth-child(3) .cv-skill-label', en:'Quantum Computing', es:'Computación Cuántica'},
+        // Sidebar
+        {sel:'.cv-sidebar .social-label', en:'Find me on', es:'Encuéntrame en'},
+      ];
+
+      function applyLang(lang) {
+        RULES.forEach(function(r) {
+          document.querySelectorAll(r.sel).forEach(function(el) {
+            if (r.html) el.innerHTML = r[lang] !== undefined ? r[lang] : r.en;
+            else el.textContent = r[lang] !== undefined ? r[lang] : r.en;
+          });
+        });
+        document.documentElement.setAttribute('data-lang', lang);
+        document.querySelectorAll('.lt-btn').forEach(function(b) {
+          b.classList.toggle('active', b.dataset.lang === lang);
+        });
+      }
+
+      var stored = localStorage.getItem('lang') || ((navigator.language || 'en').startsWith('es') ? 'es' : 'en');
+      applyLang(stored);
+
+      document.querySelectorAll('.lt-btn').forEach(function(b) {
+        b.addEventListener('click', function() {
+          var lang = b.dataset.lang;
+          localStorage.setItem('lang', lang);
+          applyLang(lang);
         });
       });
     })();

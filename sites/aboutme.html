@@ -14,7 +14,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
   <link rel="manifest" href="../site.webmanifest">
   <title>About — Collin Zoeller</title>
-  <script>(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else if(t==='light')document.documentElement.setAttribute('data-theme','light');})();</script>
+  <script>(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else if(t==='light')document.documentElement.setAttribute('data-theme','light');var l=localStorage.getItem('lang')||((navigator.language||'en').startsWith('es')?'es':'en');document.documentElement.setAttribute('data-lang',l);})();</script>
 </head>
 <body>
 
@@ -28,10 +28,16 @@
       <li><a href="../sites/resources.html">Tools &amp; Guides</a></li>
       <li><a href="./cv.html">CV</a></li>
     </ul>
-    <div class="theme-toggle" role="group" aria-label="Color theme">
-      <button class="tt-btn" data-mode="light" title="Light"><i class="ti ti-sun"></i></button>
-      <button class="tt-btn" data-mode="system" title="System default"><i class="ti ti-device-laptop"></i></button>
-      <button class="tt-btn" data-mode="dark" title="Dark"><i class="ti ti-moon"></i></button>
+    <div class="nav-controls">
+      <div class="theme-toggle" role="group" aria-label="Color theme">
+        <button class="tt-btn" data-mode="light" title="Light"><i class="ti ti-sun"></i></button>
+        <button class="tt-btn" data-mode="system" title="System default"><i class="ti ti-device-laptop"></i></button>
+        <button class="tt-btn" data-mode="dark" title="Dark"><i class="ti ti-moon"></i></button>
+      </div>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lt-btn" data-lang="en">EN</button>
+        <button class="lt-btn" data-lang="es">ES</button>
+      </div>
     </div>
   </nav>
 
@@ -45,9 +51,9 @@
       Today I'm based in <strong>Pittsburgh</strong>, working with IRS administrative tax data at Carnegie Mellon and building computational tools I wish had existed when I started doing empirical research. This fall I head to <strong>Duke University</strong> to pursue a Master of Science in Economics and Computation — continuing this work at the frontier of empirical methods and ML. I'm fluent in Spanish, an enthusiastic pickleball player, and I once beatboxed in a nationally recognized a cappella group.</p>
     </div>
     <div class="col-divider"></div>
-    <div class="ab-hero-right">
-      <div class="ab-portrait-card">
-        <img src="../img/portrait2_color.jpeg" alt="Collin Zoeller">
+    <div class="hero-profile">
+      <div class="portrait">
+        <img src="../img/portrait1.jpeg" alt="Collin Zoeller">
       </div>
       <div class="contact-rows">
         <div class="contact-row"><i class="ti ti-map-pin" aria-hidden="true"></i> Pittsburgh, PA</div>
@@ -308,6 +314,114 @@
           else if(mode === 'light') html.setAttribute('data-theme','light');
           else html.removeAttribute('data-theme');
           btns.forEach(function(b){ b.classList.toggle('active', b.dataset.mode === mode); });
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    // Language toggle
+    (function(){
+      var RULES = [
+        // Navigation
+        {sel:'.nav-links li:nth-child(1) a', en:'Home', es:'Inicio'},
+        {sel:'.nav-links li:nth-child(2) a', en:'About', es:'Sobre mí'},
+        {sel:'.nav-links li:nth-child(3) a', en:'Research', es:'Investigación'},
+        {sel:'.nav-links li:nth-child(4) a', en:'Projects', es:'Proyectos'},
+        {sel:'.nav-links li:nth-child(5) a', en:'Tools & Guides', es:'Herramientas y Guías'},
+        {sel:'.nav-links li:nth-child(6) a', en:'CV', es:'CV'},
+        // Hero
+        {sel:'.ab-eyebrow', en:'Economist · Builder · Pittsburgh, PA', es:'Economista · Constructor · Pittsburgh, PA'},
+        {sel:'.ab-subtitle', en:'Pre-doctoral Research Associate, CMU Tepper · Incoming MSEC, Duke University', es:'Asistente de investigación predoctoral, CMU Tepper · Futuro MSEC, Universidad Duke'},
+        {sel:'.ab-bio', html:true,
+          en:'I grew up in <strong>Casper, Wyoming</strong> — an oil town where a single industry defined everything about the community. That probably has something to do with why I find questions about how firms, labor markets, and government policy shape local economies so compelling.<br><br>Today I\'m based in <strong>Pittsburgh</strong>, working with IRS administrative tax data at Carnegie Mellon and building computational tools I wish had existed when I started doing empirical research. This fall I head to <strong>Duke University</strong> to pursue a Master of Science in Economics and Computation — continuing this work at the frontier of empirical methods and ML. I\'m fluent in Spanish, an enthusiastic pickleball player, and I once beatboxed in a nationally recognized a cappella group.',
+          es:'Crecí en <strong>Casper, Wyoming</strong> — un pueblo petrolero donde una sola industria definía todo sobre la comunidad. Eso probablemente explica por qué me parecen tan fascinantes las preguntas sobre cómo las empresas, los mercados laborales y la política pública moldean las economías locales.<br><br>Hoy vivo en <strong>Pittsburgh</strong>, trabajando con datos administrativos del IRS en Carnegie Mellon y construyendo herramientas computacionales que ojalá hubieran existido cuando comencé a hacer investigación empírica. Este otoño me dirijo a la <strong>Universidad Duke</strong> para cursar una Maestría en Economía y Computación — continuando este trabajo en la frontera de los métodos empíricos y el aprendizaje automático. Hablo español con fluidez, soy un jugador entusiasta de pickleball, y en algún momento hice beatbox en un grupo de a cappella reconocido a nivel nacional.'},
+        // Social card
+        {sel:'.hero-profile .social-label', en:'Find me on', es:'Encuéntrame en'},
+        // Why This Research
+        {sel:'.ab-body .ab-sh:nth-child(1) h2', en:'Why This Research', es:'Por qué esta investigación'},
+        {sel:'.ab-body .ab-sh:nth-child(1) .ab-sc', en:'The questions behind the papers', es:'Las preguntas detrás de los artículos'},
+        {sel:'.ab-why-grid .ab-why-card:nth-child(1) .ab-wc-label', en:'Motivation', es:'Motivación'},
+        {sel:'.ab-why-grid .ab-why-card:nth-child(1) .ab-wc-q', en:'"What actually happens to people when a government program arrives too late?"', es:'"¿Qué les pasa realmente a las personas cuando un programa de gobierno llega demasiado tarde?"'},
+        {sel:'.ab-why-grid .ab-why-card:nth-child(1) .ab-wc-body', en:'Growing up near an economy defined by commodity cycles, I saw firsthand how timing matters — how the same intervention at the wrong moment can make things worse. The PPP paper is, in part, an attempt to put rigorous numbers on that intuition using data from 1.5B tax records.', es:'Creciendo cerca de una economía definida por los ciclos de materias primas, vi de primera mano cómo importa el momento — cómo la misma intervención en el momento equivocado puede empeorar las cosas. El artículo sobre PPP es, en parte, un intento de poner números rigurosos a esa intuición usando datos de 1.5 mil millones de registros fiscales.'},
+        {sel:'.ab-why-grid .ab-why-card:nth-child(2) .ab-wc-label', en:'The bigger question', es:'La pregunta más grande'},
+        {sel:'.ab-why-grid .ab-why-card:nth-child(2) .ab-wc-q', en:'"Can quantum computers and LLMs change how economists do empirical work?"', es:'"¿Pueden las computadoras cuánticas y los LLMs cambiar cómo los economistas hacen trabajo empírico?"'},
+        {sel:'.ab-why-grid .ab-why-card:nth-child(2) .ab-wc-body', en:'I\'m genuinely convinced the answer is yes — and that the profession is only beginning to catch up. I build tools (StataHelper, Explain, StataAgent) and write papers (GAMA, ANN text classification) to advance that agenda alongside the empirical work.', es:'Estoy genuinamente convencido de que la respuesta es sí — y de que la profesión apenas está comenzando a ponerse al día. Construyo herramientas (StataHelper, Explain, StataAgent) y escribo artículos (GAMA, clasificación de texto con ANN) para avanzar esa agenda junto con el trabajo empírico.'},
+        // The Path
+        {sel:'.ab-body .ab-sh:nth-child(3) h2', en:'The Path', es:'El Camino'},
+        // Timeline
+        {sel:'.ab-timeline .ab-te:nth-child(1) .ab-te-title', en:'Volunteer Missionary', es:'Misionero Voluntario'},
+        {sel:'.ab-timeline .ab-te:nth-child(1) .ab-te-inst', en:'Church of Jesus Christ of Latter-day Saints · East Los Angeles, CA', es:'Iglesia de Jesucristo de los Santos de los Últimos Días · Este de Los Ángeles, CA'},
+        {sel:'.ab-timeline .ab-te:nth-child(1) .ab-te-desc', en:'Two years working with migrant and refugee communities in East LA. Became ACTFL-certified fluent in Spanish and developed a lasting interest in the economic challenges facing immigrant communities — I still volunteer 3–5 hours per week teaching English to Spanish speakers.', es:'Dos años trabajando con comunidades migrantes y refugiadas en el Este de LA. Obtuve la certificación ACTFL de fluidez en español y desarrollé un interés duradero en los desafíos económicos que enfrentan las comunidades inmigrantes — aún me ofrezco de voluntario 3–5 horas semanales enseñando inglés a hispanohablantes.'},
+        {sel:'.ab-timeline .ab-te:nth-child(2) .ab-te-title', en:'B.S. Economics · Mathematics Minor', es:'Licenciatura en Economía · Minor en Matemáticas'},
+        {sel:'.ab-timeline .ab-te:nth-child(2) .ab-te-inst', en:'Brigham Young University · Provo, UT', es:'Universidad Brigham Young · Provo, UT'},
+        {sel:'.ab-timeline .ab-te:nth-child(2) .ab-te-desc', html:true, en:'Graduated with a 3.71 GPA, Honors Program member. Led the computer vision team at the BYU Record Linking Lab — managing 6+ CV projects for FamilySearch and Ancestry. Also beatboxed in <em>1AChord</em>, BYU\'s premier co-ed a cappella group.', es:'Me gradué con un promedio de 3.71, miembro del Programa Honors. Lideré el equipo de visión por computadora en el BYU Record Linking Lab — gestionando más de 6 proyectos para FamilySearch y Ancestry. También hice beatbox en <em>1AChord</em>, el principal grupo de a cappella mixto de BYU.'},
+        {sel:'.ab-timeline .ab-te:nth-child(3) .ab-te-title', en:'Computer Vision Researcher', es:'Investigador de Visión por Computadora'},
+        {sel:'.ab-timeline .ab-te:nth-child(3) .ab-te-inst', en:'Harvard Business School · Cambridge, MA', es:'Harvard Business School · Cambridge, MA'},
+        {sel:'.ab-timeline .ab-te:nth-child(3) .ab-te-desc', en:'Built a custom OCR and image segmentation pipeline processing 25k+ images and 1M+ data points for an HBS PhD dissertation on the Kodak collapse — my first real taste of research at the intersection of computer vision and empirical economics.', es:'Construí una canalización personalizada de OCR y segmentación de imágenes procesando más de 25k imágenes y 1M+ puntos de datos para una disertación doctoral de HBS sobre el colapso de Kodak — mi primera experiencia real de investigación en la intersección de la visión por computadora y la economía empírica.'},
+        {sel:'.ab-timeline .ab-te:nth-child(4) .ab-te-title', en:'Pre-doctoral Research Associate', es:'Asistente de Investigación Predoctoral'},
+        {sel:'.ab-timeline .ab-te:nth-child(4) .ab-te-inst', en:'Tepper School of Business, CMU · Pittsburgh, PA', es:'Tepper School of Business, CMU · Pittsburgh, PA'},
+        {sel:'.ab-timeline .ab-te:nth-child(4) .ab-te-desc', en:'Leading empirical work on ~1.5B-observation IRS datasets through the IRS Joint Statistical Research Program. Taking graduate ML and quantum computing coursework alongside the research. Completing GAMA-IV thesis on quantum annealing for IV estimation.', es:'Dirigiendo trabajo empírico sobre conjuntos de datos del IRS de ~1.5B observaciones a través del Programa de Investigación Estadística Conjunta del IRS. Tomando cursos de posgrado en ML y computación cuántica junto con la investigación. Completando la tesis GAMA-IV sobre recocido cuántico para estimación IV.'},
+        {sel:'.ab-timeline .ab-te:nth-child(5) .ab-te-title', en:'Master of Science in Economics and Computation', es:'Maestría en Ciencias en Economía y Computación'},
+        {sel:'.ab-timeline .ab-te:nth-child(5) .ab-te-inst', en:'Duke University · Durham, NC', es:'Universidad Duke · Durham, NC'},
+        {sel:'.ab-timeline .ab-te:nth-child(5) .ab-te-desc', en:'Incoming student in the MSEC program — continuing work at the frontier of empirical methods, machine learning, and quantum computation in economics.', es:'Estudiante entrante en el programa MSEC — continuando el trabajo en la frontera de los métodos empíricos, el aprendizaje automático y la computación cuántica en economía.'},
+        // Carousel section header
+        {sel:'.ab-body .ab-sh:nth-child(5) h2', html:true, en:'Outside the Lab &amp; In the Press', es:'Fuera del Laboratorio &amp; En los Medios'},
+        {sel:'.ab-body .ab-sh:nth-child(5) .ab-sc', en:'Life beyond the research', es:'La vida más allá de la investigación'},
+        // Carousel box headers
+        {sel:'.ab-dual-carousel .ab-carousel-box:nth-child(1) .ab-carousel-title', en:'Outside the Lab', es:'Fuera del Laboratorio'},
+        {sel:'.ab-dual-carousel .ab-carousel-box:nth-child(1) .ab-carousel-sub', en:'The rest of the picture', es:'El resto de la imagen'},
+        {sel:'.ab-dual-carousel .ab-carousel-box:nth-child(2) .ab-carousel-title', en:'In the Press', es:'En los Medios'},
+        {sel:'.ab-dual-carousel .ab-carousel-box:nth-child(2) .ab-carousel-sub', en:'External coverage', es:'Cobertura externa'},
+        // Lab carousel items
+        {sel:'#carousel-lab .ab-carousel-item:nth-child(1) .ab-oc-label', en:'Music', es:'Música'},
+        {sel:'#carousel-lab .ab-carousel-item:nth-child(1) .ab-oc-desc', en:'Beatboxed in BYU\'s premier co-ed a cappella group for three years. Performed at university events and competitions — proof that economists can have rhythm.', es:'Hice beatbox en el principal grupo de a cappella mixto de BYU durante tres años. Actuamos en eventos y competencias universitarias — prueba de que los economistas también tienen ritmo.'},
+        {sel:'#carousel-lab .ab-carousel-item:nth-child(2) .ab-oc-label', en:'Community', es:'Comunidad'},
+        {sel:'#carousel-lab .ab-carousel-item:nth-child(2) .ab-oc-title', en:'English Teacher · Spanish Speaker', es:'Profesor de inglés · Hispanohablante'},
+        {sel:'#carousel-lab .ab-carousel-item:nth-child(2) .ab-oc-desc', en:'ACTFL-certified fluent in Spanish. Volunteer 3–5 hours weekly teaching English to Spanish speakers — a habit that started during two years working with immigrant communities in East Los Angeles.', es:'Certificado ACTFL con fluidez en español. Me ofrezco de voluntario 3–5 horas semanales enseñando inglés a hispanohablantes — un hábito que comenzó durante dos años trabajando con comunidades inmigrantes en el Este de Los Ángeles.'},
+        // Press carousel descriptions
+        {sel:'#carousel-press .ab-carousel-item:nth-child(1) .ab-press-desc', en:'Feature on combining beatboxing, economics research, and computer vision at BYU.', es:'Reportaje sobre combinar el beatbox, la investigación en economía y la visión por computadora en BYU.'},
+        {sel:'#carousel-press .ab-carousel-item:nth-child(2) .ab-press-desc', en:'Featured for research on genealogical data and historical records at BYU.', es:'Destacado por investigación sobre datos genealógicos y registros históricos en BYU.'},
+        {sel:'#carousel-press .ab-carousel-item:nth-child(3) .ab-press-desc', en:'Invited presentation to top Utah investors on AI-powered genealogical indexing software.', es:'Presentación invitada para principales inversores de Utah sobre software de indexación genealógica impulsado por IA.'},
+        // Currently
+        {sel:'.ab-body .ab-sh:nth-child(7) h2', en:'Currently', es:'Actualmente'},
+        {sel:'.ab-body .ab-sh:nth-child(7) .ab-sc', en:'What I\'m doing right now', es:'Lo que estoy haciendo ahora'},
+        {sel:'.ab-currently .ab-cur-col:nth-child(1) .ab-cur-label', html:true, en:'<i class="ti ti-hammer" aria-hidden="true"></i> Building', es:'<i class="ti ti-hammer" aria-hidden="true"></i> Construyendo'},
+        {sel:'.ab-currently .ab-cur-col:nth-child(1) .ab-cur-item-sub:nth-child(3)', en:'Agentic AI for natural language Stata interfacing', es:'IA agéntica para interfaz de Stata en lenguaje natural'},
+        {sel:'.ab-currently .ab-cur-col:nth-child(1) .ab-cur-item-sub:nth-child(5)', en:'Duke MSEC thesis — quantum annealing for optimal IV selection', es:'Tesis MSEC Duke — recocido cuántico para selección óptima de instrumentos'},
+        {sel:'.ab-currently .ab-cur-col:nth-child(1) .ab-cur-item:nth-child(6)', en:'AI in Economic Research', es:'IA en Investigación Económica'},
+        {sel:'.ab-currently .ab-cur-col:nth-child(1) .ab-cur-item-sub:nth-child(7)', en:'Sole-authored meta-analysis paper in progress', es:'Artículo de meta-análisis de autor único en progreso'},
+        {sel:'.ab-currently .ab-cur-col:nth-child(3) .ab-cur-label', html:true, en:'<i class="ti ti-book" aria-hidden="true"></i> Studying', es:'<i class="ti ti-book" aria-hidden="true"></i> Estudiando'},
+        {sel:'.ab-currently .ab-cur-col:nth-child(3) .ab-cur-item-sub:nth-child(3)', en:'Graduate coursework at CMU', es:'Cursos de posgrado en CMU'},
+        {sel:'.ab-currently .ab-cur-col:nth-child(3) .ab-cur-item-sub:nth-child(5)', en:'Working paper on D-Wave optimization', es:'Borrador de investigación sobre optimización en D-Wave'},
+        {sel:'.ab-currently .ab-cur-col:nth-child(5) .ab-cur-label', html:true, en:'<i class="ti ti-target" aria-hidden="true"></i> Working Toward', es:'<i class="ti ti-target" aria-hidden="true"></i> Objetivos'},
+        {sel:'.ab-currently .ab-cur-col:nth-child(5) .ab-cur-item:nth-child(2)', en:'Incoming MSEC, Duke University', es:'Futuro MSEC, Universidad Duke'},
+        {sel:'.ab-currently .ab-cur-col:nth-child(5) .ab-cur-item-sub:nth-child(3)', en:'Master of Science in Economics and Computation · Fall 2026', es:'Maestría en Economía y Computación · Otoño 2026'},
+        {sel:'.ab-currently .ab-cur-col:nth-child(5) .ab-cur-item:nth-child(4)', en:'More open-source tooling', es:'Más herramientas de código abierto'},
+        {sel:'.ab-currently .ab-cur-col:nth-child(5) .ab-cur-item-sub:nth-child(5)', en:'Expanding the Stata × Python ecosystem', es:'Expandiendo el ecosistema Stata × Python'},
+      ];
+
+      function applyLang(lang) {
+        RULES.forEach(function(r) {
+          document.querySelectorAll(r.sel).forEach(function(el) {
+            if (r.html) el.innerHTML = r[lang] !== undefined ? r[lang] : r.en;
+            else el.textContent = r[lang] !== undefined ? r[lang] : r.en;
+          });
+        });
+        document.documentElement.setAttribute('data-lang', lang);
+        document.querySelectorAll('.lt-btn').forEach(function(b) {
+          b.classList.toggle('active', b.dataset.lang === lang);
+        });
+      }
+
+      var stored = localStorage.getItem('lang') || ((navigator.language || 'en').startsWith('es') ? 'es' : 'en');
+      applyLang(stored);
+
+      document.querySelectorAll('.lt-btn').forEach(function(b) {
+        b.addEventListener('click', function() {
+          var lang = b.dataset.lang;
+          localStorage.setItem('lang', lang);
+          applyLang(lang);
         });
       });
     })();

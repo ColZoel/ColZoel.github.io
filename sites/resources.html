@@ -14,7 +14,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
   <link rel="manifest" href="../site.webmanifest">
   <title>Tools &amp; Guides — Collin Zoeller</title>
-  <script>(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else if(t==='light')document.documentElement.setAttribute('data-theme','light');})();</script>
+  <script>(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else if(t==='light')document.documentElement.setAttribute('data-theme','light');var l=localStorage.getItem('lang')||((navigator.language||'en').startsWith('es')?'es':'en');document.documentElement.setAttribute('data-lang',l);})();</script>
 </head>
 <body>
 
@@ -28,10 +28,16 @@
       <li><a href="../sites/resources.html" class="active">Tools &amp; Guides</a></li>
       <li><a href="./cv.html">CV</a></li>
     </ul>
-    <div class="theme-toggle" role="group" aria-label="Color theme">
-      <button class="tt-btn" data-mode="light" title="Light"><i class="ti ti-sun"></i></button>
-      <button class="tt-btn" data-mode="system" title="System default"><i class="ti ti-device-laptop"></i></button>
-      <button class="tt-btn" data-mode="dark" title="Dark"><i class="ti ti-moon"></i></button>
+    <div class="nav-controls">
+      <div class="theme-toggle" role="group" aria-label="Color theme">
+        <button class="tt-btn" data-mode="light" title="Light"><i class="ti ti-sun"></i></button>
+        <button class="tt-btn" data-mode="system" title="System default"><i class="ti ti-device-laptop"></i></button>
+        <button class="tt-btn" data-mode="dark" title="Dark"><i class="ti ti-moon"></i></button>
+      </div>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lt-btn" data-lang="en">EN</button>
+        <button class="lt-btn" data-lang="es">ES</button>
+      </div>
     </div>
   </nav>
 
@@ -92,6 +98,7 @@
             <a class="res-dl-link" href="../resources/efficient_stata_big_data.pdf" target="_blank" rel="noopener">
               View <i class="ti ti-arrow-right" aria-hidden="true"></i>
             </a>
+            <span class="lang-en-note">(en inglés)</span>
           </div>
         </div>
         <div class="res-collection-item">
@@ -105,6 +112,7 @@
             <a class="res-dl-link" href="../resources/Panel_Data_Checklist.pdf" target="_blank" rel="noopener">
               View <i class="ti ti-arrow-right" aria-hidden="true"></i>
             </a>
+            <span class="lang-en-note">(en inglés)</span>
           </div>
         </div>
         <div class="res-collection-item">
@@ -118,6 +126,7 @@
             <a class="res-dl-link" href="../resources/Regression_Results_Checklist.pdf" target="_blank" rel="noopener">
               View <i class="ti ti-arrow-right" aria-hidden="true"></i>
             </a>
+            <span class="lang-en-note">(en inglés)</span>
           </div>
         </div>
       </div>
@@ -153,6 +162,7 @@
             <a class="res-dl-link" href="https://medium.com/@collin.zoeller/leveraging-python-with-stata-part-1-0c5c0c6fca2c" target="_blank" rel="noopener">
               Read <i class="ti ti-arrow-right" aria-hidden="true"></i>
             </a>
+            <span class="lang-en-note">(en inglés)</span>
           </div>
         </div>
         <div class="res-collection-item">
@@ -167,6 +177,7 @@
             <a class="res-dl-link" href="https://medium.com/@collin.zoeller/leveraging-python-with-stata-part-2-68c599d8055f" target="_blank" rel="noopener">
               Read <i class="ti ti-arrow-right" aria-hidden="true"></i>
             </a>
+            <span class="lang-en-note">(en inglés)</span>
           </div>
         </div>
       </div>
@@ -194,6 +205,7 @@
           <a class="res-dl-link" href="https://medium.com/gitconnected/a-gentle-introduction-to-quantum-computing-e97eb93da563" target="_blank" rel="noopener">
             <span class="res-badge res-badge-teal" style="margin-right:8px">Medium · 7 min</span>Read <i class="ti ti-arrow-right" aria-hidden="true"></i>
           </a>
+          <span class="lang-en-note">(en inglés)</span>
         </div>
       </div>
     </div>
@@ -219,6 +231,7 @@
           <a class="res-dl-link" href="https://www.linkedin.com/pulse/ocr-pipeline-collin-zoeller/" target="_blank" rel="noopener">
             Read <i class="ti ti-arrow-right" aria-hidden="true"></i>
           </a>
+          <span class="lang-en-note">(en inglés)</span>
         </div>
       </div>
     </div>
@@ -298,6 +311,99 @@
           else if(mode === 'light') html.setAttribute('data-theme','light');
           else html.removeAttribute('data-theme');
           btns.forEach(function(b){ b.classList.toggle('active', b.dataset.mode === mode); });
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    // Language toggle
+    (function(){
+      var RULES = [
+        // Navigation
+        {sel:'.nav-links li:nth-child(1) a', en:'Home', es:'Inicio'},
+        {sel:'.nav-links li:nth-child(2) a', en:'About', es:'Sobre mí'},
+        {sel:'.nav-links li:nth-child(3) a', en:'Research', es:'Investigación'},
+        {sel:'.nav-links li:nth-child(4) a', en:'Projects', es:'Proyectos'},
+        {sel:'.nav-links li:nth-child(5) a', en:'Tools & Guides', es:'Herramientas y Guías'},
+        {sel:'.nav-links li:nth-child(6) a', en:'CV', es:'CV'},
+        // Page header
+        {sel:'.res-page-eyebrow', en:'Original work · Freely available', es:'Trabajo original · Disponible gratuitamente'},
+        {sel:'.res-page-title', html:true, en:'Tools &amp;<em>Guides</em>', es:'Herramientas &amp;<em>Guías</em>'},
+        {sel:'.res-page-desc', en:"Methodological guides, tutorials, and articles I've written for researchers working at the intersection of economics and computation.", es:'Guías metodológicas, tutoriales y artículos que he escrito para investigadores que trabajan en la intersección de la economía y la computación.'},
+        // Stats
+        {sel:'.res-header-right .res-stat:nth-child(1) .res-stat-label', en:'Original resources', es:'Recursos originales'},
+        {sel:'.res-header-right .res-stat:nth-child(3) .res-stat-label', en:'Topic areas', es:'Áreas temáticas'},
+        {sel:'.res-header-right .res-stat:nth-child(5) .res-stat-label', en:'Always', es:'Siempre'},
+        // Stata Toolkit section
+        {sel:'.res-body .res-section-head:nth-child(1) .res-section-title', en:'The Stata Methodology Toolkit', es:'El Kit de Metodología Stata'},
+        {sel:'.res-body .res-section-head:nth-child(1) .res-section-sub', en:'3 guides · PDF', es:'3 guías · PDF'},
+        {sel:'.res-collection:nth-child(2) .res-collection-label', en:'Collection · 3 PDFs', es:'Colección · 3 PDFs'},
+        {sel:'.res-collection:nth-child(2) .res-collection-name', en:'Practical guides for rigorous econometric work', es:'Guías prácticas para trabajo econométrico riguroso'},
+        {sel:'.res-collection:nth-child(2) .res-collection-desc', en:'Three complementary references covering the full workflow — from wrangling large datasets to presenting clean, credible results.', es:'Tres referencias complementarias que cubren el flujo de trabajo completo — desde el manejo de grandes conjuntos de datos hasta la presentación de resultados limpios y creíbles.'},
+        {sel:'.res-collection:nth-child(2) .res-collection-audience', html:true, en:'<i class="ti ti-users" aria-hidden="true"></i> For researchers working with large-scale panel data', es:'<i class="ti ti-users" aria-hidden="true"></i> Para investigadores que trabajan con datos de panel a gran escala'},
+        // Stata items
+        {sel:'.res-collection-items-3 .res-collection-item:nth-child(1) .res-item-title', en:'Stata for Big Data', es:'Stata para Datos Masivos'},
+        {sel:'.res-collection-items-3 .res-collection-item:nth-child(1) .res-item-desc', en:'Memory management, loops, and parallelization strategies for large administrative and survey datasets.', es:'Gestión de memoria, bucles y estrategias de paralelización para grandes conjuntos de datos administrativos y encuestas.'},
+        {sel:'.res-collection-items-3 .res-collection-item:nth-child(2) .res-item-title', en:'Quality Checklist for Panel Data', es:'Lista de Verificación de Calidad para Datos de Panel'},
+        {sel:'.res-collection-items-3 .res-collection-item:nth-child(2) .res-item-desc', en:'Step-by-step validation of panel datasets — balance, attrition, merges, and integrity checks.', es:'Validación paso a paso de conjuntos de datos de panel — balance, desgaste, fusiones y verificaciones de integridad.'},
+        {sel:'.res-collection-items-3 .res-collection-item:nth-child(3) .res-item-title', en:'Checklist for Regression Results', es:'Lista de Verificación para Resultados de Regresión'},
+        {sel:'.res-collection-items-3 .res-collection-item:nth-child(3) .res-item-desc', en:'Pre-publication checklist covering specification robustness, standard errors, fixed effects, and presentation.', es:'Lista de verificación previa a la publicación que cubre la robustez de la especificación, errores estándar, efectos fijos y presentación.'},
+        // Python × Stata section
+        {sel:'.res-body .res-section-head:nth-child(3) .res-section-title', en:'Python × Stata', es:'Python × Stata'},
+        {sel:'.res-body .res-section-head:nth-child(3) .res-section-sub', en:'2-part series · Medium', es:'Serie de 2 partes · Medium'},
+        {sel:'.res-collection:nth-child(4) .res-collection-label', en:'Series · 2 articles', es:'Serie · 2 artículos'},
+        {sel:'.res-collection:nth-child(4) .res-collection-name', en:'Leveraging Python with Stata', es:'Aprovechando Python con Stata'},
+        {sel:'.res-collection:nth-child(4) .res-collection-desc', en:'A practical two-part walkthrough of the Stata–Python integration — from embedding Python inside a Stata session to driving Stata entirely from Python via the PyStata API.', es:'Un recorrido práctico en dos partes de la integración Stata–Python — desde incrustar Python dentro de una sesión de Stata hasta controlar Stata completamente desde Python mediante la API PyStata.'},
+        {sel:'.res-collection:nth-child(4) .res-collection-audience', html:true, en:'<i class="ti ti-users" aria-hidden="true"></i> For Stata users ready to extend their workflow with Python', es:'<i class="ti ti-users" aria-hidden="true"></i> Para usuarios de Stata listos para extender su flujo de trabajo con Python'},
+        // PyStata items
+        {sel:'.res-collection-items-2 .res-collection-item:nth-child(1) .res-item-title', en:'Using Python inside Stata', es:'Usando Python dentro de Stata'},
+        {sel:'.res-collection-items-2 .res-collection-item:nth-child(1) .res-item-desc', en:'How to access Python from within a running Stata session to extend capabilities with custom functions, file I/O, and data manipulation.', es:'Cómo acceder a Python desde dentro de una sesión de Stata activa para extender las capacidades con funciones personalizadas, E/S de archivos y manipulación de datos.'},
+        {sel:'.res-collection-items-2 .res-collection-item:nth-child(2) .res-item-title', en:'Using Stata from within Python', es:'Usando Stata desde Python'},
+        {sel:'.res-collection-items-2 .res-collection-item:nth-child(2) .res-item-desc', en:'Introduces the PyStata API — a Python wrapper that lets you call Stata commands, pass data, and run parallelized workflows from a Python script or Jupyter notebook.', es:'Introduce la API PyStata — un envoltorio de Python que te permite llamar comandos de Stata, pasar datos y ejecutar flujos de trabajo paralelizados desde un script de Python o un cuaderno Jupyter.'},
+        // Quantum section
+        {sel:'.res-body .res-section-head:nth-child(5) .res-section-title', en:'Quantum Computing', es:'Computación Cuántica'},
+        {sel:'.res-body .res-section-head:nth-child(5) .res-section-sub', en:'Article · Medium', es:'Artículo · Medium'},
+        {sel:'.res-card:nth-child(6) .res-card-title', en:'A Gentle Introduction to Quantum Computing', es:'Una Introducción Accesible a la Computación Cuántica'},
+        {sel:'.res-card:nth-child(6) .res-card-subtitle', en:'How it Works, Who\'s Doing it, and How You Can Too', es:'Cómo funciona, quién lo está haciendo y cómo puedes empezar'},
+        {sel:'.res-card:nth-child(6) .res-card-desc', html:true, en:'An accessible entry point into quantum computing — covering qubits, superposition, and entanglement without requiring a physics background, then surveying the real-world platforms (Qiskit, Cirq, Braket) you can start using today. Published in <em>Level Up Coding</em>, December 2024.', es:'Un punto de entrada accesible a la computación cuántica — que cubre qubits, superposición y entrelazamiento sin requerir conocimientos de física, y luego examina las plataformas reales (Qiskit, Cirq, Braket) que puedes comenzar a usar hoy. Publicado en <em>Level Up Coding</em>, diciembre 2024.'},
+        {sel:'.res-card:nth-child(6) .res-card-audience', html:true, en:'<i class="ti ti-users" aria-hidden="true"></i> Economists, data scientists, and curious practitioners', es:'<i class="ti ti-users" aria-hidden="true"></i> Economistas, científicos de datos y practicantes curiosos'},
+        // ML section
+        {sel:'.res-body .res-section-head:nth-child(7) .res-section-title', en:'Machine Learning', es:'Aprendizaje Automático'},
+        {sel:'.res-body .res-section-head:nth-child(7) .res-section-sub', en:'Tutorial · LinkedIn Pulse', es:'Tutorial · LinkedIn Pulse'},
+        {sel:'.res-card:nth-child(8) .res-card-title', en:'Building an OCR Pipeline with OpenCV', es:'Construyendo una Canalización OCR con OpenCV'},
+        {sel:'.res-card:nth-child(8) .res-card-desc', en:'A practical walkthrough of constructing an OCR and NLP pipeline for digitizing handwritten historical records — drawn from real work building census transcription tools at the BYU Record Linking Lab in collaboration with FamilySearch and Harvard Business School.', es:'Un recorrido práctico para construir una canalización de OCR y PLN para digitalizar registros históricos escritos a mano — basado en trabajo real de construcción de herramientas de transcripción de censos en el BYU Record Linking Lab, en colaboración con FamilySearch y Harvard Business School.'},
+        {sel:'.res-card:nth-child(8) .res-card-audience', html:true, en:'<i class="ti ti-users" aria-hidden="true"></i> ML practitioners &amp; digital humanities researchers', es:'<i class="ti ti-users" aria-hidden="true"></i> Practicantes de ML &amp; investigadores de humanidades digitales'},
+        // External communities
+        {sel:'.res-body .res-section-head:nth-child(9) .res-section-title', en:'External communities', es:'Comunidades externas'},
+        {sel:'.res-body .res-section-head:nth-child(9) .res-section-sub', en:'Not affiliated — just useful', es:'Sin afiliación — solo útiles'},
+        {sel:'.res-external-list .res-external-item:nth-child(1) .res-external-name', en:'Moderated Machine Learning Community', es:'Comunidad de Aprendizaje Automático Moderada'},
+        {sel:'.res-external-list .res-external-item:nth-child(1) .res-external-note', en:'LinkedIn group · Curated ML discussions', es:'Grupo de LinkedIn · Debates curados de ML'},
+        {sel:'.res-external-list .res-external-item:nth-child(2) .res-external-name', en:'Learn Statistics Through Practice', es:'Aprende Estadística en la Práctica'},
+        {sel:'.res-external-list .res-external-item:nth-child(2) .res-external-note', en:'LinkedIn group · Applied statistics community', es:'Grupo de LinkedIn · Comunidad de estadística aplicada'},
+      ];
+
+      function applyLang(lang) {
+        RULES.forEach(function(r) {
+          document.querySelectorAll(r.sel).forEach(function(el) {
+            if (r.html) el.innerHTML = r[lang] !== undefined ? r[lang] : r.en;
+            else el.textContent = r[lang] !== undefined ? r[lang] : r.en;
+          });
+        });
+        document.documentElement.setAttribute('data-lang', lang);
+        document.querySelectorAll('.lt-btn').forEach(function(b) {
+          b.classList.toggle('active', b.dataset.lang === lang);
+        });
+      }
+
+      var stored = localStorage.getItem('lang') || ((navigator.language || 'en').startsWith('es') ? 'es' : 'en');
+      applyLang(stored);
+
+      document.querySelectorAll('.lt-btn').forEach(function(b) {
+        b.addEventListener('click', function() {
+          var lang = b.dataset.lang;
+          localStorage.setItem('lang', lang);
+          applyLang(lang);
         });
       });
     })();
