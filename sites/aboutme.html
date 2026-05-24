@@ -75,8 +75,26 @@
 
   <div class="ab-body">
 
-    <!-- THE PATH -->
+    <!-- WHY THIS RESEARCH -->
     <div class="ab-sh">
+      <h2>Why This Research</h2>
+      <span class="ab-sc">The questions behind the papers</span>
+    </div>
+    <div class="ab-why-grid">
+      <div class="ab-why-card">
+        <p class="ab-wc-label">Motivation</p>
+        <p class="ab-wc-q">"What actually happens to people when a government program arrives too late?"</p>
+        <p class="ab-wc-body">Growing up near an economy defined by commodity cycles, I saw firsthand how timing matters — how the same intervention at the wrong moment can make things worse. The PPP paper is, in part, an attempt to put rigorous numbers on that intuition using data from 1.5B tax records.</p>
+      </div>
+      <div class="ab-why-card">
+        <p class="ab-wc-label">The bigger question</p>
+        <p class="ab-wc-q">"Can quantum computers and LLMs change how economists do empirical work?"</p>
+        <p class="ab-wc-body">I'm genuinely convinced the answer is yes — and that the profession is only beginning to catch up. I build tools (StataHelper, Explain, StataAgent) and write papers (GAMA, ANN text classification) to advance that agenda alongside the empirical work.</p>
+      </div>
+    </div>
+
+    <!-- THE PATH -->
+    <div class="ab-sh" style="margin-top:12px">
       <h2>The Path</h2>
       <span class="ab-sc">Wyoming → Provo → Cambridge → Pittsburgh → Durham</span>
     </div>
@@ -139,24 +157,6 @@
 
     </div>
 
-    <!-- WHY THIS RESEARCH -->
-    <div class="ab-sh" style="margin-top:12px">
-      <h2>Why This Research</h2>
-      <span class="ab-sc">The questions behind the papers</span>
-    </div>
-    <div class="ab-why-grid">
-      <div class="ab-why-card">
-        <p class="ab-wc-label">Motivation</p>
-        <p class="ab-wc-q">"What actually happens to people when a government program arrives too late?"</p>
-        <p class="ab-wc-body">Growing up near an economy defined by commodity cycles, I saw firsthand how timing matters — how the same intervention at the wrong moment can make things worse. The PPP paper is, in part, an attempt to put rigorous numbers on that intuition using data from 1.5B tax records.</p>
-      </div>
-      <div class="ab-why-card">
-        <p class="ab-wc-label">The bigger question</p>
-        <p class="ab-wc-q">"Can quantum computers and LLMs change how economists do empirical work?"</p>
-        <p class="ab-wc-body">I'm genuinely convinced the answer is yes — and that the profession is only beginning to catch up. I build tools (StataHelper, Explain, StataAgent) and write papers (GAMA, ANN text classification) to advance that agenda alongside the empirical work.</p>
-      </div>
-    </div>
-
     <!-- OUTSIDE THE LAB + IN THE PRESS (dual synchronized carousel) -->
     <div class="ab-sh" style="margin-top:12px">
       <h2>Outside the Lab &amp; In the Press</h2>
@@ -173,7 +173,7 @@
         <div class="ab-carousel-track" id="carousel-lab">
           <div class="ab-carousel-item active">
             <div class="ab-oc">
-              <img class="ab-oc-img" src="../img/1ac_cover.jpeg" alt="1AChord">
+              <img class="ab-oc-img" src="../img/1ac_cover.jpeg" alt="1AChord" style="object-position: center 25%;">
               <div class="ab-oc-body">
                 <p class="ab-oc-label">Music</p>
                 <p class="ab-oc-title">Vocal Percussionist · 1AChord</p>
@@ -184,7 +184,7 @@
           </div>
           <div class="ab-carousel-item">
             <div class="ab-oc">
-              <img class="ab-oc-img" src="../img/portrait2_color.jpeg" alt="Community work" style="object-position:center top">
+              <img class="ab-oc-img" src="../img/portrait2_color.jpeg" alt="Community work" style="object-position: center 30%;">
               <div class="ab-oc-body">
                 <p class="ab-oc-label">Community</p>
                 <p class="ab-oc-title">English Teacher · Spanish Speaker</p>
@@ -321,7 +321,7 @@
         carousels.forEach(c => {
           goTo(c, (c.current + 1) % c.items.length);
         });
-      }, 4000);
+      }, 10000);
     })();
   </script>
 
