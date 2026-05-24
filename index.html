@@ -14,7 +14,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
   <title>Collin Zoeller</title>
-  <script>(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else if(t==='light')document.documentElement.setAttribute('data-theme','light');})();</script>
+  <script>(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else if(t==='light')document.documentElement.setAttribute('data-theme','light');var l=localStorage.getItem('lang')||((navigator.language||'en').startsWith('es')?'es':'en');document.documentElement.setAttribute('data-lang',l);})();</script>
 </head>
 <body>
 
@@ -28,10 +28,16 @@
       <li><a href="./sites/resources.html">Tools &amp; Guides</a></li>
       <li><a href="./sites/cv.html">CV</a></li>
     </ul>
-    <div class="theme-toggle" role="group" aria-label="Color theme">
-      <button class="tt-btn" data-mode="light" title="Light"><i class="ti ti-sun"></i></button>
-      <button class="tt-btn" data-mode="system" title="System default"><i class="ti ti-device-laptop"></i></button>
-      <button class="tt-btn" data-mode="dark" title="Dark"><i class="ti ti-moon"></i></button>
+    <div class="nav-controls">
+      <div class="theme-toggle" role="group" aria-label="Color theme">
+        <button class="tt-btn" data-mode="light" title="Light"><i class="ti ti-sun"></i></button>
+        <button class="tt-btn" data-mode="system" title="System default"><i class="ti ti-device-laptop"></i></button>
+        <button class="tt-btn" data-mode="dark" title="Dark"><i class="ti ti-moon"></i></button>
+      </div>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lt-btn" data-lang="en">EN</button>
+        <button class="lt-btn" data-lang="es">ES</button>
+      </div>
     </div>
   </nav>
 
@@ -266,34 +272,54 @@
     }
 
     function loadPapers() {
-      const el = document.getElementById('papers-feed');
-      const papers = [
+      var lang = document.documentElement.getAttribute('data-lang') || 'en';
+      var el = document.getElementById('papers-feed');
+      var badges = {
+        en: { pub: 'Published', progress: 'In Progress', wp: 'Working Paper' },
+        es: { pub: 'Publicado', progress: 'En progreso', wp: 'Borrador' }
+      };
+      var B = badges[lang] || badges.en;
+      var readMore = lang === 'es' ? 'Leer más →' : 'Read more →';
+      var papers = [
         {
           title: 'GAMA-IV: Quantum Annealing for Globally Optimal Instrument Selection',
-          venue: 'Duke MSEC Thesis', year: '2026', status: 'progress',
+          venue: { en: 'Duke MSEC Thesis', es: 'Tesis MSEC, Duke' },
+          year: '2026', status: 'progress',
           url: './sites/research.html',
-          abstract: 'Introduces GAMA-IV, a quantum-classical hybrid methodology for instrument selection in instrumental variables (IV) estimation. We apply the Graver Augmentation via Quantum Annealing (GAMA) framework to the disaggregated Bartik instrument setting of Goldsmith-Pinkham et al. (2020), casting the GPS information criterion as an integer program solved to global optimality via D-Wave quantum annealing.'
+          abstract: {
+            en: 'Introduces GAMA-IV, a quantum-classical hybrid methodology for instrument selection in instrumental variables (IV) estimation. We apply the Graver Augmentation via Quantum Annealing (GAMA) framework to the disaggregated Bartik instrument setting of Goldsmith-Pinkham et al. (2020), casting the GPS information criterion as an integer program solved to global optimality via D-Wave quantum annealing.',
+            es: 'Introduce GAMA-IV, una metodología híbrida cuántico-clásica para la selección de instrumentos en la estimación de variables instrumentales (IV). Aplicamos el marco GAMA al contexto del instrumento de Bartik desagregado de Goldsmith-Pinkham et al. (2020), formulando el criterio de información GPS como un programa entero resuelto a óptimo global mediante recocido cuántico D-Wave.'
+          }
         },
         {
           title: 'Entrepreneurship and the Gig Economy: Evidence from U.S. Tax Returns',
-          venue: 'Journal of Financial Economics', year: '2025', status: 'pub',
+          venue: { en: 'Journal of Financial Economics', es: 'Journal of Financial Economics' },
+          year: '2025', status: 'pub',
           url: 'https://www.nber.org/papers/w33347',
-          abstract: 'Platform intermediation of goods and services has considerably transformed the U.S. economy. We use administrative data on U.S. tax returns to study the role of the gig economy on entrepreneurship. We find that gig workers are more likely to become entrepreneurs, particularly those who are lower income, younger, and benefit from flexibility.'
+          abstract: {
+            en: 'Platform intermediation of goods and services has considerably transformed the U.S. economy. We use administrative data on U.S. tax returns to study the role of the gig economy on entrepreneurship. We find that gig workers are more likely to become entrepreneurs, particularly those who are lower income, younger, and benefit from flexibility.',
+            es: 'La intermediación de plataformas de bienes y servicios ha transformado considerablemente la economía de EE. UU. Usamos datos administrativos de declaraciones de impuestos para estudiar el papel de la economía gig en el emprendimiento. Encontramos que los trabajadores gig tienen mayor probabilidad de convertirse en empresarios, especialmente los de menores ingresos, los más jóvenes y quienes se benefician de la flexibilidad.'
+          }
         },
       ];
-      el.innerHTML = papers.map(p => `
-        <div class="paper">
-          <a class="paper-title" href="${p.url}" target="_blank" rel="noopener">${p.title}</a>
-          <div class="paper-meta">
-            <span class="paper-badge ${p.status === 'pub' ? 'pb-pub' : p.status === 'progress' ? 'pb-prog' : 'pb-wp'}">${p.status === 'pub' ? 'Published' : p.status === 'progress' ? 'In Progress' : 'Working Paper'}</span>
-            <span>${p.venue}</span>
-            <span>${p.year}</span>
-          </div>
-          <div class="paper-abstract-wrap">
-            <p class="paper-abstract-text">${truncateAbstract(p.abstract)}</p>
-            <a class="paper-read-more" href="${p.url}" target="_blank" rel="noopener">Read more →</a>
-          </div>
-        </div>`).join('');
+      el.innerHTML = papers.map(function(p) {
+        var abs = p.abstract[lang] || p.abstract.en;
+        var venue = p.venue[lang] || p.venue.en;
+        var badgeLabel = p.status === 'pub' ? B.pub : p.status === 'progress' ? B.progress : B.wp;
+        var badgeClass = p.status === 'pub' ? 'pb-pub' : p.status === 'progress' ? 'pb-prog' : 'pb-wp';
+        return '<div class="paper">' +
+          '<a class="paper-title" href="' + p.url + '" target="_blank" rel="noopener">' + p.title + '</a>' +
+          '<div class="paper-meta">' +
+            '<span class="paper-badge ' + badgeClass + '">' + badgeLabel + '</span>' +
+            '<span>' + venue + '</span>' +
+            '<span>' + p.year + '</span>' +
+          '</div>' +
+          '<div class="paper-abstract-wrap">' +
+            '<p class="paper-abstract-text">' + truncateAbstract(abs) + '</p>' +
+            '<a class="paper-read-more" href="' + p.url + '" target="_blank" rel="noopener">' + readMore + '</a>' +
+          '</div>' +
+        '</div>';
+      }).join('');
     }
 
     // Staggered tag wave on hover
@@ -327,6 +353,74 @@
           else if(mode === 'light') html.setAttribute('data-theme','light');
           else html.removeAttribute('data-theme');
           btns.forEach(function(b){ b.classList.toggle('active', b.dataset.mode === mode); });
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    // Language toggle
+    (function(){
+      var RULES = [
+        // Navigation
+        {sel:'.nav-links li:nth-child(1) a', en:'Home', es:'Inicio'},
+        {sel:'.nav-links li:nth-child(2) a', en:'About', es:'Sobre mí'},
+        {sel:'.nav-links li:nth-child(3) a', en:'Research', es:'Investigación'},
+        {sel:'.nav-links li:nth-child(4) a', en:'Projects', es:'Proyectos'},
+        {sel:'.nav-links li:nth-child(5) a', en:'Tools & Guides', es:'Herramientas y Guías'},
+        {sel:'.nav-links li:nth-child(6) a', en:'CV', es:'CV'},
+        // Hero
+        {sel:'.eyebrow', en:'Pre-doctoral RA, CMU · Incoming MSEC, Duke · Fall 2026', es:'Asistente de investigación predoctoral, CMU · Futuro MSEC, Duke · Otoño 2026'},
+        {sel:'.tagline', en:'Aspiring economist and builder at the intersection of machine learning, quantum computing, and empirical research.', es:'Economista y constructor en formación, en la intersección del aprendizaje automático, la computación cuántica y la investigación empírica.'},
+        // Info blocks
+        {sel:'.hero-info .info-block:nth-child(1) .info-label', en:'Current role', es:'Rol actual'},
+        {sel:'.hero-info .info-block:nth-child(1) .info-heading', html:true, en:'Pre-doctoral Research Associate,<br>Tepper School of Business', es:'Asistente de Investigación Predoctoral,<br>Tepper School of Business'},
+        {sel:'.hero-info .info-block:nth-child(1) .info-body', en:'Working with IRS administrative tax data on questions in finance and entrepreneurship. Headed to Duke this fall for the MSEC.', es:'Trabajando con datos administrativos del IRS sobre finanzas y emprendimiento. Me incorporo a Duke este otoño para el MSEC.'},
+        {sel:'.hero-info .info-block:nth-child(2) .info-label', en:'Research interests', es:'Intereses de investigación'},
+        {sel:'.hero-info .info-block:nth-child(2) .info-heading', en:'ML × Economics', es:'ML × Economía'},
+        {sel:'.hero-info .info-block:nth-child(2) .info-body', en:'Integrating machine learning and quantum computing into empirical economics.', es:'Integrando aprendizaje automático y computación cuántica en la economía empírica.'},
+        {sel:'.hero-info .info-block:nth-child(3) .info-label', en:'Technical toolkit', es:'Herramientas técnicas'},
+        {sel:'.hero-info .info-block:nth-child(3) .info-heading', en:'Skills & platforms', es:'Habilidades y plataformas'},
+        // Papers label & link
+        {sel:'.papers-label span', en:'Recent papers', es:'Publicaciones recientes'},
+        {sel:'.hero-main .activity-more', en:'All research →', es:'Toda la investigación →'},
+        // Project strip
+        {sel:'.project-badge', html:true, en:'<span class="pulse-dot"></span> Current project · Duke MSEC Thesis', es:'<span class="pulse-dot"></span> Proyecto actual · Tesis MSEC, Duke'},
+        {sel:'.project-title', en:'GAMA-IV: Quantum Annealing for Globally Optimal Instrument Selection', es:'GAMA-IV: Recocido Cuántico para la Selección Óptima de Instrumentos'},
+        {sel:'.project-desc', en:'Applying the GAMA framework to instrument selection in disaggregated Bartik IV estimation — the first globally optimal procedure for the GPS (2020) framework, implemented on D-Wave quantum hardware.', es:'Aplicando el marco GAMA a la selección de instrumentos en la estimación IV de Bartik desagregado — el primer procedimiento globalmente óptimo para el marco GPS (2020), implementado en hardware cuántico D-Wave.'},
+        {sel:'.teal-link', html:true, en:'View project <i class="ti ti-arrow-right" aria-hidden="true"></i>', es:'Ver proyecto <i class="ti ti-arrow-right" aria-hidden="true"></i>'},
+        // Activity panels
+        {sel:'.activity-panel:nth-child(1) .activity-label', html:true, en:'<i class="ti ti-brand-medium" aria-hidden="true"></i> Medium Articles', es:'<i class="ti ti-brand-medium" aria-hidden="true"></i> Artículos en Medium'},
+        {sel:'.activity-panel:nth-child(1) .activity-more', en:'All posts →', es:'Todas las publicaciones →'},
+        {sel:'.activity-panel:nth-child(3) .activity-label', html:true, en:'<i class="ti ti-brand-github" aria-hidden="true"></i> GitHub activity', es:'<i class="ti ti-brand-github" aria-hidden="true"></i> Actividad en GitHub'},
+        {sel:'.activity-panel:nth-child(3) .activity-more', en:'View profile →', es:'Ver perfil →'},
+        // Social card
+        {sel:'.hero-profile .social-label', en:'Find me on', es:'Encuéntrame en'},
+      ];
+
+      function applyLang(lang) {
+        RULES.forEach(function(r) {
+          document.querySelectorAll(r.sel).forEach(function(el) {
+            if (r.html) el.innerHTML = r[lang] !== undefined ? r[lang] : r.en;
+            else el.textContent = r[lang] !== undefined ? r[lang] : r.en;
+          });
+        });
+        document.documentElement.setAttribute('data-lang', lang);
+        document.querySelectorAll('.lt-btn').forEach(function(b) {
+          b.classList.toggle('active', b.dataset.lang === lang);
+        });
+        // Re-render papers with new language
+        if (typeof loadPapers === 'function') loadPapers();
+      }
+
+      var stored = localStorage.getItem('lang') || ((navigator.language || 'en').startsWith('es') ? 'es' : 'en');
+      applyLang(stored);
+
+      document.querySelectorAll('.lt-btn').forEach(function(b) {
+        b.addEventListener('click', function() {
+          var lang = b.dataset.lang;
+          localStorage.setItem('lang', lang);
+          applyLang(lang);
         });
       });
     })();
