@@ -183,10 +183,10 @@
       </div>
     </div>
 
-    <!-- QUANTUM COMPUTING -->
+    <!-- QUANTUM COMPUTING & OPTIMIZATION -->
     <div class="res-section-head">
-      <h2 class="res-section-title">Quantum Computing</h2>
-      <span class="res-section-sub">Article · Medium</span>
+      <h2 class="res-section-title">Quantum Computing &amp; Optimization</h2>
+      <span class="res-section-sub">Article · Medium · Video</span>
       <span class="res-authored-badge">Written by Collin</span>
     </div>
     <div class="res-card">
@@ -206,6 +206,30 @@
             <span class="res-badge res-badge-teal" style="margin-right:8px">Medium · 7 min</span>Read <i class="ti ti-arrow-right" aria-hidden="true"></i>
           </a>
           <span class="lang-en-note">(en inglés)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="res-card">
+      <div class="res-card-top">
+        <div class="res-card-icon"><i class="ti ti-player-play" aria-hidden="true"></i></div>
+        <div>
+          <h3 class="res-card-title">Quantum Annealing: What is the Graver Basis?</h3>
+        </div>
+      </div>
+      <div class="res-card-video-body">
+        <div class="res-video-wrap">
+          <iframe id="graver-iframe" src="https://www.youtube.com/embed/T1ckjHmU614?rel=0&modestbranding=1&enablejsapi=1" allowfullscreen title="Quantum Annealing: What is the Graver Basis?"></iframe>
+        </div>
+        <p class="res-card-desc">An accessible video outlining the what, when, and how of the Graver Basis — a fundamental property in integer programming that quantum annealing can exploit. Prompted by Collin, produced by Google's NotebookLM. Public notebook access pending.</p>
+      </div>
+      <div class="res-card-footer">
+        <span class="res-card-audience"><i class="ti ti-users" aria-hidden="true"></i> Data scientists, ML practitioners, and quantum computing enthusiasts</span>
+        <div style="display:flex;align-items:center;gap:12px">
+          <button class="like-btn" data-resource="quantum-graver"><i class="ti ti-heart"></i> <span class="like-count">0</span></button>
+          <span class="res-badge res-badge-teal">NotebookLM · Video</span>
+          <button class="res-video-btn" id="graver-theater-btn" title="Theater mode"><i class="ti ti-arrows-maximize"></i> Expand</button>
+          <button class="res-video-btn" id="graver-play-btn" title="Play video"><i class="ti ti-player-play-filled"></i> Play</button>
         </div>
       </div>
     </div>
@@ -262,6 +286,19 @@
 
   </div>
 
+  <!-- Theater mode overlay -->
+  <div class="res-theater-overlay" id="graver-theater" hidden>
+    <div class="res-theater-modal">
+      <div class="res-theater-header">
+        <span class="res-theater-title">Quantum Annealing: What is the Graver Basis?</span>
+        <button class="res-theater-close" id="graver-theater-close" title="Close (Esc)"><i class="ti ti-x"></i></button>
+      </div>
+      <div class="res-theater-video">
+        <iframe id="graver-theater-iframe" src="" allowfullscreen title="Quantum Annealing: What is the Graver Basis? — Theater"></iframe>
+      </div>
+    </div>
+  </div>
+
   <script>
     // Initialise counts and liked state from localStorage
     document.querySelectorAll('.like-btn').forEach(btn => {
@@ -290,6 +327,41 @@
         }
       });
     });
+  </script>
+
+  <script>
+    // Graver Basis video controls
+    (function() {
+      var iframe       = document.getElementById('graver-iframe');
+      var overlay      = document.getElementById('graver-theater');
+      var theaterFrame = document.getElementById('graver-theater-iframe');
+
+      // Play button — sends postMessage command to the embedded YT iframe API
+      document.getElementById('graver-play-btn').addEventListener('click', function() {
+        iframe.contentWindow.postMessage(JSON.stringify({event:'command', func:'playVideo', args:[]}), '*');
+      });
+
+      // Open theater with autoplay
+      function openTheater() {
+        theaterFrame.src = 'https://www.youtube.com/embed/T1ckjHmU614?rel=0&modestbranding=1&autoplay=1';
+        overlay.removeAttribute('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+
+      // Close theater and stop video
+      function closeTheater() {
+        theaterFrame.src = '';
+        overlay.setAttribute('hidden', '');
+        document.body.style.overflow = '';
+      }
+
+      document.getElementById('graver-theater-btn').addEventListener('click', openTheater);
+      document.getElementById('graver-theater-close').addEventListener('click', closeTheater);
+      overlay.addEventListener('click', function(e) { if (e.target === overlay) closeTheater(); });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !overlay.hasAttribute('hidden')) closeTheater();
+      });
+    })();
   </script>
 
   <footer class="site-footer">
@@ -362,21 +434,25 @@
         {sel:'.res-collection-items-2 .res-collection-item:nth-child(2) .res-item-title', en:'Using Stata from within Python', es:'Usando Stata desde Python'},
         {sel:'.res-collection-items-2 .res-collection-item:nth-child(2) .res-item-desc', en:'Introduces the PyStata API — a Python wrapper that lets you call Stata commands, pass data, and run parallelized workflows from a Python script or Jupyter notebook.', es:'Introduce la API PyStata — un envoltorio de Python que te permite llamar comandos de Stata, pasar datos y ejecutar flujos de trabajo paralelizados desde un script de Python o un cuaderno Jupyter.'},
         // Quantum section
-        {sel:'.res-body .res-section-head:nth-child(5) .res-section-title', en:'Quantum Computing', es:'Computación Cuántica'},
-        {sel:'.res-body .res-section-head:nth-child(5) .res-section-sub', en:'Article · Medium', es:'Artículo · Medium'},
+        {sel:'.res-body .res-section-head:nth-child(5) .res-section-title', en:'Quantum Computing & Optimization', es:'Computación Cuántica y Optimización'},
+        {sel:'.res-body .res-section-head:nth-child(5) .res-section-sub', en:'Article · Medium · Video', es:'Artículo · Medium · Video'},
         {sel:'.res-card:nth-child(6) .res-card-title', en:'A Gentle Introduction to Quantum Computing', es:'Una Introducción Accesible a la Computación Cuántica'},
         {sel:'.res-card:nth-child(6) .res-card-subtitle', en:'How it Works, Who\'s Doing it, and How You Can Too', es:'Cómo funciona, quién lo está haciendo y cómo puedes empezar'},
         {sel:'.res-card:nth-child(6) .res-card-desc', html:true, en:'An accessible entry point into quantum computing — covering qubits, superposition, and entanglement without requiring a physics background, then surveying the real-world platforms (Qiskit, Cirq, Braket) you can start using today. Published in <em>Level Up Coding</em>, December 2024.', es:'Un punto de entrada accesible a la computación cuántica — que cubre qubits, superposición y entrelazamiento sin requerir conocimientos de física, y luego examina las plataformas reales (Qiskit, Cirq, Braket) que puedes comenzar a usar hoy. Publicado en <em>Level Up Coding</em>, diciembre 2024.'},
         {sel:'.res-card:nth-child(6) .res-card-audience', html:true, en:'<i class="ti ti-users" aria-hidden="true"></i> Economists, data scientists, and curious practitioners', es:'<i class="ti ti-users" aria-hidden="true"></i> Economistas, científicos de datos y practicantes curiosos'},
+        // Quantum video card
+        {sel:'.res-card:nth-child(7) .res-card-title', en:'Quantum Annealing: What is the Graver Basis?', es:'Recocido Cuántico: ¿Qué es la Base de Graver?'},
+        {sel:'.res-card:nth-child(7) .res-card-desc', en:"An accessible video outlining the what, when, and how of the Graver Basis — a fundamental property in integer programming that quantum annealing can exploit. Prompted by Collin, produced by Google's NotebookLM. Public notebook access pending.", es:"Un video accesible que explica el qué, cuándo y cómo de la Base de Graver — una propiedad fundamental en programación entera que la computación cuántica puede aprovechar. Elaborado a iniciativa de Collin y producido por Google NotebookLM. Acceso público al cuaderno pendiente."},
+        {sel:'.res-card:nth-child(7) .res-card-audience', html:true, en:'<i class="ti ti-users" aria-hidden="true"></i> Data scientists, ML practitioners, and quantum computing enthusiasts', es:'<i class="ti ti-users" aria-hidden="true"></i> Científicos de datos, profesionales de ML y entusiastas de la computación cuántica'},
         // ML section
-        {sel:'.res-body .res-section-head:nth-child(7) .res-section-title', en:'Machine Learning', es:'Aprendizaje Automático'},
-        {sel:'.res-body .res-section-head:nth-child(7) .res-section-sub', en:'Tutorial · LinkedIn Pulse', es:'Tutorial · LinkedIn Pulse'},
-        {sel:'.res-card:nth-child(8) .res-card-title', en:'Building an OCR Pipeline with OpenCV', es:'Construyendo una Canalización OCR con OpenCV'},
-        {sel:'.res-card:nth-child(8) .res-card-desc', en:'A practical walkthrough of constructing an OCR and NLP pipeline for digitizing handwritten historical records — drawn from real work building census transcription tools at the BYU Record Linking Lab in collaboration with FamilySearch and Harvard Business School.', es:'Un recorrido práctico para construir una canalización de OCR y PLN para digitalizar registros históricos escritos a mano — basado en trabajo real de construcción de herramientas de transcripción de censos en el BYU Record Linking Lab, en colaboración con FamilySearch y Harvard Business School.'},
-        {sel:'.res-card:nth-child(8) .res-card-audience', html:true, en:'<i class="ti ti-users" aria-hidden="true"></i> ML practitioners &amp; digital humanities researchers', es:'<i class="ti ti-users" aria-hidden="true"></i> Practicantes de ML &amp; investigadores de humanidades digitales'},
+        {sel:'.res-body .res-section-head:nth-child(8) .res-section-title', en:'Machine Learning', es:'Aprendizaje Automático'},
+        {sel:'.res-body .res-section-head:nth-child(8) .res-section-sub', en:'Tutorial · LinkedIn Pulse', es:'Tutorial · LinkedIn Pulse'},
+        {sel:'.res-card:nth-child(9) .res-card-title', en:'Building an OCR Pipeline with OpenCV', es:'Construyendo una Canalización OCR con OpenCV'},
+        {sel:'.res-card:nth-child(9) .res-card-desc', en:'A practical walkthrough of constructing an OCR and NLP pipeline for digitizing handwritten historical records — drawn from real work building census transcription tools at the BYU Record Linking Lab in collaboration with FamilySearch and Harvard Business School.', es:'Un recorrido práctico para construir una canalización de OCR y PLN para digitalizar registros históricos escritos a mano — basado en trabajo real de construcción de herramientas de transcripción de censos en el BYU Record Linking Lab, en colaboración con FamilySearch y Harvard Business School.'},
+        {sel:'.res-card:nth-child(9) .res-card-audience', html:true, en:'<i class="ti ti-users" aria-hidden="true"></i> ML practitioners &amp; digital humanities researchers', es:'<i class="ti ti-users" aria-hidden="true"></i> Practicantes de ML &amp; investigadores de humanidades digitales'},
         // External communities
-        {sel:'.res-body .res-section-head:nth-child(9) .res-section-title', en:'External communities', es:'Comunidades externas'},
-        {sel:'.res-body .res-section-head:nth-child(9) .res-section-sub', en:'Not affiliated — just useful', es:'Sin afiliación — solo útiles'},
+        {sel:'.res-body .res-section-head:nth-child(10) .res-section-title', en:'External communities', es:'Comunidades externas'},
+        {sel:'.res-body .res-section-head:nth-child(10) .res-section-sub', en:'Not affiliated — just useful', es:'Sin afiliación — solo útiles'},
         {sel:'.res-external-list .res-external-item:nth-child(1) .res-external-name', en:'Moderated Machine Learning Community', es:'Comunidad de Aprendizaje Automático Moderada'},
         {sel:'.res-external-list .res-external-item:nth-child(1) .res-external-note', en:'LinkedIn group · Curated ML discussions', es:'Grupo de LinkedIn · Debates curados de ML'},
         {sel:'.res-external-list .res-external-item:nth-child(2) .res-external-name', en:'Learn Statistics Through Practice', es:'Aprende Estadística en la Práctica'},
