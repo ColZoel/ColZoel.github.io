@@ -2821,16 +2821,15 @@ a.rp-paper-title:hover { color: var(--teal); }
 
 /* Theater mode overlay */
 .res-theater-overlay {
+  display: none; /* shown via JS only */
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.82);
   z-index: 999;
-  display: flex;
   align-items: center;
   justify-content: center;
   padding: 24px;
 }
-.res-theater-overlay[hidden] { display: none; }
 .res-theater-modal {
   width: min(84vw, 1000px);
   background: var(--color-background-primary);
