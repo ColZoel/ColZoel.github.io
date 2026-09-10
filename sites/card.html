@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collin Zoeller</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,500&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <script>(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else if(t==='light')document.documentElement.setAttribute('data-theme','light');})();</script>
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --bg:        #EEF3F0;
+      --surface:   #FFFFFF;
+      --text-hi:   #0D1A14;
+      --text-lo:   #4E6358;
+      --accent:    #0F6E56;
+      --accent-lt: #E2EFE8;
+      --rule:      #C9D8D0;
+
+      --f-display: 'Playfair Display', Georgia, serif;
+      --f-label:   'DM Mono', 'Courier New', monospace;
+      --f-body:    'Inter', system-ui, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg:        #0A1410;
+        --surface:   #101D17;
+        --text-hi:   #E0EBE4;
+        --text-lo:   #658E76;
+        --accent:    #1FBF7A;
+        --accent-lt: #122018;
+        --rule:      #1B2F24;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg:        #0A1410;
+      --surface:   #101D17;
+      --text-hi:   #E0EBE4;
+      --text-lo:   #658E76;
+      --accent:    #1FBF7A;
+      --accent-lt: #122018;
+      --rule:      #1B2F24;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--f-body);
+      background: var(--bg);
+      color: var(--text-hi);
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--surface);
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      box-shadow:
+        0 1px 2px rgba(0,0,0,.04),
+        0 4px 18px rgba(0,0,0,.07),
+        0 0 0 .5px var(--rule);
+    }
+
+    /* Left accent strip — indexed credential tab */
+    .card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--accent);
+      z-index: 2;
+    }
+
+    /* ── HEAD ── */
+    .card-head {
+      padding: 28px 22px 22px 28px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .eyebrow {
+      font-family: var(--f-label);
+      font-size: 9px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .name {
+      font-family: var(--f-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 30px;
+      line-height: 1.08;
+      color: var(--text-hi);
+      text-wrap: balance;
+      margin-bottom: 11px;
+    }
+
+    .tagline {
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--text-lo);
+    }
+
+    /* ── FIELDS ── */
+    .card-body {
+      padding: 0 22px 0 28px;
+    }
+
+    .field {
+      display: grid;
+      grid-template-columns: 78px 1fr;
+      column-gap: 14px;
+      align-items: start;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .field:last-child { border-bottom: none; }
+
+    .field-label {
+      font-family: var(--f-label);
+      font-size: 8.5px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--text-lo);
+      padding-top: 3px;
+      line-height: 1.4;
+    }
+
+    .field-value {
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--text-hi);
+      display: block;
+    }
+
+    /* Icon row inside a field value */
+    .fv-line {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 2px;
+    }
+
+    .fi-row {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      flex-shrink: 0;
+    }
+
+    /* Flag SVGs */
+    .fi-flag {
+      height: 15px;
+      width: auto;
+      border-radius: 2px;
+      display: block;
+    }
+
+    /* Emoji flag */
+    .fi-emoji {
+      font-size: 14px;
+      line-height: 1;
+      display: block;
+    }
+
+    /* University logo */
+    .fi-logo {
+      height: 20px;
+      width: 20px;
+      border-radius: 4px;
+      object-fit: cover;
+      display: block;
+      flex-shrink: 0;
+      background: var(--accent-lt);
+    }
+
+    .field-sub {
+      display: block;
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--text-lo);
+      margin-top: 1px;
+      line-height: 1.45;
+    }
+
+    /* ── PROJECTS ── */
+    .card-proj {
+      padding: 14px 22px 15px 28px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .proj-label {
+      font-family: var(--f-label);
+      font-size: 8.5px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--text-lo);
+      display: block;
+      margin-bottom: 9px;
+    }
+
+    .proj-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .proj-chip {
+      font-family: var(--f-body);
+      font-size: 11.5px;
+      font-weight: 400;
+      color: var(--text-lo);
+      background: var(--accent-lt);
+      border: 1px solid var(--rule);
+      border-radius: 5px;
+      padding: 4px 9px;
+      text-decoration: none;
+      transition: color .14s, border-color .14s;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .proj-chip:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+    .proj-chip svg {
+      width: 10px;
+      height: 10px;
+      opacity: .45;
+      transition: opacity .14s;
+    }
+    .proj-chip:hover svg { opacity: 1; }
+
+    /* ── LINKS ── */
+    .card-foot {
+      padding: 14px 22px 22px 28px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .bc-link {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 10px 13px;
+      border-radius: 7px;
+      border: 1px solid var(--rule);
+      background: transparent;
+      text-decoration: none;
+      font-family: var(--f-body);
+      font-size: 12.5px;
+      font-weight: 400;
+      color: var(--text-hi);
+      transition: background .14s, border-color .14s, color .14s;
+      cursor: pointer;
+    }
+    .bc-link:hover {
+      background: var(--accent-lt);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .bc-link:hover svg { color: var(--accent); }
+    .bc-link:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .bc-link svg {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      color: var(--accent);
+      transition: color .14s;
+    }
+    .bc-link span { flex: 1; }
+
+    .link-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+    }
+    .link-pair .bc-link { justify-content: center; }
+
+    /* ── SMALL SCREENS ── */
+    @media (max-width: 340px) {
+      .name      { font-size: 26px; }
+      .card-head { padding: 22px 18px 18px 22px; }
+      .card-body { padding: 0 18px 0 22px; }
+      .card-proj { padding: 12px 18px 13px 22px; }
+      .card-foot { padding: 14px 18px 18px 22px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bc-link, .proj-chip, .proj-chip svg { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- HEAD -->
+  <div class="card-head">
+    <p class="eyebrow">Quantitative Economist</p>
+    <h1 class="name">Collin Zoeller</h1>
+    <p class="tagline">Researcher at the intersection of AI,<br>economics, and computation.</p>
+  </div>
+
+  <!-- FIELDS -->
+  <div class="card-body">
+
+    <!-- FROM: Wyoming flag + US flag -->
+    <div class="field">
+      <span class="field-label">From</span>
+      <span class="field-value">
+        <span class="fv-line">
+          <span class="fi-row">
+            <!-- Wyoming state flag (inline SVG) -->
+            <svg class="fi-flag" viewBox="0 0 28 18" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Wyoming flag">
+              <rect width="28" height="18" fill="#003087"/>
+              <rect x=".75" y=".75" width="26.5" height="16.5" fill="none" stroke="#BF0A30" stroke-width="2"/>
+              <rect x="2.5" y="2.5" width="23" height="13" fill="none" stroke="white" stroke-width=".75"/>
+              <g fill="white">
+                <ellipse cx="15" cy="10" rx="5.5" ry="3.5"/>
+                <ellipse cx="10.5" cy="8" rx="3.2" ry="3.5"/>
+                <ellipse cx="8.5" cy="9.5" rx="2" ry="1.9"/>
+                <ellipse cx="7" cy="10.5" rx="1.3" ry="1.1"/>
+                <rect x="9" y="12.5" width="1.3" height="2.5" rx=".65"/>
+                <rect x="11.5" y="12.5" width="1.3" height="2.5" rx=".65"/>
+                <rect x="16" y="13" width="1.3" height="2" rx=".65"/>
+                <rect x="18.5" y="12.8" width="1.3" height="2.2" rx=".65"/>
+                <line x1="20.5" y1="8.5" x2="22.5" y2="7" stroke="white" stroke-width=".9" stroke-linecap="round"/>
+              </g>
+            </svg>
+            <!-- US flag -->
+            <span class="fi-emoji" aria-label="US flag">🇺🇸</span>
+          </span>
+          Casper, Wyoming
+        </span>
+        <span class="field-sub">United States</span>
+      </span>
+    </div>
+
+    <!-- PROGRAM: Duke logo -->
+    <div class="field">
+      <span class="field-label">Program</span>
+      <span class="field-value">
+        <span class="fv-line">
+          <img class="fi-logo"
+               src="https://www.duke.edu/apple-touch-icon.png"
+               onerror="this.src='https://www.duke.edu/favicon.ico'"
+               alt="Duke University" loading="lazy">
+          M.S. Economics &amp; Computation
+        </span>
+        <span class="field-sub">Duke University · 2026–</span>
+      </span>
+    </div>
+
+    <!-- RESEARCH (no icon) -->
+    <div class="field">
+      <span class="field-label">Research</span>
+      <span class="field-value">Quantum Computing · AI
+        <span class="field-sub">Quantitative Economics</span>
+      </span>
+    </div>
+
+    <!-- UNDERGRAD: BYU logo -->
+    <div class="field">
+      <span class="field-label">Undergrad</span>
+      <span class="field-value">
+        <span class="fv-line">
+          <img class="fi-logo"
+               src="https://www.byu.edu/apple-touch-icon.png"
+               onerror="this.src='https://www.byu.edu/favicon.ico'"
+               alt="BYU" loading="lazy">
+          B.S. Economics · BYU
+        </span>
+        <span class="field-sub">Minors: Mathematics &amp; Spanish</span>
+      </span>
+    </div>
+
+    <!-- PREVIOUSLY: CMU logo -->
+    <div class="field">
+      <span class="field-label">Previously</span>
+      <span class="field-value">
+        <span class="fv-line">
+          <img class="fi-logo"
+               src="https://www.cmu.edu/apple-touch-icon.png"
+               onerror="this.src='https://www.cmu.edu/favicon.ico'"
+               alt="Carnegie Mellon" loading="lazy">
+          Predoctoral RA in Finance
+        </span>
+        <span class="field-sub">Carnegie Mellon University</span>
+      </span>
+    </div>
+
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="card-proj">
+    <span class="proj-label">Open-source projects</span>
+    <div class="proj-chips">
+      <a class="proj-chip" href="https://collinzoeller.com/sites/stataagent.html">
+        StataAgent
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </a>
+      <a class="proj-chip" href="https://github.com/ColZoel/explain" target="_blank" rel="noopener noreferrer">
+        Stata Explain
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </a>
+      <a class="proj-chip" href="https://github.com/ColZoel/StataHelper" target="_blank" rel="noopener noreferrer">
+        StataHelper
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- LINKS -->
+  <div class="card-foot">
+    <a class="bc-link" href="https://collinzoeller.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="2" y1="12" x2="22" y2="12"/>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+      <span>collinzoeller.com</span>
+    </a>
+
+    <div class="link-pair">
+      <a class="bc-link" href="mailto:contact@collinzoeller.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="m2 7 10 7 10-7"/>
+        </svg>
+        <span>Email</span>
+      </a>
+
+      <a class="bc-link" href="https://linkedin.com/in/collinzoeller" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect x="2" y="9" width="4" height="12"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+        <span>LinkedIn</span>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
