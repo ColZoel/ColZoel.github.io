@@ -15,8 +15,24 @@
   <link rel="manifest" href="../site.webmanifest">
   <title>CV — Collin Zoeller</title>
   <script>(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else if(t==='light')document.documentElement.setAttribute('data-theme','light');var l=localStorage.getItem('lang')||((navigator.language||'en').startsWith('es')?'es':'en');document.documentElement.setAttribute('data-lang',l);})();</script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
+
+  <div class="ts-gate" id="ts-gate">
+    <div class="ts-gate-card">
+      <p class="ts-gate-logo">Collin Zoeller</p>
+      <hr class="ts-gate-divider">
+      <p class="ts-gate-title">Quick verification</p>
+      <p class="ts-gate-desc">Complete the check below to continue.</p>
+      <div class="cf-turnstile"
+           data-sitekey="0x4AAAAAADfDR7kHPYpj2oh2"
+           data-theme="auto"
+           data-callback="onTsSuccess"
+           data-error-callback="onTsError"></div>
+      <p class="ts-gate-error" id="ts-gate-error">Verification failed — please try again.</p>
+    </div>
+  </div>
 
   <nav>
     <a class="logo" href="../index.html">Collin Zoeller</a>
@@ -603,6 +619,48 @@
           applyLang(lang);
         });
       });
+    })();
+  </script>
+
+  <script>
+    // Turnstile gate
+    (function () {
+      var WORKER_URL = 'https://YOUR-WORKER.workers.dev/verify';
+      var SESSION_KEY = 'ts_verified';
+      var gate   = document.getElementById('ts-gate');
+      var errMsg = document.getElementById('ts-gate-error');
+
+      if (sessionStorage.getItem(SESSION_KEY) === '1') return;
+
+      gate.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+
+      window.onTsSuccess = function (token) {
+        fetch(WORKER_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token: token }),
+        })
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            if (data.success) {
+              sessionStorage.setItem(SESSION_KEY, '1');
+              gate.style.display = 'none';
+              document.body.style.overflow = '';
+            } else {
+              errMsg.style.display = 'block';
+              if (window.turnstile) turnstile.reset();
+            }
+          })
+          .catch(function () {
+            errMsg.style.display = 'block';
+            if (window.turnstile) turnstile.reset();
+          });
+      };
+
+      window.onTsError = function () {
+        errMsg.style.display = 'block';
+      };
     })();
   </script>
 
